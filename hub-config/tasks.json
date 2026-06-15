@@ -25,7 +25,7 @@
             },
             "target": {
               "required": [
-                "cumulative infections"
+                "cumulative cases"
               ],
               "optional": null
             }
@@ -66,13 +66,13 @@
           },
           "target_metadata": [
             {
-              "target_id": "cumulative infection",
-              "target_name": "Current cumulative BVBD infections",
-              "target_units": "infections",
+              "target_id": "cumulative cases",
+              "target_name": "Current cumulative BVBD cases",
+              "target_units": "cases",
               "target_keys": {
-                "target": "cumulative infections"
+                "target": "cumulative cases"
               },
-              "description": "Estimated latent cumulative number of Bundibugyo virus disease (BVD) infections that have occurred in the Democratic Republic of the Congo as of reference_date. This target measures the total infection burden up to and including the reference_date; it is NOT symptomatic cases, and NOT laboratory-confirmed cases. Different models may have slightly different definitions of the values that they report. Any discrepancies should be reported in model metadata files.",
+              "description": "Estimated cumulative number of Bundibugyo virus disease (BVD) cases that are symptomatic and have occurred as of reference_date. This target measures the total number of symptomatic cases up to and including the reference_date. It is NOT a count of underlying infections, and NOT counting just laboratory-confirmed cases. Different models may have slightly different definitions of the values that they report. Any discrepancies should be reported in model metadata files.",
               "target_type": "continuous",
               "is_step_ahead": false
             }

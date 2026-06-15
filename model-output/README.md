@@ -1,12 +1,10 @@
 # Model outputs folder
 
-<mark style="background-color: #FFE331">**Below is a template of the README.md file for the model-output folder of your hub. Italics in brackets are placeholders for information about your hub. **</mark>
-
 This folder contains a set of subdirectories, one for each model, that contains submitted model output files for that model. The structure of these directories and their contents follows [the model output guidelines in our documentation](https://docs.hubverse.io/en/latest/user-guide/model-output.html). Documentation for hub submissions specifically is provided below.
 
 # Data submission instructions
 
-All forecasts should be submitted directly to the [model-output/](./)
+All estimates should be submitted directly to the [model-output/](./)
 folder. Data in this directory should be added to the repository through
 a pull request so that automatic data validation checks are run.
 
@@ -18,40 +16,11 @@ that each model should provide in the model-metadata folder.
 
 *Table of Contents*
 
--   [What is a forecast](#What-is-a-forecast)
--   [Target data](#Target-data)
 -   [Data formatting](#data-formatting)
--   [Forecast file format](#Forecast-file-format)
+-   [File format](#Forecast-file-format)
 -   [Forecast data validation](#Forecast-validation)
 -   [Weekly ensemble build](#Weekly-ensemble-build)
 -   [Policy on late submissions](#policy-on-late-or-updated-submissions)
-
-## What is a forecast
-
-Models are asked to make specific quantitative forecasts about data that
-will be observed in the future. These forecasts are interpreted as
-"unconditional" predictions about the future. That is, they are not
-predictions only for a limited set of possible future scenarios in which
-a certain set of conditions (e.g. vaccination uptake is strong, or new
-social-distancing mandates are put in place) hold about the future --
-rather, they should characterize uncertainty across all reasonable
-future scenarios. In practice, all forecasting models make some
-assumptions about how current trends in data may change and impact the
-forecasted outcome; some teams select a "most likely" scenario or
-combine predictions across multiple scenarios that may occur. Forecasts
-submitted to this repository will be evaluated against observed data.
-
-We note that other modeling efforts, such as the [Influenza Scenario
-Modeling Hub](https://fluscenariomodelinghub.org/), have been
-launched to collect and aggregate model outputs from "scenario
-projection" models. These models create longer-term projections under a
-specific set of assumptions about how the main drivers of the pandemic
-(such as non-pharmaceutical intervention compliance, or vaccination
-uptake) may change over time.
-
-## Target Data
-
-*[insert description target data]*
 
 
 ## Data formatting
@@ -62,7 +31,7 @@ file can be used in the visualization and ensemble forecasting.
 
 ### Subdirectory
 
-Each model that submits forecasts for this project will have a unique subdirectory within the [model-output/](model-output/) directory in this GitHub repository where forecasts will be submitted. Each subdirectory must be named
+Each model that submits model output for this project will have a unique subdirectory within the [model-output/](model-output/) directory in this GitHub repository where estimates will be submitted. Each subdirectory must be named
 
     team-model
 
@@ -89,10 +58,9 @@ Details on the content and formatting of metadata files are provided in the [mod
 
 
 
-### Forecasts
+### Estimates
 
-Each forecast file should have the following
-format
+Each model output file should have the following format
 
     YYYY-MM-DD-team-model.csv
 
@@ -104,22 +72,20 @@ where
 -   `team` is the team name, and
 -   `model` is the name of your model.
 
-The date YYYY-MM-DD is the [`reference_date`](#reference_date). This should be the Saturday following the submission date.
+The date YYYY-MM-DD is the [`reference_date`](#reference_date). This should be the date on which the model estimates were generated, and ideally the day on which the estimates are submitted.
 
 The `team` and `model` in this file must match the `team` and `model` in
 the directory this file is in. Both `team` and `model` should be less
-than 15 characters, alpha-numeric and underscores only, with no spaces
+than 16 characters, alpha-numeric and underscores only, with no spaces
 or hyphens.
 
-## Forecast file format
+## File format
 
 The file must be a comma-separated value (csv) file with the following
 columns (in any order):
 
 -   `reference_date`
 -   `target`
--   `horizon`
--   `target_end_date`
 -   `location`
 -   `output_type`
 -   `output_type_id`
@@ -127,7 +93,7 @@ columns (in any order):
 
 No additional columns are allowed.
 
-The value in each row of the file is a quantile for a particular combination of location, date, and horizon.
+The value in each row of the file is a quantile for a particular combination of location, target and reference_date.
 
 ### `reference_date`
 
@@ -135,52 +101,32 @@ Values in the `reference_date` column must be a date in the ISO format
 
     YYYY-MM-DD
 
-This is the date from which all forecasts should be considered. This date is the Saturday following the submission Due Date, corresponding to the last day of the epiweek when submissions are made. The `reference_date` should be the same as the date in the filename but is included here to facilitate validation and analysis.
+This is the date on which the model output was generated. The `reference_date` should be the same as the date in the filename but should be included in the file itself as well to facilitate human readability, validation and analysis.
 
 ### `target`
 
-Values in the `target` column must be a character (string) and be one of
-the following specific targets:
-
--   *`[insert target] `*
--   *`[insert target] `*
-
-
-### `horizon`
-Values in the `horizon` column indicate the number of *[insert temporal period]*  between the `reference_date` and the `target_end_date`.  This should be a number between *[insert range of horizons]* , where for example a `horizon` of 0 indicates that the prediction is a nowcast for the *[insert temporal period]* of submission and a `horizon` of 1 indicates that the prediction is a forecast for the *[insert temporal period]* after submission.
-
-### `target_end_date`
-
-Values in the `target_end_date` column must be a date in the format
-
-    YYYY-MM-DD
-
-This is the last date of the forecast target's *[insert temporal period]*. This will be the date of the Saturday at the end of the forecasted *[insert temporal period]* Within each row of the submission file, the `target_end_date` should be equal to the `reference_date` + `horizon`* (*[# days in temporal period]* days).
+Values in the `target` column must be a character (string) and be the string `cumulative cases`. Again, as long as the hub is only collecting estimates for this one target, this value will be the same for all rows in the data, but is required to be present for human readability and validation.
 
 
 ### `location`
 
-Values in the `location` column must be one of the "locations" in
-this *[insert name of location information file]* (*[insert url for location information file]* ) which
-includes *[describe what location information files included]*
+The values in the `location` column must be `CD`, the ISO code for the Democratic Republic of the Congo. As models generate output for other locations, they may be added as well. As above, these values are required to be repeated for each row to ensure completeness and ensure that data validation passes.
 
 ### `output_type`
 
-<mark style="background-color: #FFE331">**Modify depending on which type of output_type you are collecting.**</mark>
 
-Values in the `output_type` column are either
+Values in the `output_type` column are one of the following
 
--   "quantile" or
--   "pmf".
+-   "quantile"
+-   "mean"
+-   "median"
 
-This value indicates whether that row corresponds to a quantile forecast for *[insert target]* or the probability mass function (pmf) of a categorical forecast for *[insert target]*.
+This value indicates whether that row corresponds to a probabilistic quantile forecast or a point forecast (mean or median)
 
 ### `output_type_id`
 Values in the `output_type_id` column specify identifying information for the output type.
 
 #### quantile output
-<mark style="background-color: #FFE331">**Modify depending on which type of output_type you are collecting.**</mark>
-
 When the predictions are quantiles, values in the `output_type_id` column are a quantile probability level in the format
 
     0.###
@@ -188,27 +134,19 @@ When the predictions are quantiles, values in the `output_type_id` column are a 
  This value indicates the quantile probability level for for the
 `value` in this row.
 
-Teams must provide the following *[insert # quantiles]* quantiles:
+Teams must provide the following 7 quantiles:
 
-*[insert quantiles]*
+    0.025, 0.1, 0.25, 0.5, 0.75, 0.90, 0.975
 
-R: *[insert r code for defining quantiles]*
-Python: *[insert Python code for defining quantiles]*
 
-#### pmf output
-<mark style="background-color: #FFE331">**Modify depending on which type of output_type you are collecting.**</mark>
+#### mean and median output
 
- *[Describe pmf output]*
+For mean and median output type values, the value in the `output_type_id` column should be `"NA"`.
 
 
 ### `value`
-<mark style="background-color: #FFE331">**Modify depending on which type of output_type you are collecting.**</mark>
 
-Values in the `value` column are non-negative numbers indicating the "quantile" or "pmf" prediction for this row. For a "quantile" prediction, `value` is the inverse of the cumulative distribution function (CDF) for the target, location, and quantile associated with that row. For example, the 2.5 and 97.5 quantiles for a given target and location should capture 95% of the predicted values and correspond to the central 95% Prediction Interval.
-
-### Example tables
-
- *[Insert example tables]*
+Values in the `value` column are non-negative numbers indicating the "quantile", "mean" or "median" prediction for this row. For a "quantile" prediction, `value` is the inverse of the cumulative distribution function (CDF) for the target, location, and quantile associated with that row. For example, the 2.5 and 97.5 quantiles for a given target and location should capture 95% of the predicted values and correspond to the central 95% Prediction Interval.
 
 ## Forecast validation
 
@@ -222,25 +160,10 @@ Actions](https://docs.github.com/en/actions) which runs the tests
 present in [the hubValidations
 package](https://github.com/hubverse-org/hubValidations). The
 intent for these tests are to validate the requirements above. Please
-[let us know]( *[Insert url to your hub's issues]*) if you are facing issues while running the tests.
+[let us know](https://github.com/InsightNet-US/BDBV-Modeling-Hub/issues) if you are facing issues while running the tests.
 
 ### Local forecast validation
 
 Optionally, you may validate a forecast file locally before submitting it to the hub in a pull request. Note that this is not required, since the validations will also run on the pull request. To run the validations locally, follow these steps:
 
- *[Add description for local forecast validation]*
-
-
-## Weekly ensemble build
-
-Every  *[day and time]*, we will generate a  *[hub name]* ensemble  *[Insert target]* using valid forecast submissions in the current week by the *[day and time]* deadline. Some or all participant forecasts may be combined into an ensemble forecast to be published in real-time along with the participant forecasts. In addition, some or all forecasts may be displayed alongside the output of a baseline model for comparison.
-
-
-## Policy on late or updated submissions
-
-In order to ensure that forecasting is done in real-time, all forecasts are required to be submitted to this repository by *[day and time]* each week. We do not accept late forecasts.
-
-## Evaluation criteria
-Forecasts will be evaluated using a variety of metrics, including *[describe how they will be evaluated]*
-
-<mark style="background-color: #FFE331">**As an example, here is a link to the [Flusight-Forecast_Hub model-output README](https://github.com/cdcepi/FluSight-forecast-hub/blob/master/model-output/README.md).**</mark>
+ *[TO BE ADDED: Add description for local forecast validation]*
