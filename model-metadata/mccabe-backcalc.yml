@@ -1,0 +1,23 @@
+team_name: "McCabe et al., Imperial College London"
+team_abbr: "mccabe"
+model_name: "Back-calculation from deaths"
+model_abbr: "backcalc"
+model_contributors: [
+  {
+    "name": "Ruth McCabe",
+    "affiliation": "MRC Centre for Global Infectious Disease Analysis, Imperial College London"
+  },
+  {
+    "name": "Anne Cori",
+    "affiliation": "MRC Centre for Global Infectious Disease Analysis, Imperial College London",
+    "email": "a.cori@imperial.ac.uk"
+  }
+]
+website_url: "https://www.imperial.ac.uk/mrc-global-infectious-disease-analysis/"
+repo_url: "https://github.com/mrc-ide/evd-2026-outbreak-size"
+license: "CC-BY-4.0"
+citation: "McCabe R, Ebbarnezh L, Okware S, et al. Estimation of the Ebola outbreak size in the Democratic Republic of the Congo. Lancet Infect Dis 2026. https://doi.org/10.1016/S1473-3099(26)00299-9"
+model_details:
+  data_inputs: "240 suspected and confirmed Bundibugyo virus disease deaths reported as of 27 May 2026 (Institut National de Sante Publique, DRC situation reports); case fatality ratio and symptom-onset-to-death distribution derived from previous Bundibugyo virus outbreaks (Rosello et al. 2015; US CDC)."
+  methods: "Back-calculation of symptomatic cases from reported BVD deaths, assuming exponential epidemic growth; main scenario: 10-day doubling time, 30% of deaths attributable to Ebola, CFR 33%."
+  methods_long: "Method 1 (back-calculation) of McCabe et al. (Lancet Infect Dis 2026). The reported value is the estimated cumulative number of symptomatic Bundibugyo virus disease cases that had occurred in DR Congo as of the reference date (27 May 2026), matching the hub target. The single submitted estimate corresponds to the paper's main scenario: a 10-day epidemic doubling time, 30% of the 240 suspected/confirmed deaths assumed truly attributable to Ebola, and a case fatality ratio of 33% (mean 451, 95% CI 396-511; Table 1). IMPORTANT UNCERTAINTY CAVEAT: the quantiles submitted here are derived from the paper's reported 95% confidence interval, which is a profile-likelihood interval reflecting only the Poisson/negative-binomial sampling uncertainty in the observed death count (scaled into case space). It does NOT propagate parameter uncertainty in the case fatality ratio, the proportion of deaths attributable to Ebola, or the epidemic growth rate; in the paper that parameter uncertainty is instead explored across scenarios (mean estimates ranging roughly 306-756 across growth/CFR scenarios for this method). The 7 quantiles were reconstructed analytically as 1.879846 x Gamma(shape=240.5, rate=1), which reproduces the published 396/511 interval endpoints. These estimates were transcribed into hubverse format by the BVBD Modeling Hub from the published paper and accompanying code (https://github.com/mrc-ide/evd-2026-outbreak-size); they were not submitted by the original authors."
