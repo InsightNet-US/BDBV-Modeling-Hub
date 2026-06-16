@@ -1,0 +1,36 @@
+team_name: "EpiForecasts"
+team_abbr: "epiforecasts"
+model_name: "Renewal joint outbreak-size model"
+model_abbr: "renewal"
+model_contributors: [
+  {
+    "name": "Sam Abbott",
+    "affiliation": "London School of Hygiene & Tropical Medicine",
+    "orcid": "0000-0001-8057-8037",
+    "email": "sam.abbott@lshtm.ac.uk"
+  },
+  {
+    "name": "Katharine Sherratt",
+    "affiliation": "London School of Hygiene & Tropical Medicine"
+  },
+  {
+    "name": "Samuel Brand",
+    "affiliation": "London School of Hygiene & Tropical Medicine"
+  },
+  {
+    "name": "Sebastian Funk",
+    "affiliation": "London School of Hygiene & Tropical Medicine",
+    "orcid": "0000-0002-2842-3406",
+    "email": "sebastian.funk@lshtm.ac.uk"
+  }
+]
+license: "CC-BY-4.0"
+model_details:
+  data_inputs: "DRC suspected and laboratory-confirmed BVD cases and deaths from INSP situation reports; cases and deaths exported to Uganda from WHO situation reports and Disease Outbreak News; informative priors from the McCabe et al. report; a genetic bound on the time to most recent common ancestor."
+  methods: "Joint Bayesian (Turing.jl) discrete-time renewal model fitting DRC and Uganda-export surveillance streams in one posterior; estimates latent infections, Rt, ascertainment and cumulative size."
+  methods_long: "Real-time joint Bayesian generative model (implemented in Julia with Turing.jl) of the 2026 DRC Bundibugyo virus disease (BVD) outbreak. The infection process is a discrete-time renewal process on a daily grid: a molecular-clock cryptic-growth phase seeds the renewal start, after which a time-varying reproduction number drives latent infections forward; infections are convolved with an incubation delay to symptom onsets, which feed the observed streams. It fits the available surveillance streams jointly in a single posterior - DRC suspected cases, suspected deaths, laboratory-confirmed cases and confirmed deaths, and the cases and deaths exported to Uganda - and infers ascertainment, the case-fatality ratio and the reproduction number. This submission reports the cumulative number of *symptomatic* cases, taken from the model's `cumulative_onsets_T` posterior (the cumulative symptom onsets by the data cut-off). This is the onset analogue of the model's `C_T` quantity (cumulative *infections*); symptomatic cases are reported here because they match the hub target (symptomatic cases, not underlying infections and not confirmed-only counts). The submission was standardized by the hub from the upstream rolling results release results-798 (reference_date 2026-06-13, the data cut-off `as_of_date` recorded in the release). The quantiles, median and mean were computed empirically from that release's `posterior_draws.csv` (thinned posterior draws). The estimate is produced by src/parse_epiforecasts_renewal.R, which can be re-run to refresh the submission as new upstream builds are released. Model code and analysis were drafted with the assistance of a language model and reviewed under human oversight by the named authors. See https://github.com/epiforecasts/BVDOutbreakSize for full details."
+model_version: "results-798"
+website_url: "https://epiforecasts.io/BVDOutbreakSize/stable/"
+repo_url: "https://github.com/epiforecasts/BVDOutbreakSize"
+citation: "Abbott S, Sherratt K, Brand S, Funk S. BVDOutbreakSize: joint forward-generative Turing model for the 2026 DRC Bundibugyo outbreak. 2026. https://doi.org/10.5281/zenodo.20312758"
+ensemble_of_hub_models: false
