@@ -61,8 +61,11 @@ jobs:
         run: |
           set -euo pipefail
           # The latest (max) reference_date among the generated renewal files.
-          ref_date="$(ls model-output/epiforecasts-renewal \
-            | grep -oE '^[0-9]{4}-[0-9]{2}-[0-9]{2}' | sort -u | tail -n1)"
+          ref_date="$(find model-output/epiforecasts-renewal -maxdepth 1 -type f -name '*-epiforecasts-renewal.csv' -printf '%f\n' \
+            | sed -nE 's/^([0-9]{4}-[0-9]{2}-[0-9]{2}).*/\1/p' | sort -u | tail -n1)"
+          if [ -z "$ref_date" ]; then
+            echo "::error title=No renewal outputs found::Could not determine reference_date from model-output/epiforecasts-renewal/*.csv"; exit 1
+          fi
           echo "Latest renewal reference_date: ${ref_date}"
           if ! jq -e --arg d "$ref_date" \
               '.rounds[0].model_tasks[0].task_ids.reference_date.optional | index($d)' \
