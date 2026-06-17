@@ -18,13 +18,24 @@
 # analogue of `C_T`, which is cumulative *infections*). This script uses
 # `cumulative_onsets_T`, so the submission maps cleanly onto the hub target.
 #
+# Idempotency. The reference_date is the upstream data cut-off (`as_of_date`),
+# which only advances when new surveillance data are added - not on every
+# rebuild. Because the quantiles are computed from ~200 thinned draws, re-running
+# on a fresh build with the SAME cut-off would produce slightly different numbers
+# (Monte-Carlo noise) for an already-submitted date. To avoid that churn and
+# avoid clobbering a previously submitted estimate, the script SKIPS writing when
+# a submission file for that reference_date already exists. Pass `--force` (or
+# set BVD_FORCE=1) to overwrite anyway.
+#
 # Usage:
 #   Rscript src/parse_epiforecasts_renewal.R                # latest release
 #   Rscript src/parse_epiforecasts_renewal.R results-780    # a specific release tag
+#   Rscript src/parse_epiforecasts_renewal.R --force        # overwrite existing date
 #
 # Environment overrides (useful in CI):
 #   BVD_UPSTREAM_REPO   upstream repo (default epiforecasts/BVDOutbreakSize)
 #   BVD_HUB_PATH        hub root to write into (default: parent of this script)
+#   BVD_FORCE           set to 1/true/yes to overwrite an existing submission
 #
 # Requires the `gh` CLI installed and authenticated, plus base R (`utils`,
 # `stats`). Exits non-zero on any failure so CI can detect problems.
@@ -145,8 +156,15 @@ resolve_hub_root <- function() {
 ## Main
 ## ---------------------------------------------------------------------------
 
-args <- commandArgs(trailingOnly = TRUE)
-tag <- if (length(args) >= 1 && nzchar(args[1])) args[1] else latest_release_tag()
+raw_args <- commandArgs(trailingOnly = TRUE)
+force <- ("--force" %in% raw_args) || ("-f" %in% raw_args) ||
+  tolower(Sys.getenv("BVD_FORCE", "")) %in% c("1", "true", "yes")
+positional <- raw_args[!startsWith(raw_args, "-")]
+tag <- if (length(positional) >= 1 && nzchar(positional[1])) {
+  positional[1]
+} else {
+  latest_release_tag()
+}
 
 message(sprintf("Upstream repo : %s", UPSTREAM_REPO))
 message(sprintf("Release tag   : %s", tag))
@@ -158,12 +176,26 @@ tmp <- tempfile("bvd_renewal_")
 dir.create(tmp)
 on.exit(unlink(tmp, recursive = TRUE), add = TRUE)
 
+## Resolve the reference_date (data cut-off) first, from the small TOML asset,
+## so we can decide whether to skip before downloading the larger draws file.
 obs_path <- fetch_asset(tag, "observations.toml", tmp)
-draws_path <- fetch_asset(tag, "posterior_draws.csv", tmp)
-
 reference_date <- read_as_of_date(obs_path)
 message(sprintf("Reference date: %s", reference_date))
 
+out_dir <- file.path(hub_root, "model-output", MODEL_ID)
+out_file <- file.path(out_dir, sprintf("%s-%s.csv", reference_date, MODEL_ID))
+
+## Idempotency gate: a submission for this reference_date already exists, so the
+## data cut-off has not advanced. Skip to avoid Monte-Carlo churn and to avoid
+## overwriting an already-submitted estimate. `--force` overrides.
+if (file.exists(out_file) && !force) {
+  message(sprintf(
+    "No new data cut-off: %s already exists. Skipping (pass --force to overwrite).",
+    out_file))
+  quit(save = "no", status = 0)
+}
+
+draws_path <- fetch_asset(tag, "posterior_draws.csv", tmp)
 draws_df <- utils::read.csv(draws_path, check.names = FALSE)
 if (!DRAWS_COL %in% names(draws_df)) {
   stop(sprintf(paste0("column '%s' not found in posterior_draws.csv for %s.\n",
@@ -176,11 +208,9 @@ draws <- draws_df[[DRAWS_COL]]
 
 submission <- build_submission(reference_date, draws)
 
-out_dir <- file.path(hub_root, "model-output", MODEL_ID)
 dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)
-out_file <- file.path(out_dir, sprintf("%s-%s.csv", reference_date, MODEL_ID))
 utils::write.csv(submission, out_file, row.names = FALSE, quote = FALSE)
 
-message(sprintf("Wrote %s", out_file))
+message(sprintf("Wrote %s%s", out_file, if (force) " (forced overwrite)" else ""))
 message(sprintf("  draws: %d | median: %s | quantity: cumulative symptomatic cases (%s)",
                 length(draws), round(median(draws)), DRAWS_COL))
