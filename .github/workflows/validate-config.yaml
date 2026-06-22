@@ -45,9 +45,17 @@ jobs:
         id: validate
         run: hubAdmin::ci_validate_hub_config(diff = "${{ runner.temp }}/diff.md")
         shell: Rscript {0}
+      # Posting the config diff as a PR comment needs a writable token. For
+      # pull_request events from a FORK, GitHub forces GITHUB_TOKEN to be
+      # read-only regardless of the `permissions:` block, so the comment step
+      # would 403 ("Resource not accessible by integration") and fail the job.
+      # Run it only for same-repo PRs (reviewers can still see the diff in the
+      # PR's Files tab on fork PRs), and never let a comment hiccup fail the
+      # config validation itself (that is the "Error on Failure" step's job).
       - name: "Comment on PR"
         id: comment-diff
-        if: ${{ github.event_name != 'workflow_dispatch' }}
+        if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository }}
+        continue-on-error: true
         uses: carpentries/actions/comment-diff@main
         with:
           pr: ${{ env.PR_NUMBER }}
