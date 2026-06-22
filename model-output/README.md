@@ -164,4 +164,66 @@ intent for these tests are to validate the requirements above. Please
 
 Optionally, you may validate a forecast file locally before submitting it to the hub in a pull request. Note that this is not required, since the validations will also run on the pull request. To run the validations locally, follow these steps:
 
- *[TO BE ADDED: Add description for local forecast validation]*
+1. Create a fork of the `BDBV-Modeling-Hub` repository and then clone the fork to your computer.
+2. Create a draft of the model submission file for your model and place it in the `model-output/<your model id>` folder of this clone.
+3. Install the hubValidations package for R by running the following command from within an R session:
+``` r
+remotes::install_github("hubverse-org/hubValidations")
+```
+4. Validate your draft forecast submission file by running the following command in an R session:
+``` r
+library(hubValidations)
+hubValidations::validate_submission(
+    hub_path="<path to your clone of the hub repository>",
+    file_path="<path to your file, relative to the model-output folder>"
+)
+```
+
+For example, if your working directory is the root of the hub repository, you can use a command similar to the following:
+``` r
+library(hubValidations)
+hubValidations::validate_submission(
+    hub_path=".",
+    file_path="epiforecasts-renewal/2026-06-13-epiforecasts-renewal.csv"
+)
+```
+The function returns the output of each validation check.
+
+If all is well, all checks should either be prefixed with a `✓` indicating success or `ℹ` indicating a check was skipped, e.g.:
+```
+✓ FluSight-forecast-hub: All hub config files are valid.
+✓ 2026-06-13-epiforecasts-renewal.csv: File exists at path model-output/epiforecasts-renewal/2026-06-13-epiforecasts-renewal.csv.
+✓ 2026-06-13-epiforecasts-renewal.csv: File name "2026-06-13-epiforecasts-renewal.csv" is valid.
+✓ 2026-06-13-epiforecasts-renewal.csv: File directory name matches `model_id` metadata in file name.
+✓ 2026-06-13-epiforecasts-renewal.csv: `round_id` is valid.
+✓ 2026-06-13-epiforecasts-renewal.csv: File is accepted hub format.
+...
+```
+
+If there are any failed checks or execution errors, the check's output will be prefixed with a `✖` or `!` and include a message describing the problem.
+
+To get an overall assessment of whether the file has passed validation checks, you can pass the output of `validate_submission()` to `check_for_errors()`
+```r
+library(hubValidations)
+
+validations <- validate_submission(
+    hub_path = ".",
+    file_path = "epiforecasts-renewal/2026-06-13-epiforecasts-renewal.csv"
+)
+
+check_for_errors(validations)
+```
+If the file passes all validation checks, the function will return the following output:
+
+```r
+✓ All validation checks have been successful.
+```
+If test failures or execution errors are detected, the function throws an error and prints the messages of checks affected. For example, the following output is returned when all other checks have passed but the file is being validated outside the submission time window for the round:
+
+```r
+! 2026-06-20-epiforecasts-renewal.csv: Submission time must be within accepted submission window for round.  Current time
+  2026-06-06 12:23:08 is outside window 2026-06-13 EDT--2026-07-18 23:59:59 EDT.
+Error in `check_for_errors()`:
+! 
+The validation checks produced some failures/errors reported above.
+```
