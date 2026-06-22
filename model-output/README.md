@@ -114,7 +114,6 @@ The values in the `location` column must be `CD`, the ISO code for the Democrati
 
 ### `output_type`
 
-
 Values in the `output_type` column are one of the following
 
 -   "quantile"
@@ -124,25 +123,24 @@ Values in the `output_type` column are one of the following
 This value indicates whether that row corresponds to a probabilistic quantile forecast or a point forecast (mean or median)
 
 ### `output_type_id`
+
 Values in the `output_type_id` column specify identifying information for the output type.
 
 #### quantile output
+
 When the predictions are quantiles, values in the `output_type_id` column are a quantile probability level in the format
 
     0.###
 
- This value indicates the quantile probability level for for the
-`value` in this row.
+This value indicates the quantile probability level for for the `value` in this row.
 
 Teams must provide the following 7 quantiles:
 
     0.025, 0.1, 0.25, 0.5, 0.75, 0.90, 0.975
 
-
 #### mean and median output
 
 For mean and median output type values, the value in the `output_type_id` column should be `"NA"`.
-
 
 ### `value`
 
