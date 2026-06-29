@@ -1,4 +1,4 @@
-# BVBD Modeling Hub
+# BDBV Modeling Hub
 
 This modeling hub has been built to collect outbreak size estimates of the Bundibugyo (Ebola) virus outbreak in 2026.
 

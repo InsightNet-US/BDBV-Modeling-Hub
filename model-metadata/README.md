@@ -1,7 +1,7 @@
 # Model metadata
 
 
-This folder contains metadata files for the models submitting to the BVBD Modeling Hub. The specification for these files has been adapted to be consistent with [model metadata guidelines in the hubverse documentation](https://docs.hubverse.io/en/latest/user-guide/model-metadata.html).
+This folder contains metadata files for the models submitting to the BDBV Modeling Hub. The specification for these files has been adapted to be consistent with [model metadata guidelines in the hubverse documentation](https://docs.hubverse.io/en/latest/user-guide/model-metadata.html).
 
 Each model is required to have metadata in 
 [yaml format](https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html).
