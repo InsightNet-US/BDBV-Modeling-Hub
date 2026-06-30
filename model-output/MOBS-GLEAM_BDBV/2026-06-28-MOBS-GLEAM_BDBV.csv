@@ -1,0 +1,8 @@
+output_type_id,output_type,reference_date,target,location,value
+0.025,quantile,2026-06-28,cumulative cases,CD,1025.72
+0.1,quantile,2026-06-28,cumulative cases,CD,1326.0
+0.25,quantile,2026-06-28,cumulative cases,CD,1808.5
+0.5,quantile,2026-06-28,cumulative cases,CD,2729.5
+0.75,quantile,2026-06-28,cumulative cases,CD,3930.5
+0.9,quantile,2026-06-28,cumulative cases,CD,4818.0
+0.975,quantile,2026-06-28,cumulative cases,CD,5519.55
