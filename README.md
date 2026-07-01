@@ -7,15 +7,10 @@ This repository follows the guidelines and standards outlined by the [hubverse](
 
 ## Outbreak size
 
-As of mid-June 2026, several groups have generated estimates of outbreak size. 
-Not all of these estimates have been for the same exact outcome. 
-For example, some have predicted the total number of infections by a given date. 
-Others have predicted the total number of symptomatic cases.
+As of mid-June 2026, several groups have generated estimates of outbreak size. Not all of these estimates have been for the same exact outcome. For example, some have predicted the total number of infections by a given date. Others have predicted the total number of symptomatic cases.
 
 ## Early estimates
-This hub collects estimates made in May and June prior to the launch of this hub, and standardizes them using [hubverse](https://hubverse.io) data formats. 
-Teams are encouraged to submit their own estimates.
-
+This hub collects estimates made in May and June prior to the launch of this hub, and standardizes them using [hubverse](https://hubverse.io) data formats. Teams are encouraged to submit their own estimates.
 
 **Dates:** 
 Daily submissions (including dates in file names) will be specified in terms of the reference date, which should refer to the date the model estimates were generated. 
