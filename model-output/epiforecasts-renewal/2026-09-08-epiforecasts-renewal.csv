@@ -1,0 +1,10 @@
+reference_date,target,location,output_type,output_type_id,value
+2026-09-08,cumulative cases,CD,quantile,0.025,8706
+2026-09-08,cumulative cases,CD,quantile,0.1,9650
+2026-09-08,cumulative cases,CD,quantile,0.25,11045
+2026-09-08,cumulative cases,CD,quantile,0.5,12727
+2026-09-08,cumulative cases,CD,quantile,0.75,14780
+2026-09-08,cumulative cases,CD,quantile,0.9,16646
+2026-09-08,cumulative cases,CD,quantile,0.975,18680
+2026-09-08,cumulative cases,CD,median,NA,12727
+2026-09-08,cumulative cases,CD,mean,NA,13017
