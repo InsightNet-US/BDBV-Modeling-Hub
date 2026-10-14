@@ -73,10 +73,8 @@
               "optional": null
             },
             "target": {
-              "required": [
-                "cumulative cases"
-              ],
-              "optional": null
+              "required": null,
+              "optional": ["cumulative cases"]
             }
           },
           "output_type": {
