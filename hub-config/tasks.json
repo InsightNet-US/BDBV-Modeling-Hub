@@ -147,7 +147,7 @@
             },
             "horizon": {
               "required": null,
-              "optional": ["-infinity", "...", 3]
+              "optional": [0, 1, 2, 3]
             },
             "target_end_date": {
               "required": null,
@@ -211,7 +211,7 @@
             },
             "horizon": {
               "required": null,
-              "optional": ["-infinity", "...", 3]
+              "optional": [0, 1, 2, 3]
             },
             "target_end_date": {
               "required": null,
@@ -275,7 +275,7 @@
             },
             "horizon": {
               "required": null,
-              "optional": ["-infinity", "...", 3]
+              "optional": [0, 1, 2, 3]
             },
             "target_end_date": {
               "required": null,
@@ -339,7 +339,7 @@
             },
             "horizon": {
               "required": null,
-              "optional": ["-infinity", "...", 3]
+              "optional": [0, 1, 2, 3]
             },
             "target_end_date": {
               "required": null,
