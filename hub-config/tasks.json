@@ -138,8 +138,8 @@
               "optional": []
             },
             "location": {
-              "required": ["CD"],
-              "optional": null
+              "required": null,
+              "optional": ["BU", "EQ", "HK", "HL", "HU", "IT", "KS", "KC", "KE", "KN", "BC", "KG", "KL", "LO", "LU", "MN", "MA", "MO", "NU", "NK", "SA", "SK", "SU", "TA", "TO", "TU"]
             },
             "target": {
               "required": null,
@@ -202,8 +202,8 @@
               "optional": []
             },
             "location": {
-              "required": ["CD"],
-              "optional": null
+              "required": null,
+              "optional": ["BU", "EQ", "HK", "HL", "HU", "IT", "KS", "KC", "KE", "KN", "BC", "KG", "KL", "LO", "LU", "MN", "MA", "MO", "NU", "NK", "SA", "SK", "SU", "TA", "TO", "TU"]
             },
             "target": {
               "required": null,
@@ -266,8 +266,8 @@
               "optional": []
             },
             "location": {
-              "required": ["CD"],
-              "optional": null
+              "required": null,
+              "optional": ["BU", "EQ", "HK", "HL", "HU", "IT", "KS", "KC", "KE", "KN", "BC", "KG", "KL", "LO", "LU", "MN", "MA", "MO", "NU", "NK", "SA", "SK", "SU", "TA", "TO", "TU"]
             },
             "target": {
               "required": null,
@@ -330,8 +330,8 @@
               "optional": []
             },
             "location": {
-              "required": ["CD"],
-              "optional": null
+              "required": null,
+              "optional": ["BU", "EQ", "HK", "HL", "HU", "IT", "KS", "KC", "KE", "KN", "BC", "KG", "KL", "LO", "LU", "MN", "MA", "MO", "NU", "NK", "SA", "SK", "SU", "TA", "TO", "TU"]
             },
             "target": {
               "required": null,
