@@ -147,7 +147,7 @@
             },
             "horizon": {
               "required": null,
-              "optional": [0, 1, 2, 3]
+              "optional": ["tbd"]
             },
             "target_end_date": {
               "required": null,
@@ -155,29 +155,18 @@
             }
           },
           "output_type": {
-            "quantile": {
-              "output_type_id": {
-                "required": [0.01, 0.025, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 0.975, 0.99]
-              },
-              "is_required": true,
-              "value": {
-                "type": "double",
-                "minimum": 0
-              }
-            },
             "sample": {
               "output_type_id_params": {
-                "type": "character",
-                "max_length": "tbd",
+                "type": "tbd",
                 "min_samples_per_task": "tbd",
                 "max_samples_per_task": "tbd",
                 "compound_taskid_set": ["tbd"]
               },
-              "is_required": false,
-              "value": {
-                "type": "integer",
+              "value" : {
+                "type": "double",
                 "minimum": 0
-              }
+              },
+              "is_required": true
             }
           },
           "target_metadata": [
@@ -187,198 +176,6 @@
               "target_units": "count",
               "target_keys": {
                 "target": "wk inc confirmed cases"
-              },
-              "target_type": "continuous",
-              "description": "tbd",
-              "is_step_ahead": "tbd",
-              "time_unit": "week"
-            }
-          ]
-        },
-        {
-          "task_ids": {
-            "reference_date": {
-              "required": null,
-              "optional": []
-            },
-            "location": {
-              "required": null,
-              "optional": ["BU", "EQ", "HK", "HL", "HU", "IT", "KS", "KC", "KE", "KN", "BC", "KG", "KL", "LO", "LU", "MN", "MA", "MO", "NU", "NK", "SA", "SK", "SU", "TA", "TO", "TU"]
-            },
-            "target": {
-              "required": null,
-              "optional": ["wk cum confirmed cases"]
-            },
-            "horizon": {
-              "required": null,
-              "optional": [0, 1, 2, 3]
-            },
-            "target_end_date": {
-              "required": null,
-              "optional": []
-            }
-          },
-          "output_type": {
-            "quantile": {
-              "output_type_id": {
-                "required": [0.01, 0.025, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 0.975, 0.99]
-              },
-              "is_required": true,
-              "value": {
-                "type": "double",
-                "minimum": 0
-              }
-            },
-            "sample": {
-              "output_type_id_params": {
-                "type": "character",
-                "max_length": "tbd",
-                "min_samples_per_task": "tbd",
-                "max_samples_per_task": "tbd",
-                "compound_taskid_set": ["tbd"]
-              },
-              "is_required": false,
-              "value": {
-                "type": "integer",
-                "minimum": 0
-              }
-            }
-          },
-          "target_metadata": [
-            {
-              "target id": "wk cum confirmed cases",
-              "target_name": "Weekly cumulative confirmed cases",
-              "target_units": "count",
-              "target_keys": {
-                "target": "wk cum confirmed cases"
-              },
-              "target_type": "continuous",
-              "description": "tbd",
-              "is_step_ahead": "tbd",
-              "time_unit": "week"
-            }
-          ]
-        },
-        {
-          "task_ids": {
-            "reference_date": {
-              "required": null,
-              "optional": []
-            },
-            "location": {
-              "required": null,
-              "optional": ["BU", "EQ", "HK", "HL", "HU", "IT", "KS", "KC", "KE", "KN", "BC", "KG", "KL", "LO", "LU", "MN", "MA", "MO", "NU", "NK", "SA", "SK", "SU", "TA", "TO", "TU"]
-            },
-            "target": {
-              "required": null,
-              "optional": ["wk inc confirmed deaths"]
-            },
-            "horizon": {
-              "required": null,
-              "optional": [0, 1, 2, 3]
-            },
-            "target_end_date": {
-              "required": null,
-              "optional": []
-            }
-          },
-          "output_type": {
-            "quantile": {
-              "output_type_id": {
-                "required": [0.01, 0.025, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 0.975, 0.99]
-              },
-              "is_required": true,
-              "value": {
-                "type": "double",
-                "minimum": 0
-              }
-            },
-            "sample": {
-              "output_type_id_params": {
-                "type": "character",
-                "max_length": "tbd",
-                "min_samples_per_task": "tbd",
-                "max_samples_per_task": "tbd",
-                "compound_taskid_set": ["tbd"]
-              },
-              "is_required": false,
-              "value": {
-                "type": "integer",
-                "minimum": 0
-              }
-            }
-          },
-          "target_metadata": [
-            {
-              "target id": "wk inc confirmed deaths",
-              "target_name": "Weekly incident confirmed deaths",
-              "target_units": "count",
-              "target_keys": {
-                "target": "wk inc confirmed deaths"
-              },
-              "target_type": "continuous",
-              "description": "tbd",
-              "is_step_ahead": "tbd",
-              "time_unit": "week"
-            }
-          ]
-        },
-        {
-          "task_ids": {
-            "reference_date": {
-              "required": null,
-              "optional": []
-            },
-            "location": {
-              "required": null,
-              "optional": ["BU", "EQ", "HK", "HL", "HU", "IT", "KS", "KC", "KE", "KN", "BC", "KG", "KL", "LO", "LU", "MN", "MA", "MO", "NU", "NK", "SA", "SK", "SU", "TA", "TO", "TU"]
-            },
-            "target": {
-              "required": null,
-              "optional": ["wk inc cum deaths"]
-            },
-            "horizon": {
-              "required": null,
-              "optional": [0, 1, 2, 3]
-            },
-            "target_end_date": {
-              "required": null,
-              "optional": []
-            }
-          },
-          "output_type": {
-            "quantile": {
-              "output_type_id": {
-                "required": [0.01, 0.025, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 0.975, 0.99]
-              },
-              "is_required": true,
-              "value": {
-                "type": "double",
-                "minimum": 0
-              }
-            },
-            "sample": {
-              "output_type_id_params": {
-                "type": "character",
-                "max_length": "tbd",
-                "min_samples_per_task": "tbd",
-                "max_samples_per_task": "tbd",
-                "compound_taskid_set": ["tbd"]
-              },
-              "is_required": false,
-              "value": {
-                "type": "integer",
-                "minimum": 0
-              }
-            }
-          },
-          "target_metadata": [
-            {
-              "target id": "wk cum confirmed deaths",
-              "target_name": "Weekly cumulative confirmed deaths",
-              "target_units": "count",
-              "target_keys": {
-                "target": "wk cum confirmed deaths"
               },
               "target_type": "continuous",
               "description": "tbd",
