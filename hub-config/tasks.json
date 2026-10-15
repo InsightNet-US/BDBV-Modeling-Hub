@@ -187,8 +187,8 @@
       ],
       "submissions_due": {
         "relative_to": "reference_date",
-        "start": -7,
-        "end": 28
+        "start": -6,
+        "end": -4
       }
     }
   ]
