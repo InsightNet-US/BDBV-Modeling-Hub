@@ -1,27 +1,27 @@
-location,location_name
-BU,Bas Uele
-EQ,Equateur
-HK,Haut Katanga
-HL,Haut Lomami
-HU,Haut Uele
-IT,Ituri
-KS,Kasai
-KC,Kasai Central
-KE,Kasai Oriental
-KN,Kinshasa
-BC,Kongo Central
-KG,Kwango
-KL,Kwilu
-LO,Lomami
-LU,Lualaba
-MN,Mai Ndombe
-MA,Maniema
-MO,Mongala
-NU,Nord Ubangi
-NK,Nord Kivu
-SA,Sankuru
-SK,Sud Kivu
-SU,Sud Ubangi
-TA,Tanganyika
-TO,Tshopo
-TU,Tshuapa
+location,location_name,location_type,parent
+BU,Bas Uele,province,DRC
+EQ,Equateur,province,DRC
+HK,Haut Katanga,province,DRC
+HL,Haut Lomami,province,DRC
+HU,Haut Uele,province,DRC
+IT,Ituri,province,DRC
+KS,Kasai,province,DRC
+KC,Kasai Central,province,DRC
+KE,Kasai Oriental,province,DRC
+KN,Kinshasa,province,DRC
+BC,Kongo Central,province,DRC
+KG,Kwango,province,DRC
+KL,Kwilu,province,DRC
+LO,Lomami,province,DRC
+LU,Lualaba,province,DRC
+MN,Mai Ndombe,province,DRC
+MA,Maniema,province,DRC
+MO,Mongala,province,DRC
+NU,Nord Ubangi,province,DRC
+NK,Nord Kivu,province,DRC
+SA,Sankuru,province,DRC
+SK,Sud Kivu,province,DRC
+SU,Sud Ubangi,province,DRC
+TA,Tanganyika,province,DRC
+TO,Tshopo,province,DRC
+TU,Tshuapa,province,DRC
