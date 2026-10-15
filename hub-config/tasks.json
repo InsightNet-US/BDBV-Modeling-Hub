@@ -73,8 +73,8 @@
               "optional": null
             },
             "target": {
-              "required": null,
-              "optional": ["cumulative cases"]
+              "required": ["cumulative cases"],
+              "optional": null
             }
           },
           "output_type": {
@@ -130,12 +130,24 @@
               "is_step_ahead": false
             }
           ]
-        },
+        }
+      ],
+      "submissions_due": {
+        "relative_to": "reference_date",
+        "start": -7,
+        "end": 28
+      }
+    },
+    {
+      "round_id_from_variable": true,
+      "round_id": "reference_date",
+      "round_name": "BDBV 2026 nowcasting and forecasting",
+      "model_tasks": [
         {
           "task_ids": {
             "reference_date": {
               "required": null,
-              "optional": ["tbd"]
+              "optional": ["2026-10-10", "2026-10-17", "2026-10-24"]
             },
             "location": {
               "required": null,
@@ -147,19 +159,19 @@
             },
             "horizon": {
               "required": null,
-              "optional": ["tbd"]
+              "optional": [0, 1, 2, 3]
             },
             "target_end_date": {
               "required": null,
-              "optional": ["tbd"]
+              "optional": ["2026-10-10", "2026-10-17", "2026-10-24", "2026-10-31", "2026-11-07", "2026-11-14"]
             }
           },
           "output_type": {
             "sample": {
               "output_type_id_params": {
                 "type": "integer",
-                "min_samples_per_task": "tbd",
-                "max_samples_per_task": "tbd",
+                "min_samples_per_task": 3,
+                "max_samples_per_task": 3,
                 "compound_taskid_set": ["reference_date", "location", "target"]
               },
               "value" : {
@@ -171,7 +183,7 @@
           },
           "target_metadata": [
             {
-              "target id": "wk inc confirmed cases",
+              "target_id": "wk inc confirmed cases",
               "target_name": "Weekly incident confirmed cases",
               "target_units": "count",
               "target_keys": {
@@ -179,7 +191,7 @@
               },
               "target_type": "continuous",
               "description": "tbd",
-              "is_step_ahead": "tbd",
+              "is_step_ahead": true,
               "time_unit": "week"
             }
           ]
