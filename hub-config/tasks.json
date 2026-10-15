@@ -135,7 +135,7 @@
           "task_ids": {
             "reference_date": {
               "required": null,
-              "optional": []
+              "optional": ["tbd"]
             },
             "location": {
               "required": null,
@@ -151,16 +151,16 @@
             },
             "target_end_date": {
               "required": null,
-              "optional": []
+              "optional": ["tbd"]
             }
           },
           "output_type": {
             "sample": {
               "output_type_id_params": {
-                "type": "tbd",
+                "type": "integer",
                 "min_samples_per_task": "tbd",
                 "max_samples_per_task": "tbd",
-                "compound_taskid_set": ["tbd"]
+                "compound_taskid_set": ["reference_date", "location", "target"]
               },
               "value" : {
                 "type": "double",
