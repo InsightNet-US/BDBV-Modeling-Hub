@@ -1,0 +1,68 @@
+name: Propose the next set of `reference_date` and `target_end_date`
+
+on:
+  schedule:
+    # saturdays at 08:00 Africa/Kinshasa (UTC+1) (equivalent to 3am on the east coast)
+    - cron: '0 8 * * 6'
+      timezone: Africa/Kinshasa
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+# scheduled and manual runs share one PR branch; no races
+concurrency:
+  group: propose-weekly-forecast-dates
+  cancel-in-progress: false
+
+jobs:
+  propose-dates:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          extra-repositories: https://hubverse-org.r-universe.dev
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: |
+            any::hubAdmin
+            any::jsonlite
+
+      - name: Append next dates
+        id: dates
+        run: Rscript src/advance-weekly-dates.R
+
+      - name: Validate the proposed tasks.json file
+        shell: Rscript {0}
+        run: |
+          results <- hubAdmin::validate_hub_config(".")
+          print(results)
+          if (!isTRUE(all(unlist(results)))) {
+            hubAdmin::view_config_val_errors(results)
+            stop("Proposed hub configuration is invalid; no PR will be opened.")
+          }
+
+      - name: PR for human review
+        uses: peter-evans/create-pull-request@v8
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          base: main
+          branch: auto/weekly-date-advance
+          add-paths: hub-config/tasks.json
+          commit-message: 'Add next weekly reference and target end dates'
+          title: 'Add new weekly `reference_date` (`${{ steps.dates.outputs.reference_date }}`) and `target_end_date` (`${{ steps.dates.outputs.target_end_date }}`)'
+          body: |
+            Add the next set of dates to `wk inc confirmed cases` task:
+
+            - `reference_date`: `${{ steps.dates.outputs.reference_date }}`
+            - `target_end_date`: `${{ steps.dates.outputs.target_end_date }}`
+
+            Each new date is automatically created as seven days after the last date in each list.
