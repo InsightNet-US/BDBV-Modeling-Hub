@@ -1,10 +1,22 @@
-DRAFT NEED TO UPDATE
+The `auxiliary-data/` directory contains additional data which may be of use to modeling teams. 
 
-- `location`: a two letter code indicating province.
-- `location_name`: the full name of the province. The mapping between province code and province name can also be found in `auxiliary-data/locations.csv`.
-- `location-type`: the administrative unit corresponding to the given 'location'
+**Location Information**
+`locations.csv` contains information about the target locations (provinces) and supplemental sub-target locations (health zones) within DRC. It contains the following comuns:
+
+- `location`: the two letter code for the given location. This is only available for provinces (the target locations). Health zone information is auxiliary and does not have a code.
+- `location_name`: the full name of the province or health zone.
+- `location_type`: the administrative unit corresponding to the given location (province or health zone).
+- `parent`: the administrative unit within which the given location resides. For provinces the parent is the whole country (DRC) and for health zones the parent is the province they are within.
+
+**Daily Health Zone-Level Case Counts**
+`daily-confirmed-case-by-hz.csv` contains the number of reported cases by the day of symptom onset at the health zone level and whether the date of symptom onset was observed or imputed. It contains the following columns:
+
 - `as_of`: the date the data was released. As new versions of the data become available each week it will be appended to `time-series.csv` such that each unique value of `as_of` corresponds to a single data release made on that date.
-- `target_end_date`: the last day of the epi week.
--  `target`: the submission target corresponding to the given observation.
-  - `wk inc confirmed cases` gives the incident confirmed cases with **symptom onset** in the given epi week. These values include cases for which the symptom onset date was imputed using the observed reporting delay distribution (see `auxiliary-data/` for more information about observed reporting delays).
-- `observation`: the observed value.
+- `target_end_date`: the day of the observation.
+- `target`: the target corresponding to the given observation. In this case it is daily incident confirmed cases (`day inc confirmed cases`).
+- `location': the name of the health zone.
+- `location-type`: the administrative unit corresponding to the given 'location' (in this case health zone).
+- `observation`: the observed or imputed value.
+- `imputed`: whether or not the symptom onset date for the observation was directly observed (`FALSE`) or imputed (`TRUE`).
+
+**Weekly Province-Level Reporting Delays**
