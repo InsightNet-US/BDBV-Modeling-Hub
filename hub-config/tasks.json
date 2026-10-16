@@ -73,9 +73,7 @@
               "optional": null
             },
             "target": {
-              "required": [
-                "cumulative cases"
-              ],
+              "required": ["cumulative cases"],
               "optional": null
             }
           },
@@ -138,6 +136,109 @@
         "relative_to": "reference_date",
         "start": -7,
         "end": 28
+      }
+    },
+    {
+      "round_id_from_variable": true,
+      "round_id": "reference_date",
+      "round_name": "BDBV 2026 nowcasting and forecasting",
+      "model_tasks": [
+        {
+          "task_ids": {
+            "reference_date": {
+              "required": null,
+              "optional": ["2026-10-31"]
+            },
+            "location": {
+              "required": null,
+              "optional": ["BU", "EQ", "HK", "HL", "HU", "IT", "KS", "KC", "KE", "KN", "BC", "KG", "KL", "LO", "LU", "MN", "MA", "MO", "NU", "NK", "SA", "SK", "SU", "TA", "TO", "TU"]
+            },
+            "target": {
+              "required": null,
+              "optional": ["wk inc confirmed cases"]
+            },
+            "target_end_date": {
+              "required": null,
+              "optional": [
+                  "2026-02-14",
+                  "2026-02-21",
+                  "2026-02-28",
+                  "2026-03-07",
+                  "2026-03-14",
+                  "2026-03-21",
+                  "2026-03-28",
+                  "2026-04-04",
+                  "2026-04-11",
+                  "2026-04-18",
+                  "2026-04-25",
+                  "2026-05-02",
+                  "2026-05-09",
+                  "2026-05-16",
+                  "2026-05-23",
+                  "2026-05-30",
+                  "2026-06-06",
+                  "2026-06-13",
+                  "2026-06-20",
+                  "2026-06-27",
+                  "2026-07-04",
+                  "2026-07-11",
+                  "2026-07-18",
+                  "2026-07-25",
+                  "2026-08-01",
+                  "2026-08-08",
+                  "2026-08-15",
+                  "2026-08-22",
+                  "2026-08-29",
+                  "2026-09-05",
+                  "2026-09-12",
+                  "2026-09-19",
+                  "2026-09-26",
+                  "2026-10-03",
+                  "2026-10-10",
+                  "2026-10-17",
+                  "2026-10-24",
+                  "2026-10-31",
+                  "2026-11-07",
+                  "2026-11-14",
+                  "2026-11-21"
+                ]
+            }
+          },
+          "output_type": {
+            "sample": {
+              "output_type_id_params": {
+                "type": "integer",
+                "min_samples_per_task": 100,
+                "max_samples_per_task": 100,
+                "compound_taskid_set": ["reference_date", "location", "target"]
+              },
+              "value" : {
+                "type": "double",
+                "minimum": 0
+              },
+              "is_required": true
+            }
+          },
+          "target_metadata": [
+            {
+              "target_id": "wk inc confirmed cases",
+              "target_name": "Weekly incident confirmed cases",
+              "target_units": "count",
+              "target_keys": {
+                "target": "wk inc confirmed cases"
+              },
+              "target_type": "continuous",
+              "description": "tbd",
+              "is_step_ahead": true,
+              "time_unit": "week"
+            }
+          ]
+        }
+      ],
+      "submissions_due": {
+        "relative_to": "reference_date",
+        "start": -6,
+        "end": -4
       }
     }
   ]

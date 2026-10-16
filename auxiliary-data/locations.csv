@@ -1,0 +1,549 @@
+location,location_name,location_type,parent
+BU,Bas Uele,province,DRC
+EQ,Equateur,province,DRC
+HK,Haut Katanga,province,DRC
+HL,Haut Lomami,province,DRC
+HU,Haut Uele,province,DRC
+IT,Ituri,province,DRC
+KS,Kasai,province,DRC
+KC,Kasai Central,province,DRC
+KE,Kasai Oriental,province,DRC
+KN,Kinshasa,province,DRC
+BC,Kongo Central,province,DRC
+KG,Kwango,province,DRC
+KL,Kwilu,province,DRC
+LO,Lomami,province,DRC
+LU,Lualaba,province,DRC
+MN,Mai Ndombe,province,DRC
+MA,Maniema,province,DRC
+MO,Mongala,province,DRC
+NU,Nord Ubangi,province,DRC
+NK,Nord Kivu,province,DRC
+SA,Sankuru,province,DRC
+SK,Sud Kivu,province,DRC
+SU,Sud Ubangi,province,DRC
+TA,Tanganyika,province,DRC
+TO,Tshopo,province,DRC
+TU,Tshuapa,province,DRC
+,Wembo Nyama,health zone,Sankuru
+,Kole,health zone,Sankuru
+,Pania Mutombo,health zone,Sankuru
+,Minga,health zone,Sankuru
+,Lusambo,health zone,Sankuru
+,Dikungu,health zone,Sankuru
+,Vanga Kete,health zone,Sankuru
+,Lodja,health zone,Sankuru
+,Omendjadi,health zone,Sankuru
+,Djalo Djeka,health zone,Sankuru
+,Katako Kombe,health zone,Sankuru
+,Bena Dibele,health zone,Sankuru
+,Kamiji,health zone,Lomami
+,Tshitenge,health zone,Kasai Oriental
+,Miabi,health zone,Kasai Oriental
+,Ngandajika,health zone,Lomami
+,Mulumba,health zone,Lomami
+,Tshilenge,health zone,Kasai Oriental
+,Cilundu,health zone,Kasai Oriental
+,Lubao,health zone,Lomami
+,Kalonda Est,health zone,Lomami
+,Kabinda,health zone,Lomami
+,Ludimbi Lukula,health zone,Lomami
+,Kalambayi Kabanga,health zone,Lomami
+,Makota,health zone,Lomami
+,Mwene Ditu,health zone,Lomami
+,Wikong,health zone,Lomami
+,Luputa,health zone,Lomami
+,Kanda Kanda,health zone,Lomami
+,Bonzola,health zone,Kasai Oriental
+,Dibindi,health zone,Kasai Oriental
+,Kansele,health zone,Kasai Oriental
+,Muya,health zone,Kasai Oriental
+,Diulu,health zone,Kasai Oriental
+,Bipemba,health zone,Kasai Oriental
+,Mpokolo,health zone,Kasai Oriental
+,Nzaba,health zone,Kasai Oriental
+,Kabeya Kamuanga,health zone,Kasai Oriental
+,Mukumbi,health zone,Kasai Oriental
+,Lukelenge,health zone,Kasai Oriental
+,Tshishimbi,health zone,Kasai Oriental
+,Lubilanji,health zone,Kasai Oriental
+,Kamana,health zone,Lomami
+,Kasansa,health zone,Kasai Oriental
+,Bibanga,health zone,Kasai Oriental
+,Kalenda,health zone,Lomami
+,Tshofa,health zone,Lomami
+,Pimu,health zone,Mongala
+,Nyanga,health zone,Kasai
+,Kalonda Ouest,health zone,Kasai
+,Kamonia,health zone,Kasai
+,Mutena,health zone,Kasai
+,Banga Lubaka,health zone,Kasai
+,Kamwesha,health zone,Kasai
+,Mweka,health zone,Kasai
+,Moba,health zone,Tanganyika
+,Bogosenubia,health zone,Sud Ubangi
+,Moanda,health zone,Kongo Central
+,Kitona,health zone,Kongo Central
+,Boma,health zone,Kongo Central
+,Boma Bungu,health zone,Kongo Central
+,Seke Banza,health zone,Kongo Central
+,Inga,health zone,Kongo Central
+,Lukula,health zone,Kongo Central
+,Tshela,health zone,Kongo Central
+,Vaku,health zone,Kongo Central
+,Kizu,health zone,Kongo Central
+,Kibunzi,health zone,Kongo Central
+,Luozi,health zone,Kongo Central
+,Kimpangu,health zone,Kongo Central
+,Ngidinga,health zone,Kongo Central
+,Boko Kivulu,health zone,Kongo Central
+,Mbanza Ngungu,health zone,Kongo Central
+,Kwilu Ngongo,health zone,Kongo Central
+,Kisantu,health zone,Kongo Central
+,Mikope,health zone,Kasai
+,Oshwe,health zone,Mai Ndombe
+,Bosobe,health zone,Mai Ndombe
+,Bokoro,health zone,Mai Ndombe
+,Masi Manimba,health zone,Kwilu
+,Yasa Bonga,health zone,Kwilu
+,Idiofa,health zone,Kwilu
+,Ipamu,health zone,Kwilu
+,Koshibanda,health zone,Kwilu
+,Kingandu,health zone,Kwilu
+,Bulungu,health zone,Kwilu
+,Bagata,health zone,Kwilu
+,Bandundu,health zone,Kwilu
+,Kajiji,health zone,Kwango
+,Kikwit Nord,health zone,Kwilu
+,Lusanga,health zone,Kwilu
+,Feshi,health zone,Kwango
+,Wamba Lwadi,health zone,Kwango
+,Panzi,health zone,Kwango
+,Tembo,health zone,Kwango
+,Moanza,health zone,Kwilu
+,Kimbau,health zone,Kwango
+,Kenge,health zone,Kwango
+,Boko,health zone,Kwango
+,Viadana,health zone,Bas Uele
+,Poko,health zone,Bas Uele
+,Basali,health zone,Tshopo
+,Basoko,health zone,Tshopo
+,Bengamisa,health zone,Tshopo
+,Yakusu,health zone,Tshopo
+,Yahisuli,health zone,Tshopo
+,Yabaondo,health zone,Tshopo
+,Isangi,health zone,Tshopo
+,Yaleko,health zone,Tshopo
+,Banalia,health zone,Tshopo
+,Bafwasende,health zone,Tshopo
+,Bafwagbogbo,health zone,Tshopo
+,Buta,health zone,Bas Uele
+,Titule,health zone,Bas Uele
+,Ganga,health zone,Bas Uele
+,Vanga,health zone,Kwilu
+,Djuma,health zone,Kwilu
+,Sia,health zone,Kwilu
+,Mungindu,health zone,Kwilu
+,Kimputu,health zone,Kwilu
+,Mosango,health zone,Kwilu
+,Pay Kongila,health zone,Kwilu
+,Matadi,health zone,Kongo Central
+,Nzanza,health zone,Kongo Central
+,Ndjili,health zone,Kinshasa
+,Mont Ngafula I,health zone,Kinshasa
+,Biyela,health zone,Kinshasa
+,Kikimi,health zone,Kinshasa
+,Lemba,health zone,Kinshasa
+,Matete,health zone,Kinshasa
+,Kisenso,health zone,Kinshasa
+,Lingwala,health zone,Kinshasa
+,Barumbu,health zone,Kinshasa
+,Kinshasa,health zone,Kinshasa
+,Limete,health zone,Kinshasa
+,Kalamu II,health zone,Kinshasa
+,Kalamu I,health zone,Kinshasa
+,Bumbu,health zone,Kinshasa
+,Makala,health zone,Kinshasa
+,Ngaba,health zone,Kinshasa
+,Bandalungwa,health zone,Kinshasa
+,Selembao,health zone,Kinshasa
+,Masina I,health zone,Kinshasa
+,Kintambo,health zone,Kinshasa
+,Kasa Vubu,health zone,Kinshasa
+,Ngiri Ngiri,health zone,Kinshasa
+,Binza Meteo,health zone,Kinshasa
+,Binza Ozone,health zone,Kinshasa
+,Kikongo,health zone,Kwilu
+,Mont Ngafula II,health zone,Kinshasa
+,Sona Bata,health zone,Kongo Central
+,Nsele,health zone,Kinshasa
+,Kanzala,health zone,Kasai
+,Tshikapa,health zone,Kasai
+,Kingasani,health zone,Kinshasa
+,Kimbanseke,health zone,Kinshasa
+,Bwamanda,health zone,Sud Ubangi
+,Kungu,health zone,Sud Ubangi
+,Loko,health zone,Nord Ubangi
+,Bangabola,health zone,Sud Ubangi
+,Boso Mondanda,health zone,Mongala
+,Budjala,health zone,Sud Ubangi
+,Binga,health zone,Mongala
+,Yamaluka,health zone,Mongala
+,Boso Manzi,health zone,Mongala
+,Karawa,health zone,Nord Ubangi
+,Bominenge,health zone,Sud Ubangi
+,Gemena,health zone,Sud Ubangi
+,Mbaya,health zone,Sud Ubangi
+,Bulu,health zone,Sud Ubangi
+,Tandala,health zone,Sud Ubangi
+,Kibombo,health zone,Maniema
+,Kindu,health zone,Maniema
+,Alunguli,health zone,Maniema
+,Kokolo,health zone,Kinshasa
+,Police,health zone,Kinshasa
+,Makiso Kisangani,health zone,Tshopo
+,Mangobo,health zone,Tshopo
+,Kabondo,health zone,Tshopo
+,Tshopo,health zone,Tshopo
+,Kaniama,health zone,Haut Lomami
+,Kalemie,health zone,Tanganyika
+,Kansimba,health zone,Tanganyika
+,Butumba,health zone,Haut Lomami
+,Kinkondja,health zone,Haut Lomami
+,Baka,health zone,Haut Lomami
+,Kiyambi,health zone,Tanganyika
+,Manono,health zone,Tanganyika
+,Samba,health zone,Maniema
+,Kasongo,health zone,Maniema
+,Kunda,health zone,Maniema
+,Saramabila,health zone,Maniema
+,Kampene,health zone,Maniema
+,Nyemba,health zone,Tanganyika
+,Nyunzu,health zone,Tanganyika
+,Kabambare,health zone,Maniema
+,Pangi,health zone,Maniema
+,Kalima,health zone,Maniema
+,Yalimbongo,health zone,Tshopo
+,Aketi,health zone,Bas Uele
+,Lolo,health zone,Mongala
+,Yamongili,health zone,Mongala
+,Abuzi,health zone,Nord Ubangi
+,Yambuku,health zone,Mongala
+,Wasolo,health zone,Nord Ubangi
+,Bosondjo,health zone,Mongala
+,Bumba,health zone,Mongala
+,Mondombe,health zone,Tshuapa
+,Djolu,health zone,Tshuapa
+,Opienge,health zone,Tshopo
+,Obokote,health zone,Maniema
+,Lowa,health zone,Tshopo
+,Wanierukula,health zone,Tshopo
+,Lubutu,health zone,Maniema
+,Kitenda,health zone,Kwango
+,Kasongo Lunda,health zone,Kwango
+,Popokabaka,health zone,Kwango
+,Kimvula,health zone,Kongo Central
+,Maluku I,health zone,Kinshasa
+,Kimpese,health zone,Kongo Central
+,Nsona Mpangu,health zone,Kongo Central
+,Kangu,health zone,Kongo Central
+,Kuimba,health zone,Kongo Central
+,Kinkonzi,health zone,Kongo Central
+,Mangembo,health zone,Kongo Central
+,Gombe Matadi,health zone,Kongo Central
+,Masa,health zone,Kongo Central
+,Bokonzi,health zone,Sud Ubangi
+,Mawuya,health zone,Sud Ubangi
+,Zongo,health zone,Sud Ubangi
+,Libenge,health zone,Sud Ubangi
+,Bili,health zone,Nord Ubangi
+,Gbadolite,health zone,Nord Ubangi
+,Mobayi Mbongo,health zone,Nord Ubangi
+,Yakoma,health zone,Nord Ubangi
+,Monga,health zone,Bas Uele
+,Bondo,health zone,Bas Uele
+,Bili,health zone,Bas Uele
+,Ango,health zone,Bas Uele
+,Opala,health zone,Tshopo
+,Kahemba,health zone,Kwango
+,Gungu,health zone,Kwilu
+,Kitangwa,health zone,Kasai
+,Mukedi,health zone,Kwilu
+,Kongolo,health zone,Tanganyika
+,Mbulula,health zone,Tanganyika
+,Kabalo,health zone,Tanganyika
+,Bukama,health zone,Haut Lomami
+,Kabondo Dianda,health zone,Haut Lomami
+,Kabongo,health zone,Haut Lomami
+,Songa,health zone,Haut Lomami
+,Kayamba,health zone,Haut Lomami
+,Kitenge,health zone,Haut Lomami
+,Ankoro,health zone,Tanganyika
+,Mulongo,health zone,Haut Lomami
+,Lwamba,health zone,Haut Lomami
+,Mukanga,health zone,Haut Lomami
+,Malemba,health zone,Haut Lomami
+,Kinda,health zone,Haut Lomami
+,Kamina,health zone,Haut Lomami
+,Kikwit Sud,health zone,Kwilu
+,Kenya,health zone,Haut Katanga
+,Kamalondo,health zone,Haut Katanga
+,Tshamilemba,health zone,Haut Katanga
+,Pweto,health zone,Haut Katanga
+,Lukafu,health zone,Haut Katanga
+,Mufunga Sampwe,health zone,Haut Katanga
+,Kilwa,health zone,Haut Katanga
+,Kapolowe,health zone,Haut Katanga
+,Panda,health zone,Haut Katanga
+,Kashobwe,health zone,Haut Katanga
+,Kampemba,health zone,Haut Katanga
+,Rwashi,health zone,Haut Katanga
+,Bena Tshiadi,health zone,Kasai Central
+,Yangala,health zone,Kasai Central
+,Ilebo,health zone,Kasai
+,Luebo,health zone,Kasai
+,Bena Leka,health zone,Kasai Central
+,Muetshi,health zone,Kasai Central
+,Tshikula,health zone,Kasai Central
+,Dibaya,health zone,Kasai Central
+,Kalomba,health zone,Kasai Central
+,Tshibala,health zone,Kasai Central
+,Mushenge,health zone,Kasai
+,Bulape,health zone,Kasai
+,Masuika,health zone,Kasai Central
+,Luiza,health zone,Kasai Central
+,Katoka,health zone,Kasai Central
+,Ndesha,health zone,Kasai Central
+,Tshikaji,health zone,Kasai Central
+,Bilomba,health zone,Kasai Central
+,Ndekesha,health zone,Kasai Central
+,Bunkonde,health zone,Kasai Central
+,Mikalayi,health zone,Kasai Central
+,Luambo,health zone,Kasai Central
+,Katende,health zone,Kasai Central
+,Ndjoko Mpunda,health zone,Kasai
+,Lubondaie,health zone,Kasai Central
+,Kakenge,health zone,Kasai
+,Rwampara,health zone,Ituri
+,Bunia,health zone,Ituri
+,Jiba,health zone,Ituri
+,Linga,health zone,Ituri
+,Mangala,health zone,Ituri
+,Damas,health zone,Ituri
+,Fataki,health zone,Ituri
+,Drodro,health zone,Ituri
+,Tchomia,health zone,Ituri
+,Rethy,health zone,Ituri
+,Nyakunde,health zone,Ituri
+,Nizi,health zone,Ituri
+,Bambu,health zone,Ituri
+,Kilo,health zone,Ituri
+,Mongbalu,health zone,Ituri
+,Komanda,health zone,Ituri
+,Gethy,health zone,Ituri
+,Boga,health zone,Ituri
+,Nia Nia,health zone,Ituri
+,Mandima,health zone,Ituri
+,Lolwa,health zone,Ituri
+,Lita,health zone,Ituri
+,Boma Mangbetu,health zone,Haut Uele
+,Isiro,health zone,Haut Uele
+,Wamba,health zone,Haut Uele
+,Doruma,health zone,Haut Uele
+,Pawa,health zone,Haut Uele
+,Niangara,health zone,Haut Uele
+,Rungu,health zone,Haut Uele
+,Mambasa,health zone,Ituri
+,Rimba,health zone,Ituri
+,Logo,health zone,Ituri
+,Angumu,health zone,Ituri
+,Nyarambe,health zone,Ituri
+,Mahagi,health zone,Ituri
+,Makoro,health zone,Haut Uele
+,Kambala,health zone,Ituri
+,Biringi,health zone,Ituri
+,Laybo,health zone,Ituri
+,Ariwara,health zone,Ituri
+,Adi,health zone,Ituri
+,Aru,health zone,Ituri
+,Adja,health zone,Ituri
+,Aungba,health zone,Ituri
+,Faradje,health zone,Haut Uele
+,Gombari,health zone,Haut Uele
+,Dungu,health zone,Haut Uele
+,Watsa,health zone,Haut Uele
+,Demba,health zone,Kasai Central
+,Mutoto,health zone,Kasai Central
+,Lubunga KC,health zone,Kasai Central
+,Kananga,health zone,Kasai Central
+,Maluku II,health zone,Kinshasa
+,Nselo,health zone,Kongo Central
+,Lomela,health zone,Sankuru
+,Nioki,health zone,Mai Ndombe
+,Bolobo,health zone,Mai Ndombe
+,Mushie,health zone,Mai Ndombe
+,Kwamouth,health zone,Mai Ndombe
+,Mokala,health zone,Kwilu
+,Kisanji,health zone,Kwango
+,Lukonga,health zone,Kasai Central
+,Tunda,health zone,Maniema
+,Bosobolo,health zone,Nord Ubangi
+,Businga,health zone,Nord Ubangi
+,Boto,health zone,Sud Ubangi
+,Lisala,health zone,Mongala
+,Ndage,health zone,Sud Ubangi
+,Mwela Lembwa,health zone,Kwango
+,Kingabwa,health zone,Kinshasa
+,Likati,health zone,Bas Uele
+,Yahuma,health zone,Tshopo
+,Ikela,health zone,Tshuapa
+,Lubunga,health zone,Tshopo
+,Ubundu,health zone,Tshopo
+,Kailo,health zone,Maniema
+,Ototo,health zone,Sankuru
+,Tshumbe,health zone,Sankuru
+,Lusangi,health zone,Maniema
+,Bobozo,health zone,Kasai Central
+,Punia,health zone,Maniema
+,Kyondo,health zone,Nord Kivu
+,Mabalako,health zone,Nord Kivu
+,Biena,health zone,Nord Kivu
+,Masereka,health zone,Nord Kivu
+,Lubero,health zone,Nord Kivu
+,Manguredjipa,health zone,Nord Kivu
+,Mutwanga,health zone,Nord Kivu
+,Kamango,health zone,Nord Kivu
+,Oicha,health zone,Nord Kivu
+,Binza,health zone,Nord Kivu
+,Rwanguba,health zone,Nord Kivu
+,Rutshuru,health zone,Nord Kivu
+,Birambizo,health zone,Nord Kivu
+,Beni,health zone,Nord Kivu
+,Vuhovi,health zone,Nord Kivu
+,Musienene,health zone,Nord Kivu
+,Butembo,health zone,Nord Kivu
+,Katwa,health zone,Nord Kivu
+,Kayna,health zone,Nord Kivu
+,Goma,health zone,Nord Kivu
+,Karisimbi,health zone,Nord Kivu
+,Kibua,health zone,Nord Kivu
+,Masisi,health zone,Nord Kivu
+,Mweso,health zone,Nord Kivu
+,Kirotshe,health zone,Nord Kivu
+,Pinga,health zone,Nord Kivu
+,Walikale,health zone,Nord Kivu
+,Kibirizi,health zone,Nord Kivu
+,Kalunguta,health zone,Nord Kivu
+,Alimbongo,health zone,Nord Kivu
+,Nyiragongo,health zone,Nord Kivu
+,Katoyi,health zone,Nord Kivu
+,Bambo,health zone,Nord Kivu
+,Itebero,health zone,Nord Kivu
+,Mwana,health zone,Sud Kivu
+,Kaziba,health zone,Sud Kivu
+,Nyantende,health zone,Sud Kivu
+,Nyangezi,health zone,Sud Kivu
+,Kabare,health zone,Sud Kivu
+,Mubumbano,health zone,Sud Kivu
+,Walungu,health zone,Sud Kivu
+,Hauts Plateaux,health zone,Sud Kivu
+,Kaniola,health zone,Sud Kivu
+,Kalonge,health zone,Sud Kivu
+,Bunyakiri,health zone,Sud Kivu
+,Uvira,health zone,Sud Kivu
+,Kitutu,health zone,Sud Kivu
+,Kamituga,health zone,Sud Kivu
+,Itombwe,health zone,Sud Kivu
+,Minembwe,health zone,Sud Kivu
+,Nundu,health zone,Sud Kivu
+,Ruzizi,health zone,Sud Kivu
+,Lemera,health zone,Sud Kivu
+,Fizi,health zone,Sud Kivu
+,Shabunda,health zone,Sud Kivu
+,Lulingu,health zone,Sud Kivu
+,Kalole,health zone,Sud Kivu
+,Mwenga,health zone,Sud Kivu
+,Mulungu,health zone,Sud Kivu
+,Bagira,health zone,Sud Kivu
+,Kadutu,health zone,Sud Kivu
+,Ibanda,health zone,Sud Kivu
+,Katana,health zone,Sud Kivu
+,Lualaba,health zone,Lualaba
+,Kafakumba,health zone,Lualaba
+,Kanzenze,health zone,Lualaba
+,Kasaji,health zone,Lualaba
+,Dilolo,health zone,Lualaba
+,Sandoa,health zone,Lualaba
+,Kalamba,health zone,Lualaba
+,Lubudi,health zone,Lualaba
+,Bunkeya,health zone,Lualaba
+,Fungurume,health zone,Lualaba
+,Kambove,health zone,Haut Katanga
+,Lubumbashi,health zone,Haut Katanga
+,Kisanga,health zone,Haut Katanga
+,Katuba,health zone,Haut Katanga
+,Mumbunda,health zone,Haut Katanga
+,Kipushi,health zone,Haut Katanga
+,Sakania,health zone,Haut Katanga
+,Kafubu,health zone,Haut Katanga
+,Kilela Balanda,health zone,Haut Katanga
+,Manika,health zone,Haut Katanga
+,Vangu,health zone,Haut Katanga
+,Kowe,health zone,Haut Katanga
+,Mitwaba,health zone,Haut Katanga
+,Gombe,health zone,Kinshasa
+,Minova,health zone,Sud Kivu
+,Kalehe,health zone,Sud Kivu
+,Miti Murhesa,health zone,Sud Kivu
+,Idjwi,health zone,Sud Kivu
+,Aba,health zone,Haut Uele
+,Masina II,health zone,Kinshasa
+,Kapanga,health zone,Lualaba
+,Dilala,health zone,Lualaba
+,Mutshatsha,health zone,Lualaba
+,Kikula,health zone,Haut Katanga
+,Kimbi Lulenge,health zone,Sud Kivu
+,Ferekeni,health zone,Maniema
+,Wapinda,health zone,Nord Ubangi
+,Likasi,health zone,Haut Katanga
+,Kasenga,health zone,Haut Katanga
+,Ntandembelo,health zone,Mai Ndombe
+,Yumbi,health zone,Mai Ndombe
+,Tshudi Loto,health zone,Sankuru
+,Kiri,health zone,Mai Ndombe
+,Bosanga,health zone,Tshuapa
+,Yalifafo,health zone,Tshuapa
+,Dekese,health zone,Kasai
+,Mimia,health zone,Mai Ndombe
+,Makanza,health zone,Equateur
+,Bomongo,health zone,Equateur
+,Lolanga Mampoko,health zone,Equateur
+,Penjwa,health zone,Mai Ndombe
+,Bokungu,health zone,Tshuapa
+,Wema,health zone,Tshuapa
+,Befale,health zone,Tshuapa
+,Lotumbe,health zone,Equateur
+,Monkoto,health zone,Tshuapa
+,Djombo,health zone,Equateur
+,Bongandanga,health zone,Mongala
+,Lingomo,health zone,Tshuapa
+,Basankusu,health zone,Equateur
+,Boende,health zone,Tshuapa
+,Mompono,health zone,Tshuapa
+,Monieka,health zone,Equateur
+,Banjow Moke,health zone,Mai Ndombe
+,Inongo,health zone,Mai Ndombe
+,Wangata,health zone,Equateur
+,Bolenge,health zone,Equateur
+,Bolomba,health zone,Equateur
+,Ingende,health zone,Equateur
+,Iboko,health zone,Equateur
+,Irebu,health zone,Equateur
+,Mbandaka,health zone,Equateur
+,Lukolela,health zone,Equateur
+,Bikoro,health zone,Equateur
+,Ntondo,health zone,Equateur
+,Lilanga Bobangi,health zone,Equateur
+,Mongbwalu,health zone,Ituri
+,Nyankunde,health zone,Ituri
+,Gety,health zone,Ituri

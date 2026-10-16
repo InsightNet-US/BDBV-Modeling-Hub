@@ -1,0 +1,911 @@
+"location","location_name","as_of","target_end_date","target","location_type","observation"
+"BU","Bas Uele",2026-10-09,2026-02-14,"wk inc confirmed cases","province",0
+"BU","Bas Uele",2026-10-09,2026-02-21,"wk inc confirmed cases","province",0
+"BU","Bas Uele",2026-10-09,2026-02-28,"wk inc confirmed cases","province",0
+"BU","Bas Uele",2026-10-09,2026-03-07,"wk inc confirmed cases","province",0
+"BU","Bas Uele",2026-10-09,2026-03-14,"wk inc confirmed cases","province",0
+"BU","Bas Uele",2026-10-09,2026-03-21,"wk inc confirmed cases","province",0
+"BU","Bas Uele",2026-10-09,2026-03-28,"wk inc confirmed cases","province",0
+"BU","Bas Uele",2026-10-09,2026-04-04,"wk inc confirmed cases","province",0
+"BU","Bas Uele",2026-10-09,2026-04-11,"wk inc confirmed cases","province",0
+"BU","Bas Uele",2026-10-09,2026-04-18,"wk inc confirmed cases","province",0
+"BU","Bas Uele",2026-10-09,2026-04-25,"wk inc confirmed cases","province",0
+"BU","Bas Uele",2026-10-09,2026-05-02,"wk inc confirmed cases","province",0
+"BU","Bas Uele",2026-10-09,2026-05-09,"wk inc confirmed cases","province",0
+"BU","Bas Uele",2026-10-09,2026-05-16,"wk inc confirmed cases","province",0
+"BU","Bas Uele",2026-10-09,2026-05-23,"wk inc confirmed cases","province",0
+"BU","Bas Uele",2026-10-09,2026-05-30,"wk inc confirmed cases","province",0
+"BU","Bas Uele",2026-10-09,2026-06-06,"wk inc confirmed cases","province",0
+"BU","Bas Uele",2026-10-09,2026-06-13,"wk inc confirmed cases","province",0
+"BU","Bas Uele",2026-10-09,2026-06-20,"wk inc confirmed cases","province",0
+"BU","Bas Uele",2026-10-09,2026-06-27,"wk inc confirmed cases","province",0
+"BU","Bas Uele",2026-10-09,2026-07-04,"wk inc confirmed cases","province",0
+"BU","Bas Uele",2026-10-09,2026-07-11,"wk inc confirmed cases","province",0
+"BU","Bas Uele",2026-10-09,2026-07-18,"wk inc confirmed cases","province",0
+"BU","Bas Uele",2026-10-09,2026-07-25,"wk inc confirmed cases","province",0
+"BU","Bas Uele",2026-10-09,2026-08-01,"wk inc confirmed cases","province",0
+"BU","Bas Uele",2026-10-09,2026-08-08,"wk inc confirmed cases","province",1
+"BU","Bas Uele",2026-10-09,2026-08-15,"wk inc confirmed cases","province",1
+"BU","Bas Uele",2026-10-09,2026-08-22,"wk inc confirmed cases","province",2
+"BU","Bas Uele",2026-10-09,2026-08-29,"wk inc confirmed cases","province",0
+"BU","Bas Uele",2026-10-09,2026-09-05,"wk inc confirmed cases","province",2
+"BU","Bas Uele",2026-10-09,2026-09-12,"wk inc confirmed cases","province",1
+"BU","Bas Uele",2026-10-09,2026-09-19,"wk inc confirmed cases","province",0
+"BU","Bas Uele",2026-10-09,2026-09-26,"wk inc confirmed cases","province",3
+"BU","Bas Uele",2026-10-09,2026-10-03,"wk inc confirmed cases","province",1
+"BU","Bas Uele",2026-10-09,2026-10-10,"wk inc confirmed cases","province",0
+"EQ","Equateur",2026-10-09,2026-02-14,"wk inc confirmed cases","province",0
+"EQ","Equateur",2026-10-09,2026-02-21,"wk inc confirmed cases","province",0
+"EQ","Equateur",2026-10-09,2026-02-28,"wk inc confirmed cases","province",0
+"EQ","Equateur",2026-10-09,2026-03-07,"wk inc confirmed cases","province",0
+"EQ","Equateur",2026-10-09,2026-03-14,"wk inc confirmed cases","province",0
+"EQ","Equateur",2026-10-09,2026-03-21,"wk inc confirmed cases","province",0
+"EQ","Equateur",2026-10-09,2026-03-28,"wk inc confirmed cases","province",0
+"EQ","Equateur",2026-10-09,2026-04-04,"wk inc confirmed cases","province",0
+"EQ","Equateur",2026-10-09,2026-04-11,"wk inc confirmed cases","province",0
+"EQ","Equateur",2026-10-09,2026-04-18,"wk inc confirmed cases","province",0
+"EQ","Equateur",2026-10-09,2026-04-25,"wk inc confirmed cases","province",0
+"EQ","Equateur",2026-10-09,2026-05-02,"wk inc confirmed cases","province",0
+"EQ","Equateur",2026-10-09,2026-05-09,"wk inc confirmed cases","province",0
+"EQ","Equateur",2026-10-09,2026-05-16,"wk inc confirmed cases","province",0
+"EQ","Equateur",2026-10-09,2026-05-23,"wk inc confirmed cases","province",0
+"EQ","Equateur",2026-10-09,2026-05-30,"wk inc confirmed cases","province",0
+"EQ","Equateur",2026-10-09,2026-06-06,"wk inc confirmed cases","province",0
+"EQ","Equateur",2026-10-09,2026-06-13,"wk inc confirmed cases","province",0
+"EQ","Equateur",2026-10-09,2026-06-20,"wk inc confirmed cases","province",0
+"EQ","Equateur",2026-10-09,2026-06-27,"wk inc confirmed cases","province",0
+"EQ","Equateur",2026-10-09,2026-07-04,"wk inc confirmed cases","province",0
+"EQ","Equateur",2026-10-09,2026-07-11,"wk inc confirmed cases","province",0
+"EQ","Equateur",2026-10-09,2026-07-18,"wk inc confirmed cases","province",0
+"EQ","Equateur",2026-10-09,2026-07-25,"wk inc confirmed cases","province",0
+"EQ","Equateur",2026-10-09,2026-08-01,"wk inc confirmed cases","province",0
+"EQ","Equateur",2026-10-09,2026-08-08,"wk inc confirmed cases","province",0
+"EQ","Equateur",2026-10-09,2026-08-15,"wk inc confirmed cases","province",0
+"EQ","Equateur",2026-10-09,2026-08-22,"wk inc confirmed cases","province",0
+"EQ","Equateur",2026-10-09,2026-08-29,"wk inc confirmed cases","province",0
+"EQ","Equateur",2026-10-09,2026-09-05,"wk inc confirmed cases","province",0
+"EQ","Equateur",2026-10-09,2026-09-12,"wk inc confirmed cases","province",0
+"EQ","Equateur",2026-10-09,2026-09-19,"wk inc confirmed cases","province",0
+"EQ","Equateur",2026-10-09,2026-09-26,"wk inc confirmed cases","province",0
+"EQ","Equateur",2026-10-09,2026-10-03,"wk inc confirmed cases","province",0
+"EQ","Equateur",2026-10-09,2026-10-10,"wk inc confirmed cases","province",0
+"HK","Haut Katanga",2026-10-09,2026-02-14,"wk inc confirmed cases","province",0
+"HK","Haut Katanga",2026-10-09,2026-02-21,"wk inc confirmed cases","province",0
+"HK","Haut Katanga",2026-10-09,2026-02-28,"wk inc confirmed cases","province",0
+"HK","Haut Katanga",2026-10-09,2026-03-07,"wk inc confirmed cases","province",0
+"HK","Haut Katanga",2026-10-09,2026-03-14,"wk inc confirmed cases","province",0
+"HK","Haut Katanga",2026-10-09,2026-03-21,"wk inc confirmed cases","province",0
+"HK","Haut Katanga",2026-10-09,2026-03-28,"wk inc confirmed cases","province",0
+"HK","Haut Katanga",2026-10-09,2026-04-04,"wk inc confirmed cases","province",0
+"HK","Haut Katanga",2026-10-09,2026-04-11,"wk inc confirmed cases","province",0
+"HK","Haut Katanga",2026-10-09,2026-04-18,"wk inc confirmed cases","province",0
+"HK","Haut Katanga",2026-10-09,2026-04-25,"wk inc confirmed cases","province",0
+"HK","Haut Katanga",2026-10-09,2026-05-02,"wk inc confirmed cases","province",0
+"HK","Haut Katanga",2026-10-09,2026-05-09,"wk inc confirmed cases","province",0
+"HK","Haut Katanga",2026-10-09,2026-05-16,"wk inc confirmed cases","province",0
+"HK","Haut Katanga",2026-10-09,2026-05-23,"wk inc confirmed cases","province",0
+"HK","Haut Katanga",2026-10-09,2026-05-30,"wk inc confirmed cases","province",0
+"HK","Haut Katanga",2026-10-09,2026-06-06,"wk inc confirmed cases","province",0
+"HK","Haut Katanga",2026-10-09,2026-06-13,"wk inc confirmed cases","province",0
+"HK","Haut Katanga",2026-10-09,2026-06-20,"wk inc confirmed cases","province",0
+"HK","Haut Katanga",2026-10-09,2026-06-27,"wk inc confirmed cases","province",0
+"HK","Haut Katanga",2026-10-09,2026-07-04,"wk inc confirmed cases","province",0
+"HK","Haut Katanga",2026-10-09,2026-07-11,"wk inc confirmed cases","province",0
+"HK","Haut Katanga",2026-10-09,2026-07-18,"wk inc confirmed cases","province",0
+"HK","Haut Katanga",2026-10-09,2026-07-25,"wk inc confirmed cases","province",0
+"HK","Haut Katanga",2026-10-09,2026-08-01,"wk inc confirmed cases","province",0
+"HK","Haut Katanga",2026-10-09,2026-08-08,"wk inc confirmed cases","province",0
+"HK","Haut Katanga",2026-10-09,2026-08-15,"wk inc confirmed cases","province",0
+"HK","Haut Katanga",2026-10-09,2026-08-22,"wk inc confirmed cases","province",0
+"HK","Haut Katanga",2026-10-09,2026-08-29,"wk inc confirmed cases","province",0
+"HK","Haut Katanga",2026-10-09,2026-09-05,"wk inc confirmed cases","province",0
+"HK","Haut Katanga",2026-10-09,2026-09-12,"wk inc confirmed cases","province",0
+"HK","Haut Katanga",2026-10-09,2026-09-19,"wk inc confirmed cases","province",0
+"HK","Haut Katanga",2026-10-09,2026-09-26,"wk inc confirmed cases","province",0
+"HK","Haut Katanga",2026-10-09,2026-10-03,"wk inc confirmed cases","province",0
+"HK","Haut Katanga",2026-10-09,2026-10-10,"wk inc confirmed cases","province",0
+"HL","Haut Lomami",2026-10-09,2026-02-14,"wk inc confirmed cases","province",0
+"HL","Haut Lomami",2026-10-09,2026-02-21,"wk inc confirmed cases","province",0
+"HL","Haut Lomami",2026-10-09,2026-02-28,"wk inc confirmed cases","province",0
+"HL","Haut Lomami",2026-10-09,2026-03-07,"wk inc confirmed cases","province",0
+"HL","Haut Lomami",2026-10-09,2026-03-14,"wk inc confirmed cases","province",0
+"HL","Haut Lomami",2026-10-09,2026-03-21,"wk inc confirmed cases","province",0
+"HL","Haut Lomami",2026-10-09,2026-03-28,"wk inc confirmed cases","province",0
+"HL","Haut Lomami",2026-10-09,2026-04-04,"wk inc confirmed cases","province",0
+"HL","Haut Lomami",2026-10-09,2026-04-11,"wk inc confirmed cases","province",0
+"HL","Haut Lomami",2026-10-09,2026-04-18,"wk inc confirmed cases","province",0
+"HL","Haut Lomami",2026-10-09,2026-04-25,"wk inc confirmed cases","province",0
+"HL","Haut Lomami",2026-10-09,2026-05-02,"wk inc confirmed cases","province",0
+"HL","Haut Lomami",2026-10-09,2026-05-09,"wk inc confirmed cases","province",0
+"HL","Haut Lomami",2026-10-09,2026-05-16,"wk inc confirmed cases","province",0
+"HL","Haut Lomami",2026-10-09,2026-05-23,"wk inc confirmed cases","province",0
+"HL","Haut Lomami",2026-10-09,2026-05-30,"wk inc confirmed cases","province",0
+"HL","Haut Lomami",2026-10-09,2026-06-06,"wk inc confirmed cases","province",0
+"HL","Haut Lomami",2026-10-09,2026-06-13,"wk inc confirmed cases","province",0
+"HL","Haut Lomami",2026-10-09,2026-06-20,"wk inc confirmed cases","province",0
+"HL","Haut Lomami",2026-10-09,2026-06-27,"wk inc confirmed cases","province",0
+"HL","Haut Lomami",2026-10-09,2026-07-04,"wk inc confirmed cases","province",0
+"HL","Haut Lomami",2026-10-09,2026-07-11,"wk inc confirmed cases","province",0
+"HL","Haut Lomami",2026-10-09,2026-07-18,"wk inc confirmed cases","province",0
+"HL","Haut Lomami",2026-10-09,2026-07-25,"wk inc confirmed cases","province",0
+"HL","Haut Lomami",2026-10-09,2026-08-01,"wk inc confirmed cases","province",0
+"HL","Haut Lomami",2026-10-09,2026-08-08,"wk inc confirmed cases","province",0
+"HL","Haut Lomami",2026-10-09,2026-08-15,"wk inc confirmed cases","province",0
+"HL","Haut Lomami",2026-10-09,2026-08-22,"wk inc confirmed cases","province",0
+"HL","Haut Lomami",2026-10-09,2026-08-29,"wk inc confirmed cases","province",0
+"HL","Haut Lomami",2026-10-09,2026-09-05,"wk inc confirmed cases","province",0
+"HL","Haut Lomami",2026-10-09,2026-09-12,"wk inc confirmed cases","province",0
+"HL","Haut Lomami",2026-10-09,2026-09-19,"wk inc confirmed cases","province",0
+"HL","Haut Lomami",2026-10-09,2026-09-26,"wk inc confirmed cases","province",0
+"HL","Haut Lomami",2026-10-09,2026-10-03,"wk inc confirmed cases","province",0
+"HL","Haut Lomami",2026-10-09,2026-10-10,"wk inc confirmed cases","province",0
+"HU","Haut Uele",2026-10-09,2026-02-14,"wk inc confirmed cases","province",1
+"HU","Haut Uele",2026-10-09,2026-02-21,"wk inc confirmed cases","province",0
+"HU","Haut Uele",2026-10-09,2026-02-28,"wk inc confirmed cases","province",0
+"HU","Haut Uele",2026-10-09,2026-03-07,"wk inc confirmed cases","province",0
+"HU","Haut Uele",2026-10-09,2026-03-14,"wk inc confirmed cases","province",0
+"HU","Haut Uele",2026-10-09,2026-03-21,"wk inc confirmed cases","province",0
+"HU","Haut Uele",2026-10-09,2026-03-28,"wk inc confirmed cases","province",0
+"HU","Haut Uele",2026-10-09,2026-04-04,"wk inc confirmed cases","province",0
+"HU","Haut Uele",2026-10-09,2026-04-11,"wk inc confirmed cases","province",0
+"HU","Haut Uele",2026-10-09,2026-04-18,"wk inc confirmed cases","province",0
+"HU","Haut Uele",2026-10-09,2026-04-25,"wk inc confirmed cases","province",0
+"HU","Haut Uele",2026-10-09,2026-05-02,"wk inc confirmed cases","province",0
+"HU","Haut Uele",2026-10-09,2026-05-09,"wk inc confirmed cases","province",0
+"HU","Haut Uele",2026-10-09,2026-05-16,"wk inc confirmed cases","province",0
+"HU","Haut Uele",2026-10-09,2026-05-23,"wk inc confirmed cases","province",0
+"HU","Haut Uele",2026-10-09,2026-05-30,"wk inc confirmed cases","province",0
+"HU","Haut Uele",2026-10-09,2026-06-06,"wk inc confirmed cases","province",0
+"HU","Haut Uele",2026-10-09,2026-06-13,"wk inc confirmed cases","province",0
+"HU","Haut Uele",2026-10-09,2026-06-20,"wk inc confirmed cases","province",0
+"HU","Haut Uele",2026-10-09,2026-06-27,"wk inc confirmed cases","province",2
+"HU","Haut Uele",2026-10-09,2026-07-04,"wk inc confirmed cases","province",2
+"HU","Haut Uele",2026-10-09,2026-07-11,"wk inc confirmed cases","province",12
+"HU","Haut Uele",2026-10-09,2026-07-18,"wk inc confirmed cases","province",13
+"HU","Haut Uele",2026-10-09,2026-07-25,"wk inc confirmed cases","province",30
+"HU","Haut Uele",2026-10-09,2026-08-01,"wk inc confirmed cases","province",31
+"HU","Haut Uele",2026-10-09,2026-08-08,"wk inc confirmed cases","province",49
+"HU","Haut Uele",2026-10-09,2026-08-15,"wk inc confirmed cases","province",41
+"HU","Haut Uele",2026-10-09,2026-08-22,"wk inc confirmed cases","province",33
+"HU","Haut Uele",2026-10-09,2026-08-29,"wk inc confirmed cases","province",36
+"HU","Haut Uele",2026-10-09,2026-09-05,"wk inc confirmed cases","province",29
+"HU","Haut Uele",2026-10-09,2026-09-12,"wk inc confirmed cases","province",25
+"HU","Haut Uele",2026-10-09,2026-09-19,"wk inc confirmed cases","province",31
+"HU","Haut Uele",2026-10-09,2026-09-26,"wk inc confirmed cases","province",28
+"HU","Haut Uele",2026-10-09,2026-10-03,"wk inc confirmed cases","province",17
+"HU","Haut Uele",2026-10-09,2026-10-10,"wk inc confirmed cases","province",1
+"IT","Ituri",2026-10-09,2026-02-14,"wk inc confirmed cases","province",0
+"IT","Ituri",2026-10-09,2026-02-21,"wk inc confirmed cases","province",0
+"IT","Ituri",2026-10-09,2026-02-28,"wk inc confirmed cases","province",0
+"IT","Ituri",2026-10-09,2026-03-07,"wk inc confirmed cases","province",1
+"IT","Ituri",2026-10-09,2026-03-14,"wk inc confirmed cases","province",0
+"IT","Ituri",2026-10-09,2026-03-21,"wk inc confirmed cases","province",0
+"IT","Ituri",2026-10-09,2026-03-28,"wk inc confirmed cases","province",0
+"IT","Ituri",2026-10-09,2026-04-04,"wk inc confirmed cases","province",0
+"IT","Ituri",2026-10-09,2026-04-11,"wk inc confirmed cases","province",0
+"IT","Ituri",2026-10-09,2026-04-18,"wk inc confirmed cases","province",0
+"IT","Ituri",2026-10-09,2026-04-25,"wk inc confirmed cases","province",2
+"IT","Ituri",2026-10-09,2026-05-02,"wk inc confirmed cases","province",5
+"IT","Ituri",2026-10-09,2026-05-09,"wk inc confirmed cases","province",22
+"IT","Ituri",2026-10-09,2026-05-16,"wk inc confirmed cases","province",90
+"IT","Ituri",2026-10-09,2026-05-23,"wk inc confirmed cases","province",155
+"IT","Ituri",2026-10-09,2026-05-30,"wk inc confirmed cases","province",191
+"IT","Ituri",2026-10-09,2026-06-06,"wk inc confirmed cases","province",231
+"IT","Ituri",2026-10-09,2026-06-13,"wk inc confirmed cases","province",297
+"IT","Ituri",2026-10-09,2026-06-20,"wk inc confirmed cases","province",349
+"IT","Ituri",2026-10-09,2026-06-27,"wk inc confirmed cases","province",341
+"IT","Ituri",2026-10-09,2026-07-04,"wk inc confirmed cases","province",424
+"IT","Ituri",2026-10-09,2026-07-11,"wk inc confirmed cases","province",355
+"IT","Ituri",2026-10-09,2026-07-18,"wk inc confirmed cases","province",344
+"IT","Ituri",2026-10-09,2026-07-25,"wk inc confirmed cases","province",392
+"IT","Ituri",2026-10-09,2026-08-01,"wk inc confirmed cases","province",390
+"IT","Ituri",2026-10-09,2026-08-08,"wk inc confirmed cases","province",366
+"IT","Ituri",2026-10-09,2026-08-15,"wk inc confirmed cases","province",416
+"IT","Ituri",2026-10-09,2026-08-22,"wk inc confirmed cases","province",330
+"IT","Ituri",2026-10-09,2026-08-29,"wk inc confirmed cases","province",358
+"IT","Ituri",2026-10-09,2026-09-05,"wk inc confirmed cases","province",306
+"IT","Ituri",2026-10-09,2026-09-12,"wk inc confirmed cases","province",327
+"IT","Ituri",2026-10-09,2026-09-19,"wk inc confirmed cases","province",244
+"IT","Ituri",2026-10-09,2026-09-26,"wk inc confirmed cases","province",188
+"IT","Ituri",2026-10-09,2026-10-03,"wk inc confirmed cases","province",133
+"IT","Ituri",2026-10-09,2026-10-10,"wk inc confirmed cases","province",21
+"KS","Kasai",2026-10-09,2026-02-14,"wk inc confirmed cases","province",0
+"KS","Kasai",2026-10-09,2026-02-21,"wk inc confirmed cases","province",0
+"KS","Kasai",2026-10-09,2026-02-28,"wk inc confirmed cases","province",0
+"KS","Kasai",2026-10-09,2026-03-07,"wk inc confirmed cases","province",0
+"KS","Kasai",2026-10-09,2026-03-14,"wk inc confirmed cases","province",0
+"KS","Kasai",2026-10-09,2026-03-21,"wk inc confirmed cases","province",0
+"KS","Kasai",2026-10-09,2026-03-28,"wk inc confirmed cases","province",0
+"KS","Kasai",2026-10-09,2026-04-04,"wk inc confirmed cases","province",0
+"KS","Kasai",2026-10-09,2026-04-11,"wk inc confirmed cases","province",0
+"KS","Kasai",2026-10-09,2026-04-18,"wk inc confirmed cases","province",0
+"KS","Kasai",2026-10-09,2026-04-25,"wk inc confirmed cases","province",0
+"KS","Kasai",2026-10-09,2026-05-02,"wk inc confirmed cases","province",0
+"KS","Kasai",2026-10-09,2026-05-09,"wk inc confirmed cases","province",0
+"KS","Kasai",2026-10-09,2026-05-16,"wk inc confirmed cases","province",0
+"KS","Kasai",2026-10-09,2026-05-23,"wk inc confirmed cases","province",0
+"KS","Kasai",2026-10-09,2026-05-30,"wk inc confirmed cases","province",0
+"KS","Kasai",2026-10-09,2026-06-06,"wk inc confirmed cases","province",0
+"KS","Kasai",2026-10-09,2026-06-13,"wk inc confirmed cases","province",0
+"KS","Kasai",2026-10-09,2026-06-20,"wk inc confirmed cases","province",0
+"KS","Kasai",2026-10-09,2026-06-27,"wk inc confirmed cases","province",0
+"KS","Kasai",2026-10-09,2026-07-04,"wk inc confirmed cases","province",0
+"KS","Kasai",2026-10-09,2026-07-11,"wk inc confirmed cases","province",0
+"KS","Kasai",2026-10-09,2026-07-18,"wk inc confirmed cases","province",0
+"KS","Kasai",2026-10-09,2026-07-25,"wk inc confirmed cases","province",0
+"KS","Kasai",2026-10-09,2026-08-01,"wk inc confirmed cases","province",0
+"KS","Kasai",2026-10-09,2026-08-08,"wk inc confirmed cases","province",0
+"KS","Kasai",2026-10-09,2026-08-15,"wk inc confirmed cases","province",0
+"KS","Kasai",2026-10-09,2026-08-22,"wk inc confirmed cases","province",0
+"KS","Kasai",2026-10-09,2026-08-29,"wk inc confirmed cases","province",0
+"KS","Kasai",2026-10-09,2026-09-05,"wk inc confirmed cases","province",0
+"KS","Kasai",2026-10-09,2026-09-12,"wk inc confirmed cases","province",0
+"KS","Kasai",2026-10-09,2026-09-19,"wk inc confirmed cases","province",0
+"KS","Kasai",2026-10-09,2026-09-26,"wk inc confirmed cases","province",0
+"KS","Kasai",2026-10-09,2026-10-03,"wk inc confirmed cases","province",0
+"KS","Kasai",2026-10-09,2026-10-10,"wk inc confirmed cases","province",0
+"KC","Kasai Central",2026-10-09,2026-02-14,"wk inc confirmed cases","province",0
+"KC","Kasai Central",2026-10-09,2026-02-21,"wk inc confirmed cases","province",0
+"KC","Kasai Central",2026-10-09,2026-02-28,"wk inc confirmed cases","province",0
+"KC","Kasai Central",2026-10-09,2026-03-07,"wk inc confirmed cases","province",0
+"KC","Kasai Central",2026-10-09,2026-03-14,"wk inc confirmed cases","province",0
+"KC","Kasai Central",2026-10-09,2026-03-21,"wk inc confirmed cases","province",0
+"KC","Kasai Central",2026-10-09,2026-03-28,"wk inc confirmed cases","province",0
+"KC","Kasai Central",2026-10-09,2026-04-04,"wk inc confirmed cases","province",0
+"KC","Kasai Central",2026-10-09,2026-04-11,"wk inc confirmed cases","province",0
+"KC","Kasai Central",2026-10-09,2026-04-18,"wk inc confirmed cases","province",0
+"KC","Kasai Central",2026-10-09,2026-04-25,"wk inc confirmed cases","province",0
+"KC","Kasai Central",2026-10-09,2026-05-02,"wk inc confirmed cases","province",0
+"KC","Kasai Central",2026-10-09,2026-05-09,"wk inc confirmed cases","province",0
+"KC","Kasai Central",2026-10-09,2026-05-16,"wk inc confirmed cases","province",0
+"KC","Kasai Central",2026-10-09,2026-05-23,"wk inc confirmed cases","province",0
+"KC","Kasai Central",2026-10-09,2026-05-30,"wk inc confirmed cases","province",0
+"KC","Kasai Central",2026-10-09,2026-06-06,"wk inc confirmed cases","province",0
+"KC","Kasai Central",2026-10-09,2026-06-13,"wk inc confirmed cases","province",0
+"KC","Kasai Central",2026-10-09,2026-06-20,"wk inc confirmed cases","province",0
+"KC","Kasai Central",2026-10-09,2026-06-27,"wk inc confirmed cases","province",0
+"KC","Kasai Central",2026-10-09,2026-07-04,"wk inc confirmed cases","province",0
+"KC","Kasai Central",2026-10-09,2026-07-11,"wk inc confirmed cases","province",0
+"KC","Kasai Central",2026-10-09,2026-07-18,"wk inc confirmed cases","province",0
+"KC","Kasai Central",2026-10-09,2026-07-25,"wk inc confirmed cases","province",0
+"KC","Kasai Central",2026-10-09,2026-08-01,"wk inc confirmed cases","province",0
+"KC","Kasai Central",2026-10-09,2026-08-08,"wk inc confirmed cases","province",0
+"KC","Kasai Central",2026-10-09,2026-08-15,"wk inc confirmed cases","province",0
+"KC","Kasai Central",2026-10-09,2026-08-22,"wk inc confirmed cases","province",0
+"KC","Kasai Central",2026-10-09,2026-08-29,"wk inc confirmed cases","province",0
+"KC","Kasai Central",2026-10-09,2026-09-05,"wk inc confirmed cases","province",0
+"KC","Kasai Central",2026-10-09,2026-09-12,"wk inc confirmed cases","province",0
+"KC","Kasai Central",2026-10-09,2026-09-19,"wk inc confirmed cases","province",0
+"KC","Kasai Central",2026-10-09,2026-09-26,"wk inc confirmed cases","province",0
+"KC","Kasai Central",2026-10-09,2026-10-03,"wk inc confirmed cases","province",0
+"KC","Kasai Central",2026-10-09,2026-10-10,"wk inc confirmed cases","province",0
+"KE","Kasai Oriental",2026-10-09,2026-02-14,"wk inc confirmed cases","province",0
+"KE","Kasai Oriental",2026-10-09,2026-02-21,"wk inc confirmed cases","province",0
+"KE","Kasai Oriental",2026-10-09,2026-02-28,"wk inc confirmed cases","province",0
+"KE","Kasai Oriental",2026-10-09,2026-03-07,"wk inc confirmed cases","province",0
+"KE","Kasai Oriental",2026-10-09,2026-03-14,"wk inc confirmed cases","province",0
+"KE","Kasai Oriental",2026-10-09,2026-03-21,"wk inc confirmed cases","province",0
+"KE","Kasai Oriental",2026-10-09,2026-03-28,"wk inc confirmed cases","province",0
+"KE","Kasai Oriental",2026-10-09,2026-04-04,"wk inc confirmed cases","province",0
+"KE","Kasai Oriental",2026-10-09,2026-04-11,"wk inc confirmed cases","province",0
+"KE","Kasai Oriental",2026-10-09,2026-04-18,"wk inc confirmed cases","province",0
+"KE","Kasai Oriental",2026-10-09,2026-04-25,"wk inc confirmed cases","province",0
+"KE","Kasai Oriental",2026-10-09,2026-05-02,"wk inc confirmed cases","province",0
+"KE","Kasai Oriental",2026-10-09,2026-05-09,"wk inc confirmed cases","province",0
+"KE","Kasai Oriental",2026-10-09,2026-05-16,"wk inc confirmed cases","province",0
+"KE","Kasai Oriental",2026-10-09,2026-05-23,"wk inc confirmed cases","province",0
+"KE","Kasai Oriental",2026-10-09,2026-05-30,"wk inc confirmed cases","province",0
+"KE","Kasai Oriental",2026-10-09,2026-06-06,"wk inc confirmed cases","province",0
+"KE","Kasai Oriental",2026-10-09,2026-06-13,"wk inc confirmed cases","province",0
+"KE","Kasai Oriental",2026-10-09,2026-06-20,"wk inc confirmed cases","province",0
+"KE","Kasai Oriental",2026-10-09,2026-06-27,"wk inc confirmed cases","province",0
+"KE","Kasai Oriental",2026-10-09,2026-07-04,"wk inc confirmed cases","province",0
+"KE","Kasai Oriental",2026-10-09,2026-07-11,"wk inc confirmed cases","province",0
+"KE","Kasai Oriental",2026-10-09,2026-07-18,"wk inc confirmed cases","province",0
+"KE","Kasai Oriental",2026-10-09,2026-07-25,"wk inc confirmed cases","province",0
+"KE","Kasai Oriental",2026-10-09,2026-08-01,"wk inc confirmed cases","province",0
+"KE","Kasai Oriental",2026-10-09,2026-08-08,"wk inc confirmed cases","province",0
+"KE","Kasai Oriental",2026-10-09,2026-08-15,"wk inc confirmed cases","province",0
+"KE","Kasai Oriental",2026-10-09,2026-08-22,"wk inc confirmed cases","province",0
+"KE","Kasai Oriental",2026-10-09,2026-08-29,"wk inc confirmed cases","province",0
+"KE","Kasai Oriental",2026-10-09,2026-09-05,"wk inc confirmed cases","province",0
+"KE","Kasai Oriental",2026-10-09,2026-09-12,"wk inc confirmed cases","province",0
+"KE","Kasai Oriental",2026-10-09,2026-09-19,"wk inc confirmed cases","province",0
+"KE","Kasai Oriental",2026-10-09,2026-09-26,"wk inc confirmed cases","province",0
+"KE","Kasai Oriental",2026-10-09,2026-10-03,"wk inc confirmed cases","province",0
+"KE","Kasai Oriental",2026-10-09,2026-10-10,"wk inc confirmed cases","province",0
+"KN","Kinshasa",2026-10-09,2026-02-14,"wk inc confirmed cases","province",0
+"KN","Kinshasa",2026-10-09,2026-02-21,"wk inc confirmed cases","province",0
+"KN","Kinshasa",2026-10-09,2026-02-28,"wk inc confirmed cases","province",0
+"KN","Kinshasa",2026-10-09,2026-03-07,"wk inc confirmed cases","province",0
+"KN","Kinshasa",2026-10-09,2026-03-14,"wk inc confirmed cases","province",0
+"KN","Kinshasa",2026-10-09,2026-03-21,"wk inc confirmed cases","province",0
+"KN","Kinshasa",2026-10-09,2026-03-28,"wk inc confirmed cases","province",0
+"KN","Kinshasa",2026-10-09,2026-04-04,"wk inc confirmed cases","province",0
+"KN","Kinshasa",2026-10-09,2026-04-11,"wk inc confirmed cases","province",0
+"KN","Kinshasa",2026-10-09,2026-04-18,"wk inc confirmed cases","province",0
+"KN","Kinshasa",2026-10-09,2026-04-25,"wk inc confirmed cases","province",0
+"KN","Kinshasa",2026-10-09,2026-05-02,"wk inc confirmed cases","province",0
+"KN","Kinshasa",2026-10-09,2026-05-09,"wk inc confirmed cases","province",0
+"KN","Kinshasa",2026-10-09,2026-05-16,"wk inc confirmed cases","province",0
+"KN","Kinshasa",2026-10-09,2026-05-23,"wk inc confirmed cases","province",0
+"KN","Kinshasa",2026-10-09,2026-05-30,"wk inc confirmed cases","province",0
+"KN","Kinshasa",2026-10-09,2026-06-06,"wk inc confirmed cases","province",0
+"KN","Kinshasa",2026-10-09,2026-06-13,"wk inc confirmed cases","province",0
+"KN","Kinshasa",2026-10-09,2026-06-20,"wk inc confirmed cases","province",0
+"KN","Kinshasa",2026-10-09,2026-06-27,"wk inc confirmed cases","province",0
+"KN","Kinshasa",2026-10-09,2026-07-04,"wk inc confirmed cases","province",0
+"KN","Kinshasa",2026-10-09,2026-07-11,"wk inc confirmed cases","province",0
+"KN","Kinshasa",2026-10-09,2026-07-18,"wk inc confirmed cases","province",0
+"KN","Kinshasa",2026-10-09,2026-07-25,"wk inc confirmed cases","province",0
+"KN","Kinshasa",2026-10-09,2026-08-01,"wk inc confirmed cases","province",0
+"KN","Kinshasa",2026-10-09,2026-08-08,"wk inc confirmed cases","province",0
+"KN","Kinshasa",2026-10-09,2026-08-15,"wk inc confirmed cases","province",0
+"KN","Kinshasa",2026-10-09,2026-08-22,"wk inc confirmed cases","province",0
+"KN","Kinshasa",2026-10-09,2026-08-29,"wk inc confirmed cases","province",0
+"KN","Kinshasa",2026-10-09,2026-09-05,"wk inc confirmed cases","province",0
+"KN","Kinshasa",2026-10-09,2026-09-12,"wk inc confirmed cases","province",0
+"KN","Kinshasa",2026-10-09,2026-09-19,"wk inc confirmed cases","province",0
+"KN","Kinshasa",2026-10-09,2026-09-26,"wk inc confirmed cases","province",0
+"KN","Kinshasa",2026-10-09,2026-10-03,"wk inc confirmed cases","province",0
+"KN","Kinshasa",2026-10-09,2026-10-10,"wk inc confirmed cases","province",0
+"BC","Kongo Central",2026-10-09,2026-02-14,"wk inc confirmed cases","province",0
+"BC","Kongo Central",2026-10-09,2026-02-21,"wk inc confirmed cases","province",0
+"BC","Kongo Central",2026-10-09,2026-02-28,"wk inc confirmed cases","province",0
+"BC","Kongo Central",2026-10-09,2026-03-07,"wk inc confirmed cases","province",0
+"BC","Kongo Central",2026-10-09,2026-03-14,"wk inc confirmed cases","province",0
+"BC","Kongo Central",2026-10-09,2026-03-21,"wk inc confirmed cases","province",0
+"BC","Kongo Central",2026-10-09,2026-03-28,"wk inc confirmed cases","province",0
+"BC","Kongo Central",2026-10-09,2026-04-04,"wk inc confirmed cases","province",0
+"BC","Kongo Central",2026-10-09,2026-04-11,"wk inc confirmed cases","province",0
+"BC","Kongo Central",2026-10-09,2026-04-18,"wk inc confirmed cases","province",0
+"BC","Kongo Central",2026-10-09,2026-04-25,"wk inc confirmed cases","province",0
+"BC","Kongo Central",2026-10-09,2026-05-02,"wk inc confirmed cases","province",0
+"BC","Kongo Central",2026-10-09,2026-05-09,"wk inc confirmed cases","province",0
+"BC","Kongo Central",2026-10-09,2026-05-16,"wk inc confirmed cases","province",0
+"BC","Kongo Central",2026-10-09,2026-05-23,"wk inc confirmed cases","province",0
+"BC","Kongo Central",2026-10-09,2026-05-30,"wk inc confirmed cases","province",0
+"BC","Kongo Central",2026-10-09,2026-06-06,"wk inc confirmed cases","province",0
+"BC","Kongo Central",2026-10-09,2026-06-13,"wk inc confirmed cases","province",0
+"BC","Kongo Central",2026-10-09,2026-06-20,"wk inc confirmed cases","province",0
+"BC","Kongo Central",2026-10-09,2026-06-27,"wk inc confirmed cases","province",0
+"BC","Kongo Central",2026-10-09,2026-07-04,"wk inc confirmed cases","province",0
+"BC","Kongo Central",2026-10-09,2026-07-11,"wk inc confirmed cases","province",0
+"BC","Kongo Central",2026-10-09,2026-07-18,"wk inc confirmed cases","province",0
+"BC","Kongo Central",2026-10-09,2026-07-25,"wk inc confirmed cases","province",0
+"BC","Kongo Central",2026-10-09,2026-08-01,"wk inc confirmed cases","province",0
+"BC","Kongo Central",2026-10-09,2026-08-08,"wk inc confirmed cases","province",0
+"BC","Kongo Central",2026-10-09,2026-08-15,"wk inc confirmed cases","province",0
+"BC","Kongo Central",2026-10-09,2026-08-22,"wk inc confirmed cases","province",0
+"BC","Kongo Central",2026-10-09,2026-08-29,"wk inc confirmed cases","province",0
+"BC","Kongo Central",2026-10-09,2026-09-05,"wk inc confirmed cases","province",0
+"BC","Kongo Central",2026-10-09,2026-09-12,"wk inc confirmed cases","province",0
+"BC","Kongo Central",2026-10-09,2026-09-19,"wk inc confirmed cases","province",0
+"BC","Kongo Central",2026-10-09,2026-09-26,"wk inc confirmed cases","province",0
+"BC","Kongo Central",2026-10-09,2026-10-03,"wk inc confirmed cases","province",0
+"BC","Kongo Central",2026-10-09,2026-10-10,"wk inc confirmed cases","province",0
+"KG","Kwango",2026-10-09,2026-02-14,"wk inc confirmed cases","province",0
+"KG","Kwango",2026-10-09,2026-02-21,"wk inc confirmed cases","province",0
+"KG","Kwango",2026-10-09,2026-02-28,"wk inc confirmed cases","province",0
+"KG","Kwango",2026-10-09,2026-03-07,"wk inc confirmed cases","province",0
+"KG","Kwango",2026-10-09,2026-03-14,"wk inc confirmed cases","province",0
+"KG","Kwango",2026-10-09,2026-03-21,"wk inc confirmed cases","province",0
+"KG","Kwango",2026-10-09,2026-03-28,"wk inc confirmed cases","province",0
+"KG","Kwango",2026-10-09,2026-04-04,"wk inc confirmed cases","province",0
+"KG","Kwango",2026-10-09,2026-04-11,"wk inc confirmed cases","province",0
+"KG","Kwango",2026-10-09,2026-04-18,"wk inc confirmed cases","province",0
+"KG","Kwango",2026-10-09,2026-04-25,"wk inc confirmed cases","province",0
+"KG","Kwango",2026-10-09,2026-05-02,"wk inc confirmed cases","province",0
+"KG","Kwango",2026-10-09,2026-05-09,"wk inc confirmed cases","province",0
+"KG","Kwango",2026-10-09,2026-05-16,"wk inc confirmed cases","province",0
+"KG","Kwango",2026-10-09,2026-05-23,"wk inc confirmed cases","province",0
+"KG","Kwango",2026-10-09,2026-05-30,"wk inc confirmed cases","province",0
+"KG","Kwango",2026-10-09,2026-06-06,"wk inc confirmed cases","province",0
+"KG","Kwango",2026-10-09,2026-06-13,"wk inc confirmed cases","province",0
+"KG","Kwango",2026-10-09,2026-06-20,"wk inc confirmed cases","province",0
+"KG","Kwango",2026-10-09,2026-06-27,"wk inc confirmed cases","province",0
+"KG","Kwango",2026-10-09,2026-07-04,"wk inc confirmed cases","province",0
+"KG","Kwango",2026-10-09,2026-07-11,"wk inc confirmed cases","province",0
+"KG","Kwango",2026-10-09,2026-07-18,"wk inc confirmed cases","province",0
+"KG","Kwango",2026-10-09,2026-07-25,"wk inc confirmed cases","province",0
+"KG","Kwango",2026-10-09,2026-08-01,"wk inc confirmed cases","province",0
+"KG","Kwango",2026-10-09,2026-08-08,"wk inc confirmed cases","province",0
+"KG","Kwango",2026-10-09,2026-08-15,"wk inc confirmed cases","province",0
+"KG","Kwango",2026-10-09,2026-08-22,"wk inc confirmed cases","province",0
+"KG","Kwango",2026-10-09,2026-08-29,"wk inc confirmed cases","province",0
+"KG","Kwango",2026-10-09,2026-09-05,"wk inc confirmed cases","province",0
+"KG","Kwango",2026-10-09,2026-09-12,"wk inc confirmed cases","province",0
+"KG","Kwango",2026-10-09,2026-09-19,"wk inc confirmed cases","province",0
+"KG","Kwango",2026-10-09,2026-09-26,"wk inc confirmed cases","province",0
+"KG","Kwango",2026-10-09,2026-10-03,"wk inc confirmed cases","province",0
+"KG","Kwango",2026-10-09,2026-10-10,"wk inc confirmed cases","province",0
+"KL","Kwilu",2026-10-09,2026-02-14,"wk inc confirmed cases","province",0
+"KL","Kwilu",2026-10-09,2026-02-21,"wk inc confirmed cases","province",0
+"KL","Kwilu",2026-10-09,2026-02-28,"wk inc confirmed cases","province",0
+"KL","Kwilu",2026-10-09,2026-03-07,"wk inc confirmed cases","province",0
+"KL","Kwilu",2026-10-09,2026-03-14,"wk inc confirmed cases","province",0
+"KL","Kwilu",2026-10-09,2026-03-21,"wk inc confirmed cases","province",0
+"KL","Kwilu",2026-10-09,2026-03-28,"wk inc confirmed cases","province",0
+"KL","Kwilu",2026-10-09,2026-04-04,"wk inc confirmed cases","province",0
+"KL","Kwilu",2026-10-09,2026-04-11,"wk inc confirmed cases","province",0
+"KL","Kwilu",2026-10-09,2026-04-18,"wk inc confirmed cases","province",0
+"KL","Kwilu",2026-10-09,2026-04-25,"wk inc confirmed cases","province",0
+"KL","Kwilu",2026-10-09,2026-05-02,"wk inc confirmed cases","province",0
+"KL","Kwilu",2026-10-09,2026-05-09,"wk inc confirmed cases","province",0
+"KL","Kwilu",2026-10-09,2026-05-16,"wk inc confirmed cases","province",0
+"KL","Kwilu",2026-10-09,2026-05-23,"wk inc confirmed cases","province",0
+"KL","Kwilu",2026-10-09,2026-05-30,"wk inc confirmed cases","province",0
+"KL","Kwilu",2026-10-09,2026-06-06,"wk inc confirmed cases","province",0
+"KL","Kwilu",2026-10-09,2026-06-13,"wk inc confirmed cases","province",0
+"KL","Kwilu",2026-10-09,2026-06-20,"wk inc confirmed cases","province",0
+"KL","Kwilu",2026-10-09,2026-06-27,"wk inc confirmed cases","province",0
+"KL","Kwilu",2026-10-09,2026-07-04,"wk inc confirmed cases","province",0
+"KL","Kwilu",2026-10-09,2026-07-11,"wk inc confirmed cases","province",0
+"KL","Kwilu",2026-10-09,2026-07-18,"wk inc confirmed cases","province",0
+"KL","Kwilu",2026-10-09,2026-07-25,"wk inc confirmed cases","province",0
+"KL","Kwilu",2026-10-09,2026-08-01,"wk inc confirmed cases","province",0
+"KL","Kwilu",2026-10-09,2026-08-08,"wk inc confirmed cases","province",0
+"KL","Kwilu",2026-10-09,2026-08-15,"wk inc confirmed cases","province",0
+"KL","Kwilu",2026-10-09,2026-08-22,"wk inc confirmed cases","province",0
+"KL","Kwilu",2026-10-09,2026-08-29,"wk inc confirmed cases","province",0
+"KL","Kwilu",2026-10-09,2026-09-05,"wk inc confirmed cases","province",0
+"KL","Kwilu",2026-10-09,2026-09-12,"wk inc confirmed cases","province",0
+"KL","Kwilu",2026-10-09,2026-09-19,"wk inc confirmed cases","province",0
+"KL","Kwilu",2026-10-09,2026-09-26,"wk inc confirmed cases","province",0
+"KL","Kwilu",2026-10-09,2026-10-03,"wk inc confirmed cases","province",0
+"KL","Kwilu",2026-10-09,2026-10-10,"wk inc confirmed cases","province",0
+"LO","Lomami",2026-10-09,2026-02-14,"wk inc confirmed cases","province",0
+"LO","Lomami",2026-10-09,2026-02-21,"wk inc confirmed cases","province",0
+"LO","Lomami",2026-10-09,2026-02-28,"wk inc confirmed cases","province",0
+"LO","Lomami",2026-10-09,2026-03-07,"wk inc confirmed cases","province",0
+"LO","Lomami",2026-10-09,2026-03-14,"wk inc confirmed cases","province",0
+"LO","Lomami",2026-10-09,2026-03-21,"wk inc confirmed cases","province",0
+"LO","Lomami",2026-10-09,2026-03-28,"wk inc confirmed cases","province",0
+"LO","Lomami",2026-10-09,2026-04-04,"wk inc confirmed cases","province",0
+"LO","Lomami",2026-10-09,2026-04-11,"wk inc confirmed cases","province",0
+"LO","Lomami",2026-10-09,2026-04-18,"wk inc confirmed cases","province",0
+"LO","Lomami",2026-10-09,2026-04-25,"wk inc confirmed cases","province",0
+"LO","Lomami",2026-10-09,2026-05-02,"wk inc confirmed cases","province",0
+"LO","Lomami",2026-10-09,2026-05-09,"wk inc confirmed cases","province",0
+"LO","Lomami",2026-10-09,2026-05-16,"wk inc confirmed cases","province",0
+"LO","Lomami",2026-10-09,2026-05-23,"wk inc confirmed cases","province",0
+"LO","Lomami",2026-10-09,2026-05-30,"wk inc confirmed cases","province",0
+"LO","Lomami",2026-10-09,2026-06-06,"wk inc confirmed cases","province",0
+"LO","Lomami",2026-10-09,2026-06-13,"wk inc confirmed cases","province",0
+"LO","Lomami",2026-10-09,2026-06-20,"wk inc confirmed cases","province",0
+"LO","Lomami",2026-10-09,2026-06-27,"wk inc confirmed cases","province",0
+"LO","Lomami",2026-10-09,2026-07-04,"wk inc confirmed cases","province",0
+"LO","Lomami",2026-10-09,2026-07-11,"wk inc confirmed cases","province",0
+"LO","Lomami",2026-10-09,2026-07-18,"wk inc confirmed cases","province",0
+"LO","Lomami",2026-10-09,2026-07-25,"wk inc confirmed cases","province",0
+"LO","Lomami",2026-10-09,2026-08-01,"wk inc confirmed cases","province",0
+"LO","Lomami",2026-10-09,2026-08-08,"wk inc confirmed cases","province",0
+"LO","Lomami",2026-10-09,2026-08-15,"wk inc confirmed cases","province",0
+"LO","Lomami",2026-10-09,2026-08-22,"wk inc confirmed cases","province",0
+"LO","Lomami",2026-10-09,2026-08-29,"wk inc confirmed cases","province",0
+"LO","Lomami",2026-10-09,2026-09-05,"wk inc confirmed cases","province",0
+"LO","Lomami",2026-10-09,2026-09-12,"wk inc confirmed cases","province",0
+"LO","Lomami",2026-10-09,2026-09-19,"wk inc confirmed cases","province",0
+"LO","Lomami",2026-10-09,2026-09-26,"wk inc confirmed cases","province",0
+"LO","Lomami",2026-10-09,2026-10-03,"wk inc confirmed cases","province",0
+"LO","Lomami",2026-10-09,2026-10-10,"wk inc confirmed cases","province",0
+"LU","Lualaba",2026-10-09,2026-02-14,"wk inc confirmed cases","province",0
+"LU","Lualaba",2026-10-09,2026-02-21,"wk inc confirmed cases","province",0
+"LU","Lualaba",2026-10-09,2026-02-28,"wk inc confirmed cases","province",0
+"LU","Lualaba",2026-10-09,2026-03-07,"wk inc confirmed cases","province",0
+"LU","Lualaba",2026-10-09,2026-03-14,"wk inc confirmed cases","province",0
+"LU","Lualaba",2026-10-09,2026-03-21,"wk inc confirmed cases","province",0
+"LU","Lualaba",2026-10-09,2026-03-28,"wk inc confirmed cases","province",0
+"LU","Lualaba",2026-10-09,2026-04-04,"wk inc confirmed cases","province",0
+"LU","Lualaba",2026-10-09,2026-04-11,"wk inc confirmed cases","province",0
+"LU","Lualaba",2026-10-09,2026-04-18,"wk inc confirmed cases","province",0
+"LU","Lualaba",2026-10-09,2026-04-25,"wk inc confirmed cases","province",0
+"LU","Lualaba",2026-10-09,2026-05-02,"wk inc confirmed cases","province",0
+"LU","Lualaba",2026-10-09,2026-05-09,"wk inc confirmed cases","province",0
+"LU","Lualaba",2026-10-09,2026-05-16,"wk inc confirmed cases","province",0
+"LU","Lualaba",2026-10-09,2026-05-23,"wk inc confirmed cases","province",0
+"LU","Lualaba",2026-10-09,2026-05-30,"wk inc confirmed cases","province",0
+"LU","Lualaba",2026-10-09,2026-06-06,"wk inc confirmed cases","province",0
+"LU","Lualaba",2026-10-09,2026-06-13,"wk inc confirmed cases","province",0
+"LU","Lualaba",2026-10-09,2026-06-20,"wk inc confirmed cases","province",0
+"LU","Lualaba",2026-10-09,2026-06-27,"wk inc confirmed cases","province",0
+"LU","Lualaba",2026-10-09,2026-07-04,"wk inc confirmed cases","province",0
+"LU","Lualaba",2026-10-09,2026-07-11,"wk inc confirmed cases","province",0
+"LU","Lualaba",2026-10-09,2026-07-18,"wk inc confirmed cases","province",0
+"LU","Lualaba",2026-10-09,2026-07-25,"wk inc confirmed cases","province",0
+"LU","Lualaba",2026-10-09,2026-08-01,"wk inc confirmed cases","province",0
+"LU","Lualaba",2026-10-09,2026-08-08,"wk inc confirmed cases","province",0
+"LU","Lualaba",2026-10-09,2026-08-15,"wk inc confirmed cases","province",0
+"LU","Lualaba",2026-10-09,2026-08-22,"wk inc confirmed cases","province",0
+"LU","Lualaba",2026-10-09,2026-08-29,"wk inc confirmed cases","province",0
+"LU","Lualaba",2026-10-09,2026-09-05,"wk inc confirmed cases","province",0
+"LU","Lualaba",2026-10-09,2026-09-12,"wk inc confirmed cases","province",0
+"LU","Lualaba",2026-10-09,2026-09-19,"wk inc confirmed cases","province",0
+"LU","Lualaba",2026-10-09,2026-09-26,"wk inc confirmed cases","province",0
+"LU","Lualaba",2026-10-09,2026-10-03,"wk inc confirmed cases","province",0
+"LU","Lualaba",2026-10-09,2026-10-10,"wk inc confirmed cases","province",0
+"MN","Mai Ndombe",2026-10-09,2026-02-14,"wk inc confirmed cases","province",0
+"MN","Mai Ndombe",2026-10-09,2026-02-21,"wk inc confirmed cases","province",0
+"MN","Mai Ndombe",2026-10-09,2026-02-28,"wk inc confirmed cases","province",0
+"MN","Mai Ndombe",2026-10-09,2026-03-07,"wk inc confirmed cases","province",0
+"MN","Mai Ndombe",2026-10-09,2026-03-14,"wk inc confirmed cases","province",0
+"MN","Mai Ndombe",2026-10-09,2026-03-21,"wk inc confirmed cases","province",0
+"MN","Mai Ndombe",2026-10-09,2026-03-28,"wk inc confirmed cases","province",0
+"MN","Mai Ndombe",2026-10-09,2026-04-04,"wk inc confirmed cases","province",0
+"MN","Mai Ndombe",2026-10-09,2026-04-11,"wk inc confirmed cases","province",0
+"MN","Mai Ndombe",2026-10-09,2026-04-18,"wk inc confirmed cases","province",0
+"MN","Mai Ndombe",2026-10-09,2026-04-25,"wk inc confirmed cases","province",0
+"MN","Mai Ndombe",2026-10-09,2026-05-02,"wk inc confirmed cases","province",0
+"MN","Mai Ndombe",2026-10-09,2026-05-09,"wk inc confirmed cases","province",0
+"MN","Mai Ndombe",2026-10-09,2026-05-16,"wk inc confirmed cases","province",0
+"MN","Mai Ndombe",2026-10-09,2026-05-23,"wk inc confirmed cases","province",0
+"MN","Mai Ndombe",2026-10-09,2026-05-30,"wk inc confirmed cases","province",0
+"MN","Mai Ndombe",2026-10-09,2026-06-06,"wk inc confirmed cases","province",0
+"MN","Mai Ndombe",2026-10-09,2026-06-13,"wk inc confirmed cases","province",0
+"MN","Mai Ndombe",2026-10-09,2026-06-20,"wk inc confirmed cases","province",0
+"MN","Mai Ndombe",2026-10-09,2026-06-27,"wk inc confirmed cases","province",0
+"MN","Mai Ndombe",2026-10-09,2026-07-04,"wk inc confirmed cases","province",0
+"MN","Mai Ndombe",2026-10-09,2026-07-11,"wk inc confirmed cases","province",0
+"MN","Mai Ndombe",2026-10-09,2026-07-18,"wk inc confirmed cases","province",0
+"MN","Mai Ndombe",2026-10-09,2026-07-25,"wk inc confirmed cases","province",0
+"MN","Mai Ndombe",2026-10-09,2026-08-01,"wk inc confirmed cases","province",0
+"MN","Mai Ndombe",2026-10-09,2026-08-08,"wk inc confirmed cases","province",0
+"MN","Mai Ndombe",2026-10-09,2026-08-15,"wk inc confirmed cases","province",0
+"MN","Mai Ndombe",2026-10-09,2026-08-22,"wk inc confirmed cases","province",0
+"MN","Mai Ndombe",2026-10-09,2026-08-29,"wk inc confirmed cases","province",0
+"MN","Mai Ndombe",2026-10-09,2026-09-05,"wk inc confirmed cases","province",0
+"MN","Mai Ndombe",2026-10-09,2026-09-12,"wk inc confirmed cases","province",0
+"MN","Mai Ndombe",2026-10-09,2026-09-19,"wk inc confirmed cases","province",0
+"MN","Mai Ndombe",2026-10-09,2026-09-26,"wk inc confirmed cases","province",0
+"MN","Mai Ndombe",2026-10-09,2026-10-03,"wk inc confirmed cases","province",0
+"MN","Mai Ndombe",2026-10-09,2026-10-10,"wk inc confirmed cases","province",0
+"MA","Maniema",2026-10-09,2026-02-14,"wk inc confirmed cases","province",0
+"MA","Maniema",2026-10-09,2026-02-21,"wk inc confirmed cases","province",0
+"MA","Maniema",2026-10-09,2026-02-28,"wk inc confirmed cases","province",0
+"MA","Maniema",2026-10-09,2026-03-07,"wk inc confirmed cases","province",0
+"MA","Maniema",2026-10-09,2026-03-14,"wk inc confirmed cases","province",0
+"MA","Maniema",2026-10-09,2026-03-21,"wk inc confirmed cases","province",0
+"MA","Maniema",2026-10-09,2026-03-28,"wk inc confirmed cases","province",0
+"MA","Maniema",2026-10-09,2026-04-04,"wk inc confirmed cases","province",0
+"MA","Maniema",2026-10-09,2026-04-11,"wk inc confirmed cases","province",0
+"MA","Maniema",2026-10-09,2026-04-18,"wk inc confirmed cases","province",0
+"MA","Maniema",2026-10-09,2026-04-25,"wk inc confirmed cases","province",0
+"MA","Maniema",2026-10-09,2026-05-02,"wk inc confirmed cases","province",0
+"MA","Maniema",2026-10-09,2026-05-09,"wk inc confirmed cases","province",0
+"MA","Maniema",2026-10-09,2026-05-16,"wk inc confirmed cases","province",0
+"MA","Maniema",2026-10-09,2026-05-23,"wk inc confirmed cases","province",0
+"MA","Maniema",2026-10-09,2026-05-30,"wk inc confirmed cases","province",0
+"MA","Maniema",2026-10-09,2026-06-06,"wk inc confirmed cases","province",0
+"MA","Maniema",2026-10-09,2026-06-13,"wk inc confirmed cases","province",0
+"MA","Maniema",2026-10-09,2026-06-20,"wk inc confirmed cases","province",0
+"MA","Maniema",2026-10-09,2026-06-27,"wk inc confirmed cases","province",0
+"MA","Maniema",2026-10-09,2026-07-04,"wk inc confirmed cases","province",0
+"MA","Maniema",2026-10-09,2026-07-11,"wk inc confirmed cases","province",0
+"MA","Maniema",2026-10-09,2026-07-18,"wk inc confirmed cases","province",0
+"MA","Maniema",2026-10-09,2026-07-25,"wk inc confirmed cases","province",0
+"MA","Maniema",2026-10-09,2026-08-01,"wk inc confirmed cases","province",0
+"MA","Maniema",2026-10-09,2026-08-08,"wk inc confirmed cases","province",0
+"MA","Maniema",2026-10-09,2026-08-15,"wk inc confirmed cases","province",0
+"MA","Maniema",2026-10-09,2026-08-22,"wk inc confirmed cases","province",0
+"MA","Maniema",2026-10-09,2026-08-29,"wk inc confirmed cases","province",0
+"MA","Maniema",2026-10-09,2026-09-05,"wk inc confirmed cases","province",0
+"MA","Maniema",2026-10-09,2026-09-12,"wk inc confirmed cases","province",0
+"MA","Maniema",2026-10-09,2026-09-19,"wk inc confirmed cases","province",0
+"MA","Maniema",2026-10-09,2026-09-26,"wk inc confirmed cases","province",0
+"MA","Maniema",2026-10-09,2026-10-03,"wk inc confirmed cases","province",0
+"MA","Maniema",2026-10-09,2026-10-10,"wk inc confirmed cases","province",0
+"MO","Mongala",2026-10-09,2026-02-14,"wk inc confirmed cases","province",0
+"MO","Mongala",2026-10-09,2026-02-21,"wk inc confirmed cases","province",0
+"MO","Mongala",2026-10-09,2026-02-28,"wk inc confirmed cases","province",0
+"MO","Mongala",2026-10-09,2026-03-07,"wk inc confirmed cases","province",0
+"MO","Mongala",2026-10-09,2026-03-14,"wk inc confirmed cases","province",0
+"MO","Mongala",2026-10-09,2026-03-21,"wk inc confirmed cases","province",0
+"MO","Mongala",2026-10-09,2026-03-28,"wk inc confirmed cases","province",0
+"MO","Mongala",2026-10-09,2026-04-04,"wk inc confirmed cases","province",0
+"MO","Mongala",2026-10-09,2026-04-11,"wk inc confirmed cases","province",0
+"MO","Mongala",2026-10-09,2026-04-18,"wk inc confirmed cases","province",0
+"MO","Mongala",2026-10-09,2026-04-25,"wk inc confirmed cases","province",0
+"MO","Mongala",2026-10-09,2026-05-02,"wk inc confirmed cases","province",0
+"MO","Mongala",2026-10-09,2026-05-09,"wk inc confirmed cases","province",0
+"MO","Mongala",2026-10-09,2026-05-16,"wk inc confirmed cases","province",0
+"MO","Mongala",2026-10-09,2026-05-23,"wk inc confirmed cases","province",0
+"MO","Mongala",2026-10-09,2026-05-30,"wk inc confirmed cases","province",0
+"MO","Mongala",2026-10-09,2026-06-06,"wk inc confirmed cases","province",0
+"MO","Mongala",2026-10-09,2026-06-13,"wk inc confirmed cases","province",0
+"MO","Mongala",2026-10-09,2026-06-20,"wk inc confirmed cases","province",0
+"MO","Mongala",2026-10-09,2026-06-27,"wk inc confirmed cases","province",0
+"MO","Mongala",2026-10-09,2026-07-04,"wk inc confirmed cases","province",0
+"MO","Mongala",2026-10-09,2026-07-11,"wk inc confirmed cases","province",0
+"MO","Mongala",2026-10-09,2026-07-18,"wk inc confirmed cases","province",0
+"MO","Mongala",2026-10-09,2026-07-25,"wk inc confirmed cases","province",0
+"MO","Mongala",2026-10-09,2026-08-01,"wk inc confirmed cases","province",0
+"MO","Mongala",2026-10-09,2026-08-08,"wk inc confirmed cases","province",0
+"MO","Mongala",2026-10-09,2026-08-15,"wk inc confirmed cases","province",0
+"MO","Mongala",2026-10-09,2026-08-22,"wk inc confirmed cases","province",0
+"MO","Mongala",2026-10-09,2026-08-29,"wk inc confirmed cases","province",0
+"MO","Mongala",2026-10-09,2026-09-05,"wk inc confirmed cases","province",0
+"MO","Mongala",2026-10-09,2026-09-12,"wk inc confirmed cases","province",0
+"MO","Mongala",2026-10-09,2026-09-19,"wk inc confirmed cases","province",0
+"MO","Mongala",2026-10-09,2026-09-26,"wk inc confirmed cases","province",0
+"MO","Mongala",2026-10-09,2026-10-03,"wk inc confirmed cases","province",0
+"MO","Mongala",2026-10-09,2026-10-10,"wk inc confirmed cases","province",0
+"NK","Nord Kivu",2026-10-09,2026-02-14,"wk inc confirmed cases","province",0
+"NK","Nord Kivu",2026-10-09,2026-02-21,"wk inc confirmed cases","province",0
+"NK","Nord Kivu",2026-10-09,2026-02-28,"wk inc confirmed cases","province",0
+"NK","Nord Kivu",2026-10-09,2026-03-07,"wk inc confirmed cases","province",0
+"NK","Nord Kivu",2026-10-09,2026-03-14,"wk inc confirmed cases","province",0
+"NK","Nord Kivu",2026-10-09,2026-03-21,"wk inc confirmed cases","province",0
+"NK","Nord Kivu",2026-10-09,2026-03-28,"wk inc confirmed cases","province",0
+"NK","Nord Kivu",2026-10-09,2026-04-04,"wk inc confirmed cases","province",0
+"NK","Nord Kivu",2026-10-09,2026-04-11,"wk inc confirmed cases","province",0
+"NK","Nord Kivu",2026-10-09,2026-04-18,"wk inc confirmed cases","province",0
+"NK","Nord Kivu",2026-10-09,2026-04-25,"wk inc confirmed cases","province",0
+"NK","Nord Kivu",2026-10-09,2026-05-02,"wk inc confirmed cases","province",3
+"NK","Nord Kivu",2026-10-09,2026-05-09,"wk inc confirmed cases","province",6
+"NK","Nord Kivu",2026-10-09,2026-05-16,"wk inc confirmed cases","province",4
+"NK","Nord Kivu",2026-10-09,2026-05-23,"wk inc confirmed cases","province",13
+"NK","Nord Kivu",2026-10-09,2026-05-30,"wk inc confirmed cases","province",15
+"NK","Nord Kivu",2026-10-09,2026-06-06,"wk inc confirmed cases","province",21
+"NK","Nord Kivu",2026-10-09,2026-06-13,"wk inc confirmed cases","province",32
+"NK","Nord Kivu",2026-10-09,2026-06-20,"wk inc confirmed cases","province",41
+"NK","Nord Kivu",2026-10-09,2026-06-27,"wk inc confirmed cases","province",31
+"NK","Nord Kivu",2026-10-09,2026-07-04,"wk inc confirmed cases","province",37
+"NK","Nord Kivu",2026-10-09,2026-07-11,"wk inc confirmed cases","province",57
+"NK","Nord Kivu",2026-10-09,2026-07-18,"wk inc confirmed cases","province",86
+"NK","Nord Kivu",2026-10-09,2026-07-25,"wk inc confirmed cases","province",91
+"NK","Nord Kivu",2026-10-09,2026-08-01,"wk inc confirmed cases","province",120
+"NK","Nord Kivu",2026-10-09,2026-08-08,"wk inc confirmed cases","province",85
+"NK","Nord Kivu",2026-10-09,2026-08-15,"wk inc confirmed cases","province",141
+"NK","Nord Kivu",2026-10-09,2026-08-22,"wk inc confirmed cases","province",139
+"NK","Nord Kivu",2026-10-09,2026-08-29,"wk inc confirmed cases","province",160
+"NK","Nord Kivu",2026-10-09,2026-09-05,"wk inc confirmed cases","province",210
+"NK","Nord Kivu",2026-10-09,2026-09-12,"wk inc confirmed cases","province",191
+"NK","Nord Kivu",2026-10-09,2026-09-19,"wk inc confirmed cases","province",147
+"NK","Nord Kivu",2026-10-09,2026-09-26,"wk inc confirmed cases","province",122
+"NK","Nord Kivu",2026-10-09,2026-10-03,"wk inc confirmed cases","province",123
+"NK","Nord Kivu",2026-10-09,2026-10-10,"wk inc confirmed cases","province",11
+"NU","Nord Ubangi",2026-10-09,2026-02-14,"wk inc confirmed cases","province",0
+"NU","Nord Ubangi",2026-10-09,2026-02-21,"wk inc confirmed cases","province",0
+"NU","Nord Ubangi",2026-10-09,2026-02-28,"wk inc confirmed cases","province",0
+"NU","Nord Ubangi",2026-10-09,2026-03-07,"wk inc confirmed cases","province",0
+"NU","Nord Ubangi",2026-10-09,2026-03-14,"wk inc confirmed cases","province",0
+"NU","Nord Ubangi",2026-10-09,2026-03-21,"wk inc confirmed cases","province",0
+"NU","Nord Ubangi",2026-10-09,2026-03-28,"wk inc confirmed cases","province",0
+"NU","Nord Ubangi",2026-10-09,2026-04-04,"wk inc confirmed cases","province",0
+"NU","Nord Ubangi",2026-10-09,2026-04-11,"wk inc confirmed cases","province",0
+"NU","Nord Ubangi",2026-10-09,2026-04-18,"wk inc confirmed cases","province",0
+"NU","Nord Ubangi",2026-10-09,2026-04-25,"wk inc confirmed cases","province",0
+"NU","Nord Ubangi",2026-10-09,2026-05-02,"wk inc confirmed cases","province",0
+"NU","Nord Ubangi",2026-10-09,2026-05-09,"wk inc confirmed cases","province",0
+"NU","Nord Ubangi",2026-10-09,2026-05-16,"wk inc confirmed cases","province",0
+"NU","Nord Ubangi",2026-10-09,2026-05-23,"wk inc confirmed cases","province",0
+"NU","Nord Ubangi",2026-10-09,2026-05-30,"wk inc confirmed cases","province",0
+"NU","Nord Ubangi",2026-10-09,2026-06-06,"wk inc confirmed cases","province",0
+"NU","Nord Ubangi",2026-10-09,2026-06-13,"wk inc confirmed cases","province",0
+"NU","Nord Ubangi",2026-10-09,2026-06-20,"wk inc confirmed cases","province",0
+"NU","Nord Ubangi",2026-10-09,2026-06-27,"wk inc confirmed cases","province",0
+"NU","Nord Ubangi",2026-10-09,2026-07-04,"wk inc confirmed cases","province",0
+"NU","Nord Ubangi",2026-10-09,2026-07-11,"wk inc confirmed cases","province",0
+"NU","Nord Ubangi",2026-10-09,2026-07-18,"wk inc confirmed cases","province",0
+"NU","Nord Ubangi",2026-10-09,2026-07-25,"wk inc confirmed cases","province",0
+"NU","Nord Ubangi",2026-10-09,2026-08-01,"wk inc confirmed cases","province",0
+"NU","Nord Ubangi",2026-10-09,2026-08-08,"wk inc confirmed cases","province",0
+"NU","Nord Ubangi",2026-10-09,2026-08-15,"wk inc confirmed cases","province",0
+"NU","Nord Ubangi",2026-10-09,2026-08-22,"wk inc confirmed cases","province",0
+"NU","Nord Ubangi",2026-10-09,2026-08-29,"wk inc confirmed cases","province",0
+"NU","Nord Ubangi",2026-10-09,2026-09-05,"wk inc confirmed cases","province",0
+"NU","Nord Ubangi",2026-10-09,2026-09-12,"wk inc confirmed cases","province",0
+"NU","Nord Ubangi",2026-10-09,2026-09-19,"wk inc confirmed cases","province",0
+"NU","Nord Ubangi",2026-10-09,2026-09-26,"wk inc confirmed cases","province",0
+"NU","Nord Ubangi",2026-10-09,2026-10-03,"wk inc confirmed cases","province",0
+"NU","Nord Ubangi",2026-10-09,2026-10-10,"wk inc confirmed cases","province",0
+"SA","Sankuru",2026-10-09,2026-02-14,"wk inc confirmed cases","province",0
+"SA","Sankuru",2026-10-09,2026-02-21,"wk inc confirmed cases","province",0
+"SA","Sankuru",2026-10-09,2026-02-28,"wk inc confirmed cases","province",0
+"SA","Sankuru",2026-10-09,2026-03-07,"wk inc confirmed cases","province",0
+"SA","Sankuru",2026-10-09,2026-03-14,"wk inc confirmed cases","province",0
+"SA","Sankuru",2026-10-09,2026-03-21,"wk inc confirmed cases","province",0
+"SA","Sankuru",2026-10-09,2026-03-28,"wk inc confirmed cases","province",0
+"SA","Sankuru",2026-10-09,2026-04-04,"wk inc confirmed cases","province",0
+"SA","Sankuru",2026-10-09,2026-04-11,"wk inc confirmed cases","province",0
+"SA","Sankuru",2026-10-09,2026-04-18,"wk inc confirmed cases","province",0
+"SA","Sankuru",2026-10-09,2026-04-25,"wk inc confirmed cases","province",0
+"SA","Sankuru",2026-10-09,2026-05-02,"wk inc confirmed cases","province",0
+"SA","Sankuru",2026-10-09,2026-05-09,"wk inc confirmed cases","province",0
+"SA","Sankuru",2026-10-09,2026-05-16,"wk inc confirmed cases","province",0
+"SA","Sankuru",2026-10-09,2026-05-23,"wk inc confirmed cases","province",0
+"SA","Sankuru",2026-10-09,2026-05-30,"wk inc confirmed cases","province",0
+"SA","Sankuru",2026-10-09,2026-06-06,"wk inc confirmed cases","province",0
+"SA","Sankuru",2026-10-09,2026-06-13,"wk inc confirmed cases","province",0
+"SA","Sankuru",2026-10-09,2026-06-20,"wk inc confirmed cases","province",0
+"SA","Sankuru",2026-10-09,2026-06-27,"wk inc confirmed cases","province",0
+"SA","Sankuru",2026-10-09,2026-07-04,"wk inc confirmed cases","province",0
+"SA","Sankuru",2026-10-09,2026-07-11,"wk inc confirmed cases","province",0
+"SA","Sankuru",2026-10-09,2026-07-18,"wk inc confirmed cases","province",0
+"SA","Sankuru",2026-10-09,2026-07-25,"wk inc confirmed cases","province",0
+"SA","Sankuru",2026-10-09,2026-08-01,"wk inc confirmed cases","province",0
+"SA","Sankuru",2026-10-09,2026-08-08,"wk inc confirmed cases","province",0
+"SA","Sankuru",2026-10-09,2026-08-15,"wk inc confirmed cases","province",0
+"SA","Sankuru",2026-10-09,2026-08-22,"wk inc confirmed cases","province",0
+"SA","Sankuru",2026-10-09,2026-08-29,"wk inc confirmed cases","province",0
+"SA","Sankuru",2026-10-09,2026-09-05,"wk inc confirmed cases","province",0
+"SA","Sankuru",2026-10-09,2026-09-12,"wk inc confirmed cases","province",0
+"SA","Sankuru",2026-10-09,2026-09-19,"wk inc confirmed cases","province",0
+"SA","Sankuru",2026-10-09,2026-09-26,"wk inc confirmed cases","province",0
+"SA","Sankuru",2026-10-09,2026-10-03,"wk inc confirmed cases","province",0
+"SA","Sankuru",2026-10-09,2026-10-10,"wk inc confirmed cases","province",0
+"SK","Sud Kivu",2026-10-09,2026-02-14,"wk inc confirmed cases","province",0
+"SK","Sud Kivu",2026-10-09,2026-02-21,"wk inc confirmed cases","province",0
+"SK","Sud Kivu",2026-10-09,2026-02-28,"wk inc confirmed cases","province",0
+"SK","Sud Kivu",2026-10-09,2026-03-07,"wk inc confirmed cases","province",0
+"SK","Sud Kivu",2026-10-09,2026-03-14,"wk inc confirmed cases","province",0
+"SK","Sud Kivu",2026-10-09,2026-03-21,"wk inc confirmed cases","province",0
+"SK","Sud Kivu",2026-10-09,2026-03-28,"wk inc confirmed cases","province",0
+"SK","Sud Kivu",2026-10-09,2026-04-04,"wk inc confirmed cases","province",0
+"SK","Sud Kivu",2026-10-09,2026-04-11,"wk inc confirmed cases","province",0
+"SK","Sud Kivu",2026-10-09,2026-04-18,"wk inc confirmed cases","province",0
+"SK","Sud Kivu",2026-10-09,2026-04-25,"wk inc confirmed cases","province",1
+"SK","Sud Kivu",2026-10-09,2026-05-02,"wk inc confirmed cases","province",0
+"SK","Sud Kivu",2026-10-09,2026-05-09,"wk inc confirmed cases","province",0
+"SK","Sud Kivu",2026-10-09,2026-05-16,"wk inc confirmed cases","province",0
+"SK","Sud Kivu",2026-10-09,2026-05-23,"wk inc confirmed cases","province",2
+"SK","Sud Kivu",2026-10-09,2026-05-30,"wk inc confirmed cases","province",0
+"SK","Sud Kivu",2026-10-09,2026-06-06,"wk inc confirmed cases","province",0
+"SK","Sud Kivu",2026-10-09,2026-06-13,"wk inc confirmed cases","province",0
+"SK","Sud Kivu",2026-10-09,2026-06-20,"wk inc confirmed cases","province",0
+"SK","Sud Kivu",2026-10-09,2026-06-27,"wk inc confirmed cases","province",0
+"SK","Sud Kivu",2026-10-09,2026-07-04,"wk inc confirmed cases","province",0
+"SK","Sud Kivu",2026-10-09,2026-07-11,"wk inc confirmed cases","province",0
+"SK","Sud Kivu",2026-10-09,2026-07-18,"wk inc confirmed cases","province",0
+"SK","Sud Kivu",2026-10-09,2026-07-25,"wk inc confirmed cases","province",0
+"SK","Sud Kivu",2026-10-09,2026-08-01,"wk inc confirmed cases","province",0
+"SK","Sud Kivu",2026-10-09,2026-08-08,"wk inc confirmed cases","province",0
+"SK","Sud Kivu",2026-10-09,2026-08-15,"wk inc confirmed cases","province",0
+"SK","Sud Kivu",2026-10-09,2026-08-22,"wk inc confirmed cases","province",0
+"SK","Sud Kivu",2026-10-09,2026-08-29,"wk inc confirmed cases","province",0
+"SK","Sud Kivu",2026-10-09,2026-09-05,"wk inc confirmed cases","province",0
+"SK","Sud Kivu",2026-10-09,2026-09-12,"wk inc confirmed cases","province",0
+"SK","Sud Kivu",2026-10-09,2026-09-19,"wk inc confirmed cases","province",0
+"SK","Sud Kivu",2026-10-09,2026-09-26,"wk inc confirmed cases","province",0
+"SK","Sud Kivu",2026-10-09,2026-10-03,"wk inc confirmed cases","province",0
+"SK","Sud Kivu",2026-10-09,2026-10-10,"wk inc confirmed cases","province",0
+"SU","Sud Ubangi",2026-10-09,2026-02-14,"wk inc confirmed cases","province",0
+"SU","Sud Ubangi",2026-10-09,2026-02-21,"wk inc confirmed cases","province",0
+"SU","Sud Ubangi",2026-10-09,2026-02-28,"wk inc confirmed cases","province",0
+"SU","Sud Ubangi",2026-10-09,2026-03-07,"wk inc confirmed cases","province",0
+"SU","Sud Ubangi",2026-10-09,2026-03-14,"wk inc confirmed cases","province",0
+"SU","Sud Ubangi",2026-10-09,2026-03-21,"wk inc confirmed cases","province",0
+"SU","Sud Ubangi",2026-10-09,2026-03-28,"wk inc confirmed cases","province",0
+"SU","Sud Ubangi",2026-10-09,2026-04-04,"wk inc confirmed cases","province",0
+"SU","Sud Ubangi",2026-10-09,2026-04-11,"wk inc confirmed cases","province",0
+"SU","Sud Ubangi",2026-10-09,2026-04-18,"wk inc confirmed cases","province",0
+"SU","Sud Ubangi",2026-10-09,2026-04-25,"wk inc confirmed cases","province",0
+"SU","Sud Ubangi",2026-10-09,2026-05-02,"wk inc confirmed cases","province",0
+"SU","Sud Ubangi",2026-10-09,2026-05-09,"wk inc confirmed cases","province",0
+"SU","Sud Ubangi",2026-10-09,2026-05-16,"wk inc confirmed cases","province",0
+"SU","Sud Ubangi",2026-10-09,2026-05-23,"wk inc confirmed cases","province",0
+"SU","Sud Ubangi",2026-10-09,2026-05-30,"wk inc confirmed cases","province",0
+"SU","Sud Ubangi",2026-10-09,2026-06-06,"wk inc confirmed cases","province",0
+"SU","Sud Ubangi",2026-10-09,2026-06-13,"wk inc confirmed cases","province",0
+"SU","Sud Ubangi",2026-10-09,2026-06-20,"wk inc confirmed cases","province",0
+"SU","Sud Ubangi",2026-10-09,2026-06-27,"wk inc confirmed cases","province",0
+"SU","Sud Ubangi",2026-10-09,2026-07-04,"wk inc confirmed cases","province",0
+"SU","Sud Ubangi",2026-10-09,2026-07-11,"wk inc confirmed cases","province",0
+"SU","Sud Ubangi",2026-10-09,2026-07-18,"wk inc confirmed cases","province",0
+"SU","Sud Ubangi",2026-10-09,2026-07-25,"wk inc confirmed cases","province",0
+"SU","Sud Ubangi",2026-10-09,2026-08-01,"wk inc confirmed cases","province",0
+"SU","Sud Ubangi",2026-10-09,2026-08-08,"wk inc confirmed cases","province",0
+"SU","Sud Ubangi",2026-10-09,2026-08-15,"wk inc confirmed cases","province",0
+"SU","Sud Ubangi",2026-10-09,2026-08-22,"wk inc confirmed cases","province",0
+"SU","Sud Ubangi",2026-10-09,2026-08-29,"wk inc confirmed cases","province",0
+"SU","Sud Ubangi",2026-10-09,2026-09-05,"wk inc confirmed cases","province",0
+"SU","Sud Ubangi",2026-10-09,2026-09-12,"wk inc confirmed cases","province",0
+"SU","Sud Ubangi",2026-10-09,2026-09-19,"wk inc confirmed cases","province",0
+"SU","Sud Ubangi",2026-10-09,2026-09-26,"wk inc confirmed cases","province",0
+"SU","Sud Ubangi",2026-10-09,2026-10-03,"wk inc confirmed cases","province",0
+"SU","Sud Ubangi",2026-10-09,2026-10-10,"wk inc confirmed cases","province",0
+"TA","Tanganyika",2026-10-09,2026-02-14,"wk inc confirmed cases","province",0
+"TA","Tanganyika",2026-10-09,2026-02-21,"wk inc confirmed cases","province",0
+"TA","Tanganyika",2026-10-09,2026-02-28,"wk inc confirmed cases","province",0
+"TA","Tanganyika",2026-10-09,2026-03-07,"wk inc confirmed cases","province",0
+"TA","Tanganyika",2026-10-09,2026-03-14,"wk inc confirmed cases","province",0
+"TA","Tanganyika",2026-10-09,2026-03-21,"wk inc confirmed cases","province",0
+"TA","Tanganyika",2026-10-09,2026-03-28,"wk inc confirmed cases","province",0
+"TA","Tanganyika",2026-10-09,2026-04-04,"wk inc confirmed cases","province",0
+"TA","Tanganyika",2026-10-09,2026-04-11,"wk inc confirmed cases","province",0
+"TA","Tanganyika",2026-10-09,2026-04-18,"wk inc confirmed cases","province",0
+"TA","Tanganyika",2026-10-09,2026-04-25,"wk inc confirmed cases","province",0
+"TA","Tanganyika",2026-10-09,2026-05-02,"wk inc confirmed cases","province",0
+"TA","Tanganyika",2026-10-09,2026-05-09,"wk inc confirmed cases","province",0
+"TA","Tanganyika",2026-10-09,2026-05-16,"wk inc confirmed cases","province",0
+"TA","Tanganyika",2026-10-09,2026-05-23,"wk inc confirmed cases","province",0
+"TA","Tanganyika",2026-10-09,2026-05-30,"wk inc confirmed cases","province",0
+"TA","Tanganyika",2026-10-09,2026-06-06,"wk inc confirmed cases","province",0
+"TA","Tanganyika",2026-10-09,2026-06-13,"wk inc confirmed cases","province",0
+"TA","Tanganyika",2026-10-09,2026-06-20,"wk inc confirmed cases","province",0
+"TA","Tanganyika",2026-10-09,2026-06-27,"wk inc confirmed cases","province",0
+"TA","Tanganyika",2026-10-09,2026-07-04,"wk inc confirmed cases","province",0
+"TA","Tanganyika",2026-10-09,2026-07-11,"wk inc confirmed cases","province",0
+"TA","Tanganyika",2026-10-09,2026-07-18,"wk inc confirmed cases","province",0
+"TA","Tanganyika",2026-10-09,2026-07-25,"wk inc confirmed cases","province",0
+"TA","Tanganyika",2026-10-09,2026-08-01,"wk inc confirmed cases","province",0
+"TA","Tanganyika",2026-10-09,2026-08-08,"wk inc confirmed cases","province",0
+"TA","Tanganyika",2026-10-09,2026-08-15,"wk inc confirmed cases","province",0
+"TA","Tanganyika",2026-10-09,2026-08-22,"wk inc confirmed cases","province",0
+"TA","Tanganyika",2026-10-09,2026-08-29,"wk inc confirmed cases","province",0
+"TA","Tanganyika",2026-10-09,2026-09-05,"wk inc confirmed cases","province",0
+"TA","Tanganyika",2026-10-09,2026-09-12,"wk inc confirmed cases","province",0
+"TA","Tanganyika",2026-10-09,2026-09-19,"wk inc confirmed cases","province",0
+"TA","Tanganyika",2026-10-09,2026-09-26,"wk inc confirmed cases","province",0
+"TA","Tanganyika",2026-10-09,2026-10-03,"wk inc confirmed cases","province",0
+"TA","Tanganyika",2026-10-09,2026-10-10,"wk inc confirmed cases","province",0
+"TO","Tshopo",2026-10-09,2026-02-14,"wk inc confirmed cases","province",0
+"TO","Tshopo",2026-10-09,2026-02-21,"wk inc confirmed cases","province",0
+"TO","Tshopo",2026-10-09,2026-02-28,"wk inc confirmed cases","province",0
+"TO","Tshopo",2026-10-09,2026-03-07,"wk inc confirmed cases","province",0
+"TO","Tshopo",2026-10-09,2026-03-14,"wk inc confirmed cases","province",0
+"TO","Tshopo",2026-10-09,2026-03-21,"wk inc confirmed cases","province",0
+"TO","Tshopo",2026-10-09,2026-03-28,"wk inc confirmed cases","province",0
+"TO","Tshopo",2026-10-09,2026-04-04,"wk inc confirmed cases","province",0
+"TO","Tshopo",2026-10-09,2026-04-11,"wk inc confirmed cases","province",0
+"TO","Tshopo",2026-10-09,2026-04-18,"wk inc confirmed cases","province",0
+"TO","Tshopo",2026-10-09,2026-04-25,"wk inc confirmed cases","province",0
+"TO","Tshopo",2026-10-09,2026-05-02,"wk inc confirmed cases","province",0
+"TO","Tshopo",2026-10-09,2026-05-09,"wk inc confirmed cases","province",0
+"TO","Tshopo",2026-10-09,2026-05-16,"wk inc confirmed cases","province",0
+"TO","Tshopo",2026-10-09,2026-05-23,"wk inc confirmed cases","province",0
+"TO","Tshopo",2026-10-09,2026-05-30,"wk inc confirmed cases","province",0
+"TO","Tshopo",2026-10-09,2026-06-06,"wk inc confirmed cases","province",0
+"TO","Tshopo",2026-10-09,2026-06-13,"wk inc confirmed cases","province",0
+"TO","Tshopo",2026-10-09,2026-06-20,"wk inc confirmed cases","province",0
+"TO","Tshopo",2026-10-09,2026-06-27,"wk inc confirmed cases","province",3
+"TO","Tshopo",2026-10-09,2026-07-04,"wk inc confirmed cases","province",0
+"TO","Tshopo",2026-10-09,2026-07-11,"wk inc confirmed cases","province",1
+"TO","Tshopo",2026-10-09,2026-07-18,"wk inc confirmed cases","province",3
+"TO","Tshopo",2026-10-09,2026-07-25,"wk inc confirmed cases","province",1
+"TO","Tshopo",2026-10-09,2026-08-01,"wk inc confirmed cases","province",2
+"TO","Tshopo",2026-10-09,2026-08-08,"wk inc confirmed cases","province",1
+"TO","Tshopo",2026-10-09,2026-08-15,"wk inc confirmed cases","province",4
+"TO","Tshopo",2026-10-09,2026-08-22,"wk inc confirmed cases","province",4
+"TO","Tshopo",2026-10-09,2026-08-29,"wk inc confirmed cases","province",4
+"TO","Tshopo",2026-10-09,2026-09-05,"wk inc confirmed cases","province",6
+"TO","Tshopo",2026-10-09,2026-09-12,"wk inc confirmed cases","province",8
+"TO","Tshopo",2026-10-09,2026-09-19,"wk inc confirmed cases","province",6
+"TO","Tshopo",2026-10-09,2026-09-26,"wk inc confirmed cases","province",2
+"TO","Tshopo",2026-10-09,2026-10-03,"wk inc confirmed cases","province",7
+"TO","Tshopo",2026-10-09,2026-10-10,"wk inc confirmed cases","province",0
+"TU","Tshuapa",2026-10-09,2026-02-14,"wk inc confirmed cases","province",0
+"TU","Tshuapa",2026-10-09,2026-02-21,"wk inc confirmed cases","province",0
+"TU","Tshuapa",2026-10-09,2026-02-28,"wk inc confirmed cases","province",0
+"TU","Tshuapa",2026-10-09,2026-03-07,"wk inc confirmed cases","province",0
+"TU","Tshuapa",2026-10-09,2026-03-14,"wk inc confirmed cases","province",0
+"TU","Tshuapa",2026-10-09,2026-03-21,"wk inc confirmed cases","province",0
+"TU","Tshuapa",2026-10-09,2026-03-28,"wk inc confirmed cases","province",0
+"TU","Tshuapa",2026-10-09,2026-04-04,"wk inc confirmed cases","province",0
+"TU","Tshuapa",2026-10-09,2026-04-11,"wk inc confirmed cases","province",0
+"TU","Tshuapa",2026-10-09,2026-04-18,"wk inc confirmed cases","province",0
+"TU","Tshuapa",2026-10-09,2026-04-25,"wk inc confirmed cases","province",0
+"TU","Tshuapa",2026-10-09,2026-05-02,"wk inc confirmed cases","province",0
+"TU","Tshuapa",2026-10-09,2026-05-09,"wk inc confirmed cases","province",0
+"TU","Tshuapa",2026-10-09,2026-05-16,"wk inc confirmed cases","province",0
+"TU","Tshuapa",2026-10-09,2026-05-23,"wk inc confirmed cases","province",0
+"TU","Tshuapa",2026-10-09,2026-05-30,"wk inc confirmed cases","province",0
+"TU","Tshuapa",2026-10-09,2026-06-06,"wk inc confirmed cases","province",0
+"TU","Tshuapa",2026-10-09,2026-06-13,"wk inc confirmed cases","province",0
+"TU","Tshuapa",2026-10-09,2026-06-20,"wk inc confirmed cases","province",0
+"TU","Tshuapa",2026-10-09,2026-06-27,"wk inc confirmed cases","province",0
+"TU","Tshuapa",2026-10-09,2026-07-04,"wk inc confirmed cases","province",0
+"TU","Tshuapa",2026-10-09,2026-07-11,"wk inc confirmed cases","province",0
+"TU","Tshuapa",2026-10-09,2026-07-18,"wk inc confirmed cases","province",0
+"TU","Tshuapa",2026-10-09,2026-07-25,"wk inc confirmed cases","province",0
+"TU","Tshuapa",2026-10-09,2026-08-01,"wk inc confirmed cases","province",0
+"TU","Tshuapa",2026-10-09,2026-08-08,"wk inc confirmed cases","province",0
+"TU","Tshuapa",2026-10-09,2026-08-15,"wk inc confirmed cases","province",0
+"TU","Tshuapa",2026-10-09,2026-08-22,"wk inc confirmed cases","province",0
+"TU","Tshuapa",2026-10-09,2026-08-29,"wk inc confirmed cases","province",0
+"TU","Tshuapa",2026-10-09,2026-09-05,"wk inc confirmed cases","province",0
+"TU","Tshuapa",2026-10-09,2026-09-12,"wk inc confirmed cases","province",0
+"TU","Tshuapa",2026-10-09,2026-09-19,"wk inc confirmed cases","province",0
+"TU","Tshuapa",2026-10-09,2026-09-26,"wk inc confirmed cases","province",0
+"TU","Tshuapa",2026-10-09,2026-10-03,"wk inc confirmed cases","province",0
+"TU","Tshuapa",2026-10-09,2026-10-10,"wk inc confirmed cases","province",0
