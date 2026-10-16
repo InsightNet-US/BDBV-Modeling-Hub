@@ -6,7 +6,7 @@ The target data file, `time-series.csv` has the following columns:
 - `location_name`: the full name of the province. The mapping between province code and province name can also be found in `auxiliary-data/locations.csv`.
 - `location-type`: the administrative unit corresponding to the given 'location'
 - `as_of`: the date the data was released. As new versions of the data become available each week it will be appended to `time-series.csv` such that each unique value of `as_of` corresponds to a single data release made on that date.
-- `target_end_date`: the last day of the epi week.
+- `target_end_date`: the last day of the epi week in which the case experienced symptom onset.
 -  `target`: the submission target corresponding to the given observation.
   - `wk inc confirmed cases` gives the incident confirmed cases with **symptom onset** in the given epi week. These values include cases for which the symptom onset date was imputed using the observed reporting delay distribution (see `auxiliary-data/` for more information about observed reporting delays).
 - `observation`: the observed value.
