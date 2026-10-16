@@ -140,7 +140,7 @@
     },
     {
       "round_id_from_variable": true,
-      "round_id": "forecast_round",
+      "round_id": "reference_date",
       "round_name": "BDBV 2026 nowcasting and forecasting",
       "model_tasks": [
         {
@@ -156,10 +156,6 @@
             "target": {
               "required": null,
               "optional": ["wk inc confirmed cases"]
-            },
-            "forecast_round": {
-              "required": null,
-              "optional": ["weekly_20261031"]
             },
             "target_end_date": {
               "required": null,
