@@ -23,9 +23,10 @@ The `auxiliary-data/` directory contains additional data which may be of use to 
 
 **Weekly Province-Level Reporting Delays**
 
-`weekly-reporting-delays-asof-YYYY-MM-DD.csv` gives the observed reporting delays by week of symptom onset at the province level. The date in the file name indicates the version of the line list the reporting delay information was extracted from and corresponds to the `as_of` date in the auxiliary health zone data and target data. The file contains the following columns:
+`weekly-reporting-delays-by-province.csv` gives the observed reporting delays by week of symptom onset at the province level. The file contains the following columns:
 
 - `location`: a two letter code indicating province.
 - `location_name`: the full name of the province. The mapping between province code and province name can also be found in auxiliary-data/locations.csv.
 - `week_ending`: the last day of the epi week in which the case experienced symptom onset.
 - `days_sym_to_report`: the number of days between the day in which the case experienced symptom onset and the day in which the case was reported. A value of zero indicates that the onset of symptoms and report of the case occurred on the same day.
+- `as_of`: the date the data was released.
