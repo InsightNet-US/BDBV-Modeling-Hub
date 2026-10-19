@@ -1,25 +1,24 @@
 # BDBV Modeling Hub
 
-This modeling hub has been built to collect outbreak size estimates of the Bundibugyo (Ebola) virus outbreak in 2026.
+This modeling hub collects nowcasts and short-term forecasts of the 2026 Bundibugyo (Ebola) virus disease outbreak in the Democratic Republic of the Congo. Its first round, now closed, collected estimates of total outbreak size; see [Information on Past Rounds](#information-on-past-rounds).
 
 This repository follows the guidelines and standards outlined by the [hubverse](https://hubverse.io), which provides a set of data formats and open source tools for modeling hubs.
 
+This Hub is a joint effort of [Inisght Net](https://insightnet.us) centers ([ACCIDDA](https://accidda.org) and [epiEngage](https://epiengage.org)) and the [University of Kinshasa](https://www.unikin.ac.cd/).
 
-## Outbreak size
+## Current round: nowcasting and forecasting weekly confirmed cases
 
-As of mid-June 2026, several groups have generated estimates of outbreak size. Not all of these estimates have been for the same exact outcome. For example, some have predicted the total number of infections by a given date. Others have predicted the total number of symptomatic cases.
+Participating teams submit, each week, sample trajectories of the number of confirmed cases by week of symptom onset in each province. Because cases are reported with a delay, recent weeks are incomplete when the data are released, so submissions cover both nowcasts of already-elapsed weeks and forecasts of weeks to come.
 
-## Early estimates
-This hub collects estimates made in May and June prior to the launch of this hub, and standardizes them using [hubverse](https://hubverse.io) data formats. Teams are encouraged to submit their own estimates.
+**Target:** `wk inc confirmed cases`, the number of confirmed cases with symptom onset in a given epi week (Sunday to Saturday). The observed data are in [`target-data/`](target-data/), with supporting data on reporting delays and health zone counts in [`auxiliary-data/`](auxiliary-data/).
 
-**Dates:** 
-Daily submissions (including dates in file names) will be specified in terms of the reference date, which should refer to the date the model estimates were generated. 
+**Locations:** the 26 provinces of the Democratic Republic of the Congo and the full country, identified by two-letter codes listed in [`auxiliary-data/locations.csv`](auxiliary-data/locations.csv).
 
-**Estimation Targets:**
-Participating teams are asked to provide country-level estimates for the cumulative number of symptomatic cases occurring by the reference date.
+**Dates:** each round is identified by a `reference_date`, the Saturday ending the epi week in which estimates are made. Submissions are accepted from Sunday through Tuesday of that week. Each file may cover any epi week from the start of the outbreak through three weeks after the reference date.
 
-**Locations:**
-Upon launch, the hub is collecting estimates for the Democratic Republic of the Congo (ISO code `CD`) only. Other locations may be added later.
+**Output:** 100 sample trajectories per province. Full details and an example file are in the [model-output README](model-output/README.md), and the exact task configuration is in [`hub-config/tasks.json`](hub-config/tasks.json).
+
+**How to submit:** register a model by adding a metadata file to [`model-metadata/`](model-metadata/), then submit each week's file to [`model-output/`](model-output/) by pull request. Automated validation runs on every pull request. Sync your fork with this repository before each submission, since the target data and the accepted dates in `hub-config/tasks.json` change weekly.
 
 
 ## Accessing BVBD data on the cloud
@@ -29,6 +28,7 @@ To ensure greater access to the data created by and submitted to this hub, real-
 - hub-config
 - model-metadata
 - model-output
+- target-data
 
 GitHub remains the primary interface for operating the hub and collecting forecasts from modelers. However, the mirrors of hub files on S3 are the most convenient way to access hub data without using git/GitHub or cloning the entire hub to your local machine.
 
@@ -107,27 +107,11 @@ bucket_name <- "bdbv-modeling-hub"
 hub_bucket <- s3_bucket(bucket_name)
 hub_con <- hubData::connect_hub(hub_bucket, file_format = "parquet", skip_checks = TRUE)
 hub_con %>%
-  dplyr::filter(reference_date == as.Date("2026-06-13"), output_type == "quantile") %>%
+  dplyr::filter(target == "wk inc confirmed cases", location == "IT") %>%
   hubData::collect_hub() %>%
-  dplyr::select(reference_date, model_id, target, location, output_type_id, value)
+  dplyr::select(reference_date, model_id, target_end_date, location, output_type_id, value)
 
-# A tibble: 14 × 6
-#    reference_date model_id             target           location output_type_id value
-#    <date>         <chr>                <chr>            <chr>             <dbl> <dbl>
-#  1 2026-06-13     MOBS-GLEAM_BDBV      cumulative cases CD                0.025  291.
-#  2 2026-06-13     MOBS-GLEAM_BDBV      cumulative cases CD                0.1    560.
-#  3 2026-06-13     MOBS-GLEAM_BDBV      cumulative cases CD                0.25  1195.
-#  4 2026-06-13     MOBS-GLEAM_BDBV      cumulative cases CD                0.5   2261 
-#  5 2026-06-13     MOBS-GLEAM_BDBV      cumulative cases CD                0.75  4051.
-#  6 2026-06-13     MOBS-GLEAM_BDBV      cumulative cases CD                0.9   6105.
-#  7 2026-06-13     MOBS-GLEAM_BDBV      cumulative cases CD                0.975 9932.
-#  8 2026-06-13     epiforecasts-renewal cumulative cases CD                0.025 1523 
-#  9 2026-06-13     epiforecasts-renewal cumulative cases CD                0.1   1877 
-# 10 2026-06-13     epiforecasts-renewal cumulative cases CD                0.25  2186 
-# 11 2026-06-13     epiforecasts-renewal cumulative cases CD                0.5   2760 
-# 12 2026-06-13     epiforecasts-renewal cumulative cases CD                0.75  3561 
-# 13 2026-06-13     epiforecasts-renewal cumulative cases CD                0.9   4768 
-# 14 2026-06-13     epiforecasts-renewal cumulative cases CD                0.975 6336 
+# returns one row per model, target end date and sample for Ituri province
 ```
 
 - [full hubData documentation](https://hubverse-org.github.io/hubData/)
@@ -165,7 +149,7 @@ The examples below start by creating a Pyarrow dataset that references the hub f
 
 #### Accessing target data
 
-*Coming soon: directions for accessing Hubverse-formatted target data.*
+Target data are mirrored to `s3://bdbv-modeling-hub/target-data/`. See the AWS command line section below for downloading them, or read `target-data/time-series.csv` directly from this repository.
 
 #### Accessing model output data
 
@@ -198,18 +182,11 @@ s3 = fs.S3FileSystem(access_key=None, secret_key=None, anonymous=True)
 
 # create a Pyarrow dataset that references a team's model-output files
 # and convert it to an in-memory Pyarrow table
-mo = ds.dataset("bdbv-modeling-hub/model-output/epiforecasts-renewal/", filesystem=s3, format="parquet").to_table()
+mo = ds.dataset("bdbv-modeling-hub/model-output/<model_id>/", filesystem=s3, format="parquet").to_table()
 
 # to convert the Pyarrow table to a Pandas dataframe:
 df = mo.to_pandas()
 df.head()
-
-#   model_id             reference_date location target           output_type output_type_id value
-# 0 epiforecasts-renewal 2026-06-13     CD       cumulative cases quantile             0.025  1523
-# 1 epiforecasts-renewal 2026-06-13     CD       cumulative cases quantile             0.1    1877
-# 2 epiforecasts-renewal 2026-06-13     CD       cumulative cases quantile             0.25   2186
-# 3 epiforecasts-renewal 2026-06-13     CD       cumulative cases quantile             0.5    2760
-# 4 epiforecasts-renewal 2026-06-13     CD       cumulative cases quantile             0.75   3561
 ```
 
 - [Full documentation of Pyarrow table API](https://arrow.apache.org/docs/python/generated/pyarrow.Table.html)
@@ -231,19 +208,12 @@ s3 = fs.S3FileSystem(access_key=None, secret_key=None, anonymous=True)
 # and convert it to an in-memory Pyarrow table
 mo = ds.dataset("bdbv-modeling-hub/model-output/", filesystem=s3, format="parquet").to_table(
   filter=(
-    pc.field("target") == "wk inc flu hosp") &
-    pc.equal(pc.field("reference_date"), pa.scalar(datetime(2023, 10, 14), type=pa.date32())))
+    pc.field("target") == "wk inc confirmed cases") &
+    pc.equal(pc.field("reference_date"), pa.scalar(datetime(2026, 10, 31), type=pa.date32())))
 
 # to convert the Pyarrow table to a Pandas dataframe:
 df = mo.to_pandas()
 df.head()
-
-#   model_id             reference_date location target           output_type output_type_id value
-# 0 epiforecasts-renewal 2026-06-13     CD       cumulative cases quantile             0.025 1523 
-# 1 epiforecasts-renewal 2026-06-13     CD       cumulative cases quantile             0.1   1877 
-# 2 epiforecasts-renewal 2026-06-13     CD       cumulative cases quantile             0.25  2186 
-# 3 epiforecasts-renewal 2026-06-13     CD       cumulative cases quantile             0.5   2760 
-# 4 epiforecasts-renewal 2026-06-13     CD       cumulative cases quantile             0.75  3561 
 ```
 
 </details>
@@ -294,7 +264,7 @@ aws s3 cp s3://bdbv-modeling-hub/target-data/ . --recursive --no-sign-request
 Download the model-output files for a specific team:
 
 ```sh
-aws s3 cp s3://bdbv-modeling-hub/model-output/epiforecasts-renewal/ . --recursive --no-sign-request
+aws s3 cp s3://bdbv-modeling-hub/model-output/<model_id>/ . --recursive --no-sign-request
 ```
 
 - [Full documentation for `aws s3 ls`](https://docs.aws.amazon.com/cli/latest/reference/s3/ls.html)
@@ -302,5 +272,13 @@ aws s3 cp s3://bdbv-modeling-hub/model-output/epiforecasts-renewal/ . --recursiv
 
 </details>
 
+## Information on Past Rounds
+
+### Cumulative outbreak size estimates (May to October 2026)
+
+The hub's first round collected country-level estimates of the cumulative number of symptomatic cases that had occurred as of a reference date. It opened with estimates published by several groups in May and June 2026, before the hub launched, which the hub standardized into hubverse format from the published papers and code, and continued with regular submissions through reference date 2026-10-12. Not all early estimates targeted the same outcome; some reported total infections rather than symptomatic cases, and the model metadata files document each model's definition.
+
+Submissions in that round used location `CD` and target `cumulative cases`, with quantile, mean and median output types. The round no longer accepts submissions. Its files remain in `model-output/` and on S3, and its format is described under "Previous rounds" in the [model-output README](model-output/README.md#previous-rounds).
+
 ## Acknowledgments
-This repository follows the guidelines and standards outlined by the [hubverse]([url](https://hubdocs.readthedocs.io/en/latest/)), which provides a set of data formats and open source tools for modeling hubs.
+This hub is built with the data formats and open source tools of the [hubverse](https://docs.hubverse.io/).
