@@ -12,10 +12,9 @@ These instructions provide detail about the [data format](#data-formatting) as w
 *Table of Contents*
 
 -   [Data formatting](#data-formatting)
--   [File format](#Forecast-file-format)
--   [Forecast data validation](#Forecast-validation)
--   [Weekly ensemble build](#Weekly-ensemble-build)
--   [Policy on late submissions](#policy-on-late-or-updated-submissions)
+-   [File format](#file-format)
+-   [Forecast data validation](#forecast-validation)
+-   [Previous rounds](#previous-rounds)
 
 
 ## Data formatting
@@ -62,17 +61,17 @@ where
 -   `team` is the team name, and
 -   `model` is the name of your model.
 
-The date YYYY-MM-DD is the [`reference_date`](#reference_date). This should be the date on which the model estimates were generated, and ideally the day on which the estimates are submitted.
+The date YYYY-MM-DD is the [`reference_date`](#reference_date) of the round being submitted to, i.e. the Saturday ending the epi week in which the nowcast is made (see below). It is not the date the file is created.
 
 The `team` and `model` in this file must match the `team` and `model` in the directory this file is in. Both `team` and `model` should be less than 16 characters, alpha-numeric and underscores only, with no spaces or hyphens.
 
 ## File format
 
-The file must be a comma-separated value (csv) file with the following
-columns (in any order):
+The hub is currently collecting **nowcasts and forecasts of weekly incident confirmed cases by province** (round `BDBV 2026 nowcasting and forecasting` in [`hub-config/tasks.json`](../hub-config/tasks.json)). The file must be a comma-separated value (csv) file with the following columns (in any order):
 
 -   `reference_date`
 -   `target`
+-   `target_end_date`
 -   `location`
 -   `output_type`
 -   `output_type_id`
@@ -80,7 +79,7 @@ columns (in any order):
 
 No additional columns are allowed.
 
-The value in each row of the file is a quantile for a particular combination of location, target and reference_date.
+Each row of the file is the value of expected final number of reported cases for a particular combination of location and target_end_date for one of 100 sample trajectories sampled from the distributions of epidemic trajectories produced by that model. The observed data these estimates are compared against are in the [`target-data/`](../target-data/) folder, and will themselves be updated weekly while the epidemic continues and the hub is still running. The final values in this file after all revisions are the ultimate model target.
 
 ### `reference_date`
 
@@ -88,50 +87,68 @@ Values in the `reference_date` column must be a date in the ISO format
 
     YYYY-MM-DD
 
-This is the date on which the model output was generated. The `reference_date` should be the same as the date in the filename but should be included in the file itself as well to facilitate human readability, validation and analysis.
+The `reference_date` identifies the round. It is a Saturday, the last day of the epi week in which the estimates are made, and must match the date in the filename. The accepted reference dates are listed under the `BDBV 2026 nowcasting and forecasting` round in `hub-config/tasks.json`; a new one is added automatically each week. Submissions for a given `reference_date` are accepted from six to four days before it (Sunday through Tuesday of that week).
 
 ### `target`
 
-Values in the `target` column must be a character (string) and be the string `cumulative cases`. Again, as long as the hub is only collecting estimates for this one target, this value will be the same for all rows in the data, but is required to be present for human readability and validation.
+Values in the `target` column must be the string `wk inc confirmed cases`: the number of confirmed cases with **symptom onset** in the epi week ending on `target_end_date`. This value will be the same for all rows in the file, but is required to be present for human readability and validation. See [`target-data/README.md`](../target-data/README.md) for the definition of the observed target data.
 
+### `target_end_date`
+
+Values in the `target_end_date` column must be a date in the ISO format
+
+    YYYY-MM-DD
+
+and must be a Saturday, the last day of the epi week (Sunday to Saturday) that the row refers to. Estimates may be submitted for any epi week from the start of the outbreak (`2026-02-14`) through three weeks after the `reference_date`, so a single file can contain nowcasts for recent, incompletely reported weeks and short-term forecasts of weeks to come. The full list of accepted values is in `hub-config/tasks.json` and is extended by one week each time a new `reference_date` is added. Teams are not required to submit every `target_end_date`.
 
 ### `location`
 
-The values in the `location` column must be `CD`, the ISO code for the Democratic Republic of the Congo. As models generate output for other locations, they may be added as well. As above, these values are required to be repeated for each row to ensure completeness and ensure that data validation passes.
+Values in the `location` column must be the two-letter code of a province of the Democratic Republic of the Congo, as listed in [`auxiliary-data/locations.csv`](../auxiliary-data/locations.csv):
+
+| code | province | code | province |
+|---|---|---|---|
+| `BU` | Bas Uele | `LO` | Lomami |
+| `EQ` | Equateur | `LU` | Lualaba |
+| `HK` | Haut Katanga | `MN` | Mai Ndombe |
+| `HL` | Haut Lomami | `MA` | Maniema |
+| `HU` | Haut Uele | `MO` | Mongala |
+| `IT` | Ituri | `NU` | Nord Ubangi |
+| `KS` | Kasai | `NK` | Nord Kivu |
+| `KC` | Kasai Central | `SA` | Sankuru |
+| `KE` | Kasai Oriental | `SK` | Sud Kivu |
+| `KN` | Kinshasa | `SU` | Sud Ubangi |
+| `BC` | Kongo Central | `TA` | Tanganyika |
+| `KG` | Kwango | `TO` | Tshopo |
+| `KL` | Kwilu | `TU` | Tshuapa |
+
+Teams are not required to submit every province; any subset may be submitted.
 
 ### `output_type`
 
-Values in the `output_type` column are one of the following
-
--   "quantile"
--   "mean"
--   "median"
-
-This value indicates whether that row corresponds to a probabilistic quantile forecast or a point forecast (mean or median)
+Values in the `output_type` column must be the string `sample`. Only sample-based output is accepted in this round; quantiles, means and medians are not.
 
 ### `output_type_id`
 
-Values in the `output_type_id` column specify identifying information for the output type.
+Values in the `output_type_id` column are integer sample indices. Each file must contain **exactly 100 samples** for every combination of `reference_date`, `location` and `target` that it includes.
 
-#### quantile output
-
-When the predictions are quantiles, values in the `output_type_id` column are a quantile probability level in the format
-
-    0.###
-
-This value indicates the quantile probability level for for the `value` in this row.
-
-Teams must provide the following 7 quantiles:
-
-    0.025, 0.1, 0.25, 0.5, 0.75, 0.90, 0.975
-
-#### mean and median output
-
-For mean and median output type values, the value in the `output_type_id` column should be `"NA"`.
+The sample index identifies a trajectory: a given `output_type_id` for a given `location` must appear once for every `target_end_date` submitted for that location, and those rows together are one joint draw from the model's predictive distribution across weeks. In other words, for each location the file contains 100 complete trajectories, each covering the same set of `target_end_date`s. Sample indices may be reused across locations (for example `1` to `100` within each province) or be unique across the whole file; either is valid.
 
 ### `value`
 
-Values in the `value` column are non-negative numbers indicating the "quantile", "mean" or "median" prediction for this row. For a "quantile" prediction, `value` is the inverse of the cumulative distribution function (CDF) for the target, location, and quantile associated with that row. For example, the 2.5 and 97.5 quantiles for a given target and location should capture 95% of the predicted values and correspond to the central 95% Prediction Interval.
+Values in the `value` column are non-negative numbers giving the sampled weekly count of confirmed cases for that trajectory, location and `target_end_date`.
+
+### Example
+
+The first rows of a valid file `model-output/team-model/2026-10-31-team-model.csv` might look like
+
+    reference_date,target,target_end_date,location,output_type,output_type_id,value
+    2026-10-31,wk inc confirmed cases,2026-10-10,IT,sample,1,209
+    2026-10-31,wk inc confirmed cases,2026-10-17,IT,sample,1,215
+    2026-10-31,wk inc confirmed cases,2026-10-24,IT,sample,1,190
+    2026-10-31,wk inc confirmed cases,2026-10-31,IT,sample,1,241
+    2026-10-31,wk inc confirmed cases,2026-11-07,IT,sample,1,253
+    2026-10-31,wk inc confirmed cases,2026-10-10,IT,sample,2,203
+    ...
 
 ## Forecast validation
 
@@ -166,7 +183,7 @@ Optionally, you may validate a forecast file locally before submitting it to the
   library(hubValidations)
   hubValidations::validate_submission(
       hub_path=".",
-      file_path="epiforecasts-renewal/2026-06-13-epiforecasts-renewal.csv"
+      file_path="team-model/2026-10-31-team-model.csv"
   )
   ```
   The function returns the output of each validation check.
@@ -174,11 +191,11 @@ Optionally, you may validate a forecast file locally before submitting it to the
   If all is well, all checks should either be prefixed with a `✓` indicating success or `ℹ` indicating a check was skipped, e.g.:
   ```
   ✓ FluSight-forecast-hub: All hub config files are valid.
-  ✓ 2026-06-13-epiforecasts-renewal.csv: File exists at path model-output/epiforecasts-renewal/2026-06-13-epiforecasts-renewal.csv.
-  ✓ 2026-06-13-epiforecasts-renewal.csv: File name "2026-06-13-epiforecasts-renewal.csv" is valid.
-  ✓ 2026-06-13-epiforecasts-renewal.csv: File directory name matches `model_id` metadata in file name.
-  ✓ 2026-06-13-epiforecasts-renewal.csv: `round_id` is valid.
-  ✓ 2026-06-13-epiforecasts-renewal.csv: File is accepted hub format.
+  ✓ 2026-10-31-team-model.csv: File exists at path model-output/team-model/2026-10-31-team-model.csv.
+  ✓ 2026-10-31-team-model.csv: File name "2026-10-31-team-model.csv" is valid.
+  ✓ 2026-10-31-team-model.csv: File directory name matches `model_id` metadata in file name.
+  ✓ 2026-10-31-team-model.csv: `round_id` is valid.
+  ✓ 2026-10-31-team-model.csv: File is accepted hub format.
   ...
   ```
   
@@ -190,7 +207,7 @@ Optionally, you may validate a forecast file locally before submitting it to the
   
   validations <- validate_submission(
       hub_path = ".",
-      file_path = "epiforecasts-renewal/2026-06-13-epiforecasts-renewal.csv"
+      file_path = "team-model/2026-10-31-team-model.csv"
   )
   
   check_for_errors(validations)
@@ -203,10 +220,27 @@ Optionally, you may validate a forecast file locally before submitting it to the
   If test failures or execution errors are detected, the function throws an error and prints the messages of checks affected. For example, the following output is returned when all other checks have passed but the file is being validated outside the submission time window for the round:
   
   ```r
-  ! 2026-06-20-epiforecasts-renewal.csv: Submission time must be within accepted submission window for round.  Current time
-    2026-06-06 12:23:08 is outside window 2026-06-13 EDT--2026-07-18 23:59:59 EDT.
+  ! 2026-10-31-team-model.csv: Submission time must be within accepted submission window for round.  Current time
+    2026-10-18 12:23:08 is outside window 2026-10-25 WAT--2026-10-27 23:59:59 WAT.
   Error in `check_for_errors()`:
   ! 
   The validation checks produced some failures/errors reported above.
   ```
-  
+
+## Previous rounds
+
+Files from earlier rounds are kept in this folder for archival purposes and remain available through the hub's data access tools. They no longer accept new or updated submissions, and their formats differ from the current round described above.
+
+### Cumulative outbreak size estimates (May to October 2026)
+
+The hub's first round, `BVBD 2026 cumulative outbreak size estimate`, collected estimates of the cumulative number of symptomatic Bundibugyo virus disease cases that had occurred in the Democratic Republic of the Congo as a whole as of the `reference_date`. Estimates were accepted for reference dates from `2026-05-18` to `2026-10-12`. The round included estimates published by several groups in May and June 2026, before the hub launched, which the hub standardized into hubverse format, as well as regular submissions through mid-October. The `reference_date` in that round was the date on which the estimate was generated.
+
+Files in that round have the columns `reference_date`, `target`, `location`, `output_type`, `output_type_id` and `value`, where
+
+-   `target` is always `cumulative cases`,
+-   `location` is always `CD`, the ISO code for the Democratic Republic of the Congo,
+-   `output_type` is `quantile`, `mean` or `median`,
+-   `output_type_id` is the quantile level (`0.025`, `0.1`, `0.25`, `0.5`, `0.75`, `0.9`, `0.975`) for quantile rows and `NA` for mean and median rows, and
+-   `value` is the non-negative estimate.
+
+The configuration for this round is retained in `hub-config/tasks.json` so that the archived files continue to validate and load.
