@@ -16,7 +16,7 @@ The `auxiliary-data/` directory contains additional data which may be of use to 
 - `as_of`: the date the data was released. As new versions of the data become available each week it will be appended to `time-series.csv` such that each unique value of `as_of` corresponds to a single data release made on that date.
 - `target_end_date`: the day of the observation.
 - `target`: the target corresponding to the given observation. In this case it is daily incident confirmed cases (`day inc confirmed cases`).
-- `location': the health zone code.
+- `location`: the health zone code.
 - `location_name`: the name of the health zone.
 - `location-type`: the administrative unit corresponding to the given 'location' (in this case health zone).
 - `observation`: the observed or imputed value.
