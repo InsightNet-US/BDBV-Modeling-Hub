@@ -151,7 +151,7 @@
             },
             "location": {
               "required": null,
-              "optional": ["BU", "EQ", "HK", "HL", "HU", "IT", "KS", "KC", "KE", "KN", "BC", "KG", "KL", "LO", "LU", "MN", "MA", "MO", "NU", "NK", "SA", "SK", "SU", "TA", "TO", "TU"]
+              "optional": ["CD", "BU", "EQ", "HK", "HL", "HU", "IT", "KS", "KC", "KE", "KN", "BC", "KG", "KL", "LO", "LU", "MN", "MA", "MO", "NU", "NK", "SA", "SK", "SU", "TA", "TO", "TU"]
             },
             "target": {
               "required": null,
