@@ -228,7 +228,7 @@
                 "target": "wk inc confirmed cases"
               },
               "target_type": "continuous",
-              "description": "tbd",
+              "description": "Number of laboratory-confirmed Bundibugyo virus disease cases with symptom onset in the epi week (Sunday to Saturday) ending on target_end_date, for the given location. Observed values are the counts in target-data/time-series.csv, which are revised as reporting delays resolve; the final revised values are the target.",
               "is_step_ahead": true,
               "time_unit": "week"
             }

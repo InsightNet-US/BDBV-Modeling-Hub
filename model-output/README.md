@@ -67,7 +67,7 @@ The `team` and `model` in this file must match the `team` and `model` in the dir
 
 ## File format
 
-The hub is currently collecting **nowcasts and forecasts of weekly incident confirmed cases by province** (round `BDBV 2026 nowcasting and forecasting` in [`hub-config/tasks.json`](../hub-config/tasks.json)). The file must be a comma-separated value (csv) file with the following columns (in any order):
+The hub is currently collecting **nowcasts and forecasts of weekly incident confirmed cases by location (country, province or health zone)** (round `BDBV 2026 nowcasting and forecasting` in [`hub-config/tasks.json`](../hub-config/tasks.json)). The file must be a comma-separated value (csv) file with the following columns (in any order):
 
 -   `reference_date`
 -   `target`
@@ -103,25 +103,29 @@ and must be a Saturday, the last day of the epi week (Sunday to Saturday) that t
 
 ### `location`
 
-Values in the `location` column must be the two-letter code of a province of the Democratic Republic of the Congo, as listed in [`auxiliary-data/locations.csv`](../auxiliary-data/locations.csv):
+Values in the `location` column must be a location code listed in [`auxiliary-data/locations.csv`](../auxiliary-data/locations.csv). Three levels are accepted:
+
+-   `CD` for the Democratic Republic of the Congo as a whole,
+-   `CD-XX` for a province, where `XX` is the two-letter province code in the table below, and
+-   `CD-XX-NN` for a health zone, where `NN` is the two-digit health zone number within province `XX` (for example `CD-IT-22`); the full list of health zone codes is in `locations.csv` and [`auxiliary-data/health-zone-code-mapping.csv`](../auxiliary-data/health-zone-code-mapping.csv).
 
 | code | province | code | province |
 |---|---|---|---|
-| `BU` | Bas Uele | `LO` | Lomami |
-| `EQ` | Equateur | `LU` | Lualaba |
-| `HK` | Haut Katanga | `MN` | Mai Ndombe |
-| `HL` | Haut Lomami | `MA` | Maniema |
-| `HU` | Haut Uele | `MO` | Mongala |
-| `IT` | Ituri | `NU` | Nord Ubangi |
-| `KS` | Kasai | `NK` | Nord Kivu |
-| `KC` | Kasai Central | `SA` | Sankuru |
-| `KE` | Kasai Oriental | `SK` | Sud Kivu |
-| `KN` | Kinshasa | `SU` | Sud Ubangi |
-| `BC` | Kongo Central | `TA` | Tanganyika |
-| `KG` | Kwango | `TO` | Tshopo |
-| `KL` | Kwilu | `TU` | Tshuapa |
+| `CD-BU` | Bas Uele | `CD-LO` | Lomami |
+| `CD-EQ` | Equateur | `CD-LU` | Lualaba |
+| `CD-HK` | Haut Katanga | `CD-MN` | Mai Ndombe |
+| `CD-HL` | Haut Lomami | `CD-MA` | Maniema |
+| `CD-HU` | Haut Uele | `CD-MO` | Mongala |
+| `CD-IT` | Ituri | `CD-NU` | Nord Ubangi |
+| `CD-KS` | Kasai | `CD-NK` | Nord Kivu |
+| `CD-KC` | Kasai Central | `CD-SA` | Sankuru |
+| `CD-KE` | Kasai Oriental | `CD-SK` | Sud Kivu |
+| `CD-KN` | Kinshasa | `CD-SU` | Sud Ubangi |
+| `CD-BC` | Kongo Central | `CD-TA` | Tanganyika |
+| `CD-KG` | Kwango | `CD-TO` | Tshopo |
+| `CD-KL` | Kwilu | `CD-TU` | Tshuapa |
 
-Teams are not required to submit every province; any subset may be submitted.
+Teams are not required to submit every location; any subset of the country, provinces and health zones may be submitted.
 
 ### `output_type`
 
@@ -131,7 +135,7 @@ Values in the `output_type` column must be the string `sample`. Only sample-base
 
 Values in the `output_type_id` column are integer sample indices. Each file must contain **exactly 100 samples** for every combination of `reference_date`, `location` and `target` that it includes.
 
-The sample index identifies a trajectory: a given `output_type_id` for a given `location` must appear once for every `target_end_date` submitted for that location, and those rows together are one joint draw from the model's predictive distribution across weeks. In other words, for each location the file contains 100 complete trajectories, each covering the same set of `target_end_date`s. Sample indices may be reused across locations (for example `1` to `100` within each province) or be unique across the whole file; either is valid.
+The sample index identifies a trajectory: a given `output_type_id` for a given `location` must appear once for every `target_end_date` submitted for that location, and those rows together are one joint draw from the model's predictive distribution across weeks. In other words, for each location the file contains 100 complete trajectories, each covering the same set of `target_end_date`s. Sample indices may be reused across locations (for example `1` to `100` within each location) or be unique across the whole file; either is valid.
 
 ### `value`
 
@@ -142,12 +146,12 @@ Values in the `value` column are non-negative numbers giving the sampled weekly 
 The first rows of a valid file `model-output/team-model/2026-10-31-team-model.csv` might look like
 
     reference_date,target,target_end_date,location,output_type,output_type_id,value
-    2026-10-31,wk inc confirmed cases,2026-10-10,IT,sample,1,209
-    2026-10-31,wk inc confirmed cases,2026-10-17,IT,sample,1,215
-    2026-10-31,wk inc confirmed cases,2026-10-24,IT,sample,1,190
-    2026-10-31,wk inc confirmed cases,2026-10-31,IT,sample,1,241
-    2026-10-31,wk inc confirmed cases,2026-11-07,IT,sample,1,253
-    2026-10-31,wk inc confirmed cases,2026-10-10,IT,sample,2,203
+    2026-10-31,wk inc confirmed cases,2026-10-10,CD-IT,sample,1,209
+    2026-10-31,wk inc confirmed cases,2026-10-17,CD-IT,sample,1,215
+    2026-10-31,wk inc confirmed cases,2026-10-24,CD-IT,sample,1,190
+    2026-10-31,wk inc confirmed cases,2026-10-31,CD-IT,sample,1,241
+    2026-10-31,wk inc confirmed cases,2026-11-07,CD-IT,sample,1,253
+    2026-10-31,wk inc confirmed cases,2026-10-10,CD-IT,sample,2,203
     ...
 
 ## Forecast validation

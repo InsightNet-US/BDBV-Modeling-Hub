@@ -4,7 +4,8 @@ This modeling hub collects nowcasts and short-term forecasts of the 2026 Bundibu
 
 This repository follows the guidelines and standards outlined by the [hubverse](https://hubverse.io), which provides a set of data formats and open source tools for modeling hubs.
 
-This Hub is a joint effort of [Inisght Net](https://insightnet.us) centers ([ACCIDDA](https://accidda.org) and [epiEngage](https://epiengage.org)) and the [University of Kinshasa](https://www.unikin.ac.cd/).
+This Hub is a joint effort of [Insight Net](https://insightnet.us) centers ([ACCIDDA](https://accidda.org) and [epiEngage](https://epiengage.org)), the [University of Kinshasa](https://www.unikin.ac.cd/), and the 
+[Institut National de Santé Publique (INSP)](https://insp.cd/).
 
 ## Current round: nowcasting and forecasting weekly confirmed cases
 
@@ -16,7 +17,7 @@ Participating teams submit, each week, sample trajectories of the number of conf
 
 **Dates:** each round is identified by a `reference_date`, the Saturday ending the epi week in which estimates are made. Submissions are accepted from Sunday through Tuesday of that week. Each file may cover any epi week from the start of the outbreak through three weeks after the reference date.
 
-**Output:** 100 sample trajectories per province. Full details and an example file are in the [model-output README](model-output/README.md), and the exact task configuration is in [`hub-config/tasks.json`](hub-config/tasks.json).
+**Output:** 100 sample trajectories per location. Full details and an example file are in the [model-output README](model-output/README.md), and the exact task configuration is in [`hub-config/tasks.json`](hub-config/tasks.json).
 
 **How to submit:** register a model by adding a metadata file to [`model-metadata/`](model-metadata/), then submit each week's file to [`model-output/`](model-output/) by pull request. Automated validation runs on every pull request. Sync your fork with this repository before each submission, since the target data and the accepted dates in `hub-config/tasks.json` change weekly.
 
