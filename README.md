@@ -8,11 +8,11 @@ This Hub is a joint effort of [Inisght Net](https://insightnet.us) centers ([ACC
 
 ## Current round: nowcasting and forecasting weekly confirmed cases
 
-Participating teams submit, each week, sample trajectories of the number of confirmed cases by week of symptom onset in each province. Because cases are reported with a delay, recent weeks are incomplete when the data are released, so submissions cover both nowcasts of already-elapsed weeks and forecasts of weeks to come.
+Participating teams submit, each week, sample trajectories of the number of confirmed cases by week of symptom onset. Because cases are reported with a delay, recent weeks are incomplete when the data are released, so submissions cover both nowcasts of already-elapsed weeks and forecasts of weeks to come.
 
 **Target:** `wk inc confirmed cases`, the number of confirmed cases with symptom onset in a given epi week (Sunday to Saturday). The observed data are in [`target-data/`](target-data/), with supporting data on reporting delays and health zone counts in [`auxiliary-data/`](auxiliary-data/).
 
-**Locations:** the 26 provinces of the Democratic Republic of the Congo and the full country, identified by two-letter codes listed in [`auxiliary-data/locations.csv`](auxiliary-data/locations.csv).
+**Locations:** the 26 provinces and 519 health zones of the Democratic Republic of the Congo and the full country, identified by the location codes listed in [`auxiliary-data/locations.csv`](auxiliary-data/locations.csv).
 
 **Dates:** each round is identified by a `reference_date`, the Saturday ending the epi week in which estimates are made. Submissions are accepted from Sunday through Tuesday of that week. Each file may cover any epi week from the start of the outbreak through three weeks after the reference date.
 
