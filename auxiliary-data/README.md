@@ -9,16 +9,18 @@ The `auxiliary-data/` directory contains additional data which may be of use to 
 - `location_type`: the administrative unit corresponding to the given location.
 - `parent`: the administrative unit within which the given location resides. For provinces the parent is the whole country (DRC) and for health zones the parent is the province they are within.
 
-**Daily Health Zone-Level Case Counts**
+We also provide the mapping between our location codes for each health zone, the P-Code, and the DHIS2 code in `health-zone-code-mapping.csv`. These codes were obtainted from the [Humanitarian Data Exchange](https://data.humdata.org/dataset/drc-health-data). 
 
-`daily-confirmed-case-by-hz.csv` contains the number of reported cases by the day of symptom onset at the health zone level and whether the date of symptom onset was observed or imputed. It contains the following columns:
+**Daily Case Counts**
+
+`daily-confirmed-case.csv` contains the number of reported cases by the day of symptom onset at the health zone, province, and national level and whether the date of symptom onset was observed or imputed. It contains the following columns:
 
 - `as_of`: the date the data was released. As new versions of the data become available each week it will be appended to `time-series.csv` such that each unique value of `as_of` corresponds to a single data release made on that date.
 - `target_end_date`: the day of the observation.
 - `target`: the target corresponding to the given observation. In this case it is daily incident confirmed cases (`day inc confirmed cases`).
-- `location`: the health zone code.
-- `location_name`: the name of the health zone.
-- `location-type`: the administrative unit corresponding to the given 'location' (in this case health zone).
+- `location`: the location code.
+- `location_name`: the name of the location.
+- `location-type`: the administrative unit corresponding to the given 'location'.
 - `observation`: the observed or imputed value.
 - `imputed`: whether or not the symptom onset date for the observation was directly observed (`FALSE`) or imputed (`TRUE`).
 
