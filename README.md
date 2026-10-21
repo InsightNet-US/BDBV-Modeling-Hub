@@ -11,7 +11,7 @@ This Hub is a joint effort of [Insight Net](https://insightnet.us) centers ([ACC
 
 Participating teams submit, each week, sample trajectories of the number of confirmed cases by week of symptom onset. Because cases are reported with a delay, recent weeks are incomplete when the data are released, so submissions cover both nowcasts of already-elapsed weeks and forecasts of weeks to come.
 
-**Target:** `wk inc confirmed cases`, the number of confirmed cases with symptom onset in a given epi week (Sunday to Saturday). The observed data are in [`target-data/`](target-data/), with supporting data on reporting delays and health zone counts in [`auxiliary-data/`](auxiliary-data/).
+**Target:** `wk inc confirmed cases`, the number of confirmed cases with symptom onset in a given epi week (Sunday to Saturday). The observed data are in [`target-data/`](target-data/), with supporting data on reporting delays and daily health zone counts in [`auxiliary-data/`](auxiliary-data/).
 
 **Locations:** the 26 provinces and 519 health zones of the Democratic Republic of the Congo and the full country, identified by the location codes listed in [`auxiliary-data/locations.csv`](auxiliary-data/locations.csv).
 
