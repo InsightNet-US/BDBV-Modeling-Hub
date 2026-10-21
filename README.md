@@ -21,6 +21,9 @@ Participating teams submit, each week, sample trajectories of the number of conf
 
 **How to submit:** register a model by adding a metadata file to [`model-metadata/`](model-metadata/), then submit each week's file to [`model-output/`](model-output/) by pull request. Automated validation runs on every pull request. Sync your fork with this repository before each submission, since the target data and the accepted dates in `hub-config/tasks.json` change weekly.
 
+## Auxiliary data
+
+The BDBV Modeling Hub also provides auxiliary data that contributing teams may use in their modeling efforts if desired. This includes daily reported case counts by day of symptom onset at various geographic levels, observed delays between symptom onset and reporting by province on a weekly basis, and mappings of hub location codes to other commonly used codes. We also encourage teams to explore the information available at the [DRC Ebola Bundibugyo - Epidemic Intelligence Dashboard](https://inrb-umie.github.io/BDBV2026-Epidemic_Dashboard/).
 
 ## Accessing BVBD data on the cloud
 

@@ -24,6 +24,8 @@ We also provide the mapping between our location codes for each health zone, the
 - `observation`: the observed or imputed value.
 - `imputed`: whether or not the symptom onset date for the observation was directly observed (`FALSE`) or imputed (`TRUE`).
 
+An additional source of daily case counts is the [DRC Ebola Bundibugyo - Epidemic Intelligence Dashboard](https://inrb-umie.github.io/BDBV2026-Epidemic_Dashboard/), which displays daily reported cases at the national, provincial, health zone, and health area levels, as well as information on spatial risk and the public health context.
+
 **Weekly Province-Level Reporting Delays**
 
 `weekly-reporting-delays-by-province.csv` gives the observed reporting delays by week of symptom onset at the province level. The file contains the following columns:
