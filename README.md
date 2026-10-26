@@ -284,5 +284,24 @@ The hub's first round collected country-level estimates of the cumulative number
 
 Submissions in that round used location `CD` and target `cumulative cases`, with quantile, mean and median output types. The round no longer accepts submissions. Its files remain in `model-output/` and on S3, and its format is described under "Previous rounds" in the [model-output README](model-output/README.md#previous-rounds).
 
+## License and attribution
+
+Code in this repository is released under the MIT License. Target data, auxiliary data, hub configuration, and documentation are released under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/). Model outputs are licensed by the contributing teams; see each team's file in [`model-metadata/`](model-metadata/). Full terms are in [LICENSE](LICENSE).
+
+### Citing these data
+
+Use of the target or auxiliary data in any publication, report, dashboard, or derived dataset must credit both the data source and the processing institutions:
+
+> Surveillance data: Institut National de Santé Publique (INSP) and the Incident Management Support Team (IMST), Democratic Republic of the Congo. Processed by the Atlantic Coast Center for Infectious Disease Dynamics and Analytics (ACCIDDA) and the Kinshasa School of Public Health, University of Kinshasa, and distributed through the BDBV Modeling Hub, https://github.com/InsightNet-US/BDBV-Modeling-Hub, accessed YYYY-MM-DD.
+
+If you use model outputs, also cite the contributing team(s) as described in their metadata files.
+
+### Working with the data owners
+
+These data are collected by IMST and INSP during an ongoing outbreak response. If you plan a scientific analysis or publication based on them, we ask that you contact INSP/IMST and the Hub before publication (contacts below). INSP/IMST can advise on known reporting artifacts and pending revisions, and DRC scientists may be able to contribute to and co-author the work. This is a request rather than a condition of the license.
+
+- INSP and IMST: Pierre Akilimali, Head of Research Department of INSP and Deputy Incident Manager
+- BDBV Modeling Hub: Justin Lessler (jlessler@unc.edu) and Claire Smith (cpsmit@unc.edu), or open an [issue](https://github.com/InsightNet-US/BDBV-Modeling-Hub/issues) on this repository
+
 ## Acknowledgments
 This hub is built with the data formats and open source tools of the [hubverse](https://docs.hubverse.io/).
