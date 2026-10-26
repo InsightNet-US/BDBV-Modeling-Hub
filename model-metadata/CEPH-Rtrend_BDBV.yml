@@ -1,0 +1,45 @@
+team_name: "CEPH Lab at Indiana University"
+team_abbr: "CEPH"
+model_name: "Rtrend Bundibugyo (Ebola)"
+model_abbr: "Rtrend_BDBV"
+model_contributors: [
+  {
+    "name": "Claudio Ascione",
+    "affiliation": "Indiana University Bloomington",
+    "email": "cascione@iu.edu",
+    "orcid": "0009-0004-5796-8693"
+  },
+  {
+    "name": "Pablo Valgañón",
+    "affiliation": "Indiana University Bloomington",
+    "email": "pavalga@iu.edu",
+    "orcid": "0000-0003-2547-4547"
+  },
+  {
+    "name": "Shreeya Mhade",
+    "affiliation": "Indiana University Bloomington",
+    "email": "smhade@iu.edu",
+    "orcid": "0000-0002-3050-802X"
+  },
+  {
+    "name": "Cheng Cheng",
+    "affiliation": "Indiana University Bloomington",
+    "email": "cc158@iu.edu",
+    "orcid": "0009-0006-5499-8453"
+  },
+  {
+    "name": "Marco Ajelli",
+    "affiliation": "Indiana University Bloomington",
+    "email": "majelli@iu.edu",
+    "orcid": "0000-0003-1753-4749"
+  }
+]
+license: "CC-BY-4.0"
+model_details:
+  data_inputs: ""
+  methods: ""
+  methods_long: ""
+model_version: "1.0"
+website_url: "https://ceph-lab.github.io/"
+citation: ""
+ensemble_of_hub_models: false
