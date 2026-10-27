@@ -28,6 +28,12 @@ model_contributors: [
     "orcid": "0009-0006-5499-8453"
   },
   {
+    "name": "Maria Litvinova",
+    "affiliation": "Indiana University Bloomington",
+    "email": "malitv@iu.edu",
+    "orcid": "0000-0001-6393-1943"
+  },
+  {
     "name": "Marco Ajelli",
     "affiliation": "Indiana University Bloomington",
     "email": "majelli@iu.edu",
@@ -39,11 +45,9 @@ model_details:
   data_inputs: "Daily incident Bundibugyo hospitalizations and reported delay"
   methods: "A renewal equation method based on Bayesian estimation of Rt from hospitalization data."
   methods_long: "Model forecasts are obtained by using a renewal equation based on the estimated net reproduction number
-   Rt. We apply a lowpass filter to the time series of daily hospitalizations, extracting the main trend. We then 
-   estimate the posterior distribution of Rt based on the filtered data, considering an informed prior on Rt based on 
-   influenza literature. The estimated Rt in the last weeks of available data is used to forecast Rt in the upcoming 
-   weeks, with a drift term proportional to the current incidence. Finally, we use the renewal equation with the 
-   posterior distribution and trend of the estimated Rt in the most recent weeks of influenza data."
+   Rt. We then estimate the posterior distribution of Rt. The estimated Rt in the last weeks of considered data is 
+   used to forecast Rt in the upcoming weeks. Finally, we use the renewal equation with the 
+   posterior distribution and trend of the estimated Rt."
 model_version: "1.0"
 website_url: "https://ceph-lab.github.io/"
 citation: ""
