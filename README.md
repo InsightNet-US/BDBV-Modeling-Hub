@@ -9,7 +9,7 @@ This Hub is a joint effort of [Insight Net](https://insightnet.us) centers ([ACC
 
 ## Current round: nowcasting and forecasting weekly confirmed cases
 
-Participating teams submit, each week, sample trajectories of the number of confirmed cases by week of symptom onset. Because cases are reported with a delay, recent weeks are incomplete when the data are released, so submissions cover both nowcasts of already-elapsed weeks and forecasts of weeks to come.
+Participating teams submit, each week, sample trajectories of the number of confirmed cases by week of symptom onset. Because cases are reported with a delay, recent weeks are incomplete when the data are released, so submissions cover both nowcasts of already-elapsed weeks and forecasts of weeks to come. See the [BDBV Modeling Hub Dashboard](https://insightnet-us.github.io/BDBV-Modeling-Hub-Dashboard/) for visualizations of current round results.
 
 **Target:** `wk inc confirmed cases`, the number of confirmed cases with symptom onset in a given epi week (Sunday to Saturday). The observed data are in [`target-data/`](target-data/), with supporting data on reporting delays and daily health zone counts in [`auxiliary-data/`](auxiliary-data/).
 
