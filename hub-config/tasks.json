@@ -24,7 +24,46 @@
                 "2026-06-23",
                 "2026-06-24",
                 "2026-06-25",
-                "2026-06-26",    "2026-06-28"
+                "2026-06-26",
+                "2026-06-28",
+                "2026-07-04",
+                "2026-07-07",
+                "2026-07-10",
+                "2026-07-11",
+                "2026-07-14",
+                "2026-07-16",
+                "2026-07-17",
+                "2026-07-21",
+                "2026-07-26",
+                "2026-07-27",
+                "2026-07-28",
+                "2026-07-29",
+                "2026-08-02",
+                "2026-08-03",
+                "2026-08-04",
+                "2026-08-05",
+                "2026-08-10",
+                "2026-08-14",
+                "2026-08-17",
+                "2026-08-20",
+                "2026-08-25",
+                "2026-08-27",
+                "2026-09-02",
+                "2026-09-03",
+                "2026-09-04",
+                "2026-09-08",
+                "2026-09-09",
+                "2026-09-14",
+                "2026-09-15",
+                "2026-09-16",
+                "2026-09-21",
+                "2026-09-24",
+                "2026-09-27",
+                "2026-09-29",
+                "2026-09-30",
+                "2026-10-06",
+                "2026-10-08",
+                "2026-10-12"
               ]
             },
             "location": {
@@ -34,9 +73,7 @@
               "optional": null
             },
             "target": {
-              "required": [
-                "cumulative cases"
-              ],
+              "required": ["cumulative cases"],
               "optional": null
             }
           },
@@ -99,6 +136,109 @@
         "relative_to": "reference_date",
         "start": -7,
         "end": 28
+      }
+    },
+    {
+      "round_id_from_variable": true,
+      "round_id": "reference_date",
+      "round_name": "BDBV 2026 nowcasting and forecasting",
+      "model_tasks": [
+        {
+          "task_ids": {
+            "reference_date": {
+              "required": null,
+              "optional": ["2026-10-31"]
+            },
+            "location": {
+              "required": null,
+              "optional": ["CD-MN-05", "CD-KL-04", "CD-SA-06", "CD-KL-21", "CD-IT-22", "CD-LO-05", "CD-IT-24", "CD-KN-31", "CD-TA-11", "CD-KE-16", "CD-IT-16", "CD-NK-30", "CD-NK-11", "CD-BU-07", "CD-SK-19", "CD-LO-11", "CD-KS-07", "CD-HU-13", "CD-IT-25", "CD-KS-02", "CD-NU", "CD-NU-08", "CD-MA-18", "CD-IT-31", "CD-NK-02", "CD-TU-12", "CD-SK-21", "CD-BC-14", "CD-SK-26", "CD-BC-16", "CD-BC-24", "CD-KC-17", "CD-KN-18", "CD-SA-08", "CD-HK-28", "CD-HK-03", "CD-IT", "CD-MA-07", "CD-KS-18", "CD-HK", "CD-BC-21", "CD-KL-16", "CD-KC-19", "CD-KN-19", "CD-TA-10", "CD-HK-08", "CD-MO-01", "CD-IT-30", "CD-EQ-04", "CD-TA-08", "CD-HU-02", "CD-NK-05", "CD-KC-05", "CD-KL-07", "CD-HL-01", "CD-BC-30", "CD-SK-06", "CD-HK-22", "CD-MO-05", "CD-IT-07", "CD-MN-06", "CD-MO-11", "CD-KC-02", "CD-NU-01", "CD-NK-20", "CD-NU-04", "CD-SU-04", "CD-TO-01", "CD-KS-01", "CD-HL-06", "CD-MN-10", "CD-SK-29", "CD-HL-11", "CD-HK-18", "CD-EQ-05", "CD-KE-13", "CD-NK-19", "CD-MN-07", "CD-HU-11", "CD-MA-14", "CD-KG-10", "CD-KS-09", "CD-TU", "CD-SK-03", "CD-TO-12", "CD-KC-06", "CD-KE-08", "CD-KC-10", "CD-MA-10", "CD-HL", "CD-HK-13", "CD-MO-08", "CD-MO-10", "CD-MA-09", "CD-IT-27", "CD-KE-01", "CD-NK-06", "CD-NU-05", "CD-BC-11", "CD-HK-19", "CD-KC-14", "CD-NK-17", "CD-KN-03", "CD-IT-18", "CD-NU-09", "CD-SK-18", "CD-KN-25", "CD-MO-07", "CD-NK-32", "CD-BC-12", "CD-MA-15", "CD-NK-21", "CD-TU-03", "CD-LU", "CD-EQ-12", "CD-KL-23", "CD-KN-15", "CD-HK-17", "CD-KN-06", "CD-KN-30", "CD-BU-03", "CD-SU-02", "CD-BC-02", "CD-BC-15", "CD-SA-07", "CD-BU-05", "CD-IT-36", "CD-HK-20", "CD-KN-32", "CD-TA-06", "CD-KN-22", "CD-IT-01", "CD-LO-01", "CD-HK-14", "CD-HK-25", "CD-SK-10", "CD-IT-21", "CD-KN-28", "CD-BC-05", "CD-BC-28", "CD-MA-12", "CD-KG", "CD-HU-10", "CD-SA-16", "CD-NK", "CD-KC-24", "CD-MN-04", "CD-HK-23", "CD-LO", "CD-HL-16", "CD-BC", "CD-KL", "CD-SA-10", "CD-KL-19", "CD-SK-20", "CD-TO-05", "CD-KL-09", "CD-KL-13", "CD-KS-13", "CD-KG-12", "CD-BC-25", "CD-HK-24", "CD-LU-05", "CD-BC-23", "CD-TO-08", "CD-TO-18", "CD-BC-17", "CD-KC-23", "CD-TO", "CD-MO", "CD-HK-21", "CD-LO-10", "CD-SK-04", "CD-KN-04", "CD-KC-07", "CD-BC-06", "CD-KL-14", "CD-TA-03", "CD-SK-31", "CD-HU-09", "CD-KL-17", "CD-KE-06", "CD-TU-09", "CD-KE-07", "CD-SU-01", "CD-HK-11", "CD-SU-08", "CD-EQ-03", "CD-NK-01", "CD-HL-09", "CD-TO-17", "CD-BC-22", "CD-IT-06", "CD-LO-15", "CD-KL-11", "CD-TO-11", "CD-KE-15", "CD-KG-14", "CD-MN-01", "CD-KC-08", "CD-LO-14", "CD-MN", "CD-SK-08", "CD-KS-12", "CD-HK-09", "CD-MO-12", "CD-KL-03", "CD-KS-03", "CD-EQ-16", "CD-TO-02", "CD-SK-30", "CD-KC", "CD-KS", "CD-SU-03", "CD-KG-11", "CD-MA-11", "CD-HL-07", "CD-IT-28", "CD-KC-22", "CD-HK-07", "CD-KG-01", "CD-SA-02", "CD-HU-08", "CD-NK-25", "CD-NK-04", "CD-KS-16", "CD-NK-22", "CD-KN-26", "CD-NU-02", "CD-MN-09", "CD-KS-10", "CD-BC-13", "CD-HU-03", "CD-IT-19", "CD-NU-06", "CD-LU-03", "CD-TU-05", "CD-TO-07", "CD-KL-12", "CD-SK-23", "CD-LO-02", "CD-KC-21", "CD-SA-11", "CD-HL-15", "CD-KC-15", "CD-SA", "CD-NK-07", "CD-KN-16", "CD-BU-11", "CD-HK-12", "CD-NK-08", "CD-NK-33", "CD-TA-04", "CD-BC-04", "CD-SA-12", "CD-KS-17", "CD-KC-11", "CD-HL-13", "CD-MN-12", "CD-EQ-14", "CD-IT-35", "CD-TA-01", "CD-NK-28", "CD-LU-09", "CD-NU-07", "CD-MO-03", "CD-LO-12", "CD-TO-21", "CD-SK-11", "CD-TO-22", "CD-KN-20", "CD-LU-10", "CD-KN-12", "CD-HK-10", "CD-TO-10", "CD-KS-04", "CD-HL-04", "CD-KG-07", "CD-IT-08", "CD-IT-14", "CD-SK-17", "CD-IT-05", "CD-NK-09", "CD-HK-05", "CD-SU-07", "CD-IT-34", "CD-NK-29", "CD-KC-13", "CD-KL-06", "CD-MN-11", "CD-MO-09", "CD-HK-01", "CD-KL-01", "CD-SK-16", "CD-TO-16", "CD-IT-13", "CD-MN-14", "CD-KC-03", "CD-SA-04", "CD-IT-12", "CD-NK-03", "CD-SU-14", "CD-KL-02", "CD-KL-15", "CD-BU-08", "CD-SK-33", "CD-EQ-13", "CD-LO-06", "CD-LU-01", "CD-BC-10", "CD-LU-02", "CD-EQ-02", "CD-NK-18", "CD-BC-26", "CD-SA-13", "CD-KE-12", "CD-KE-03", "CD-KN-08", "CD-SK-14", "CD-KC-09", "CD-KN-34", "CD-NK-16", "CD-SU-16", "CD-HU-12", "CD-SU-15", "CD-NK-12", "CD-KE-05", "CD-KN-35", "CD-TO-06", "CD-HK-02", "CD-KC-26", "CD-MO-02", "CD-NK-34", "CD-NU-11", "CD-NK-31", "CD-MO-04", "CD-KL-08", "CD-IT-11", "CD-HU-05", "CD-KG-02", "CD-BC-27", "CD-KN-01", "CD-KS-14", "CD-LO-09", "CD-KG-13", "CD-SK-24", "CD-BU-10", "CD-LO-07", "CD-TA-05", "CD-SU-06", "CD-KG-04", "CD-SA-01", "CD-IT-29", "CD-LO-13", "CD-NK-15", "CD-KE-02", "CD-KN-33", "CD-KN-11", "CD-MA", "CD-KC-25", "CD-MN-13", "CD-MA-05", "CD-KL-24", "CD-HL-05", "CD-MA-04", "CD-MA-01", "CD-SU-09", "CD-KC-20", "CD-KE", "CD-NU-10", "CD-BU", "CD-MN-08", "CD-HL-14", "CD-TO-14", "CD-SA-14", "CD-LU-12", "CD-HK-26", "CD-LO-03", "CD-SA-05", "CD-KN-23", "CD-HL-10", "CD-HU", "CD-IT-10", "CD-KG-08", "CD-EQ-18", "CD-KE-04", "CD-KE-11", "CD-MA-13", "CD-SA-15", "CD-TO-20", "CD-KS-06", "CD-TU-07", "CD-TO-19", "CD-SK-12", "CD-TU-01", "CD-TU-10", "CD-BC-09", "CD-MA-16", "CD-EQ-10", "CD-KL-22", "CD-KN", "CD-LO-04", "CD-KN-27", "CD-KN-29", "CD-TA", "CD-KN-02", "CD-HL-02", "CD-LO-08", "CD-BU-01", "CD-BU-06", "CD-MN-02", "CD-NK-26", "CD-MN-03", "CD-SK-34", "CD-TU-11", "CD-HK-16", "CD-KE-18", "CD-BC-20", "CD-TU-08", "CD-TU-04", "CD-TU-06", "CD-EQ-09", "CD-SK-13", "CD-KC-16", "CD-KN-10", "CD-LU-06", "CD-IT-20", "CD-KL-18", "CD-KN-17", "CD-TA-02", "CD-KS-15", "CD-LU-08", "CD-TU-02", "CD-EQ-17", "CD-NK-23", "CD-EQ-07", "CD-KN-24", "CD-SK", "CD-SK-01", "CD-KC-12", "CD-MO-06", "CD-TO-13", "CD-IT-23", "CD-EQ-11", "CD-KL-05", "CD-IT-03", "CD-NU-03", "CD-BC-31", "CD-KN-07", "CD-SK-27", "CD-HL-03", "CD-IT-15", "CD-BC-29", "CD-BU-04", "CD-BU-09", "CD-EQ", "CD-SK-32", "CD-LO-16", "CD-MA-17", "CD-KN-14", "CD-EQ-01", "CD-KG-03", "CD-SK-25", "CD-MA-02", "CD-TA-09", "CD-TO-09", "CD", "CD-SU-05", "CD-NK-13", "CD-IT-02", "CD-KG-06", "CD-SK-28", "CD-TO-15", "CD-KC-18", "CD-HU-07", "CD-SU", "CD-KC-04", "CD-EQ-06", "CD-SK-15", "CD-BU-02", "CD-KN-05", "CD-SK-05", "CD-IT-17", "CD-KG-09", "CD-BC-08", "CD-TO-04", "CD-LU-04", "CD-HU-04", "CD-KS-11", "CD-TO-03", "CD-SA-09", "CD-SK-09", "CD-KE-19", "CD-IT-26", "CD-HL-12", "CD-KE-10", "CD-EQ-08", "CD-KE-14", "CD-KS-05", "CD-KN-09", "CD-KL-20", "CD-LU-11", "CD-SK-07", "CD-IT-32", "CD-MA-06", "CD-NK-14", "CD-SU-11", "CD-LU-07", "CD-MA-08", "CD-IT-33", "CD-HK-27", "CD-LU-13", "CD-KN-21", "CD-KN-13", "CD-HK-04", "CD-HU-01", "CD-NK-24", "CD-BC-07", "CD-KG-05", "CD-SA-03", "CD-HK-15", "CD-KS-08", "CD-KE-09", "CD-BC-01", "CD-BC-19", "CD-IT-04", "CD-SU-12", "CD-SK-22", "CD-NK-10", "CD-IT-09", "CD-HK-06", "CD-MA-03", "CD-KE-17", "CD-KL-10", "CD-TA-07", "CD-KC-01", "CD-TO-23", "CD-SU-10", "CD-SK-02", "CD-BC-18", "CD-BC-03", "CD-HU-06", "CD-HL-08", "CD-NK-27", "CD-SU-13", "CD-EQ-15"]
+            },
+            "target": {
+              "required": null,
+              "optional": ["wk inc confirmed cases"]
+            },
+            "target_end_date": {
+              "required": null,
+              "optional": [
+                  "2026-02-14",
+                  "2026-02-21",
+                  "2026-02-28",
+                  "2026-03-07",
+                  "2026-03-14",
+                  "2026-03-21",
+                  "2026-03-28",
+                  "2026-04-04",
+                  "2026-04-11",
+                  "2026-04-18",
+                  "2026-04-25",
+                  "2026-05-02",
+                  "2026-05-09",
+                  "2026-05-16",
+                  "2026-05-23",
+                  "2026-05-30",
+                  "2026-06-06",
+                  "2026-06-13",
+                  "2026-06-20",
+                  "2026-06-27",
+                  "2026-07-04",
+                  "2026-07-11",
+                  "2026-07-18",
+                  "2026-07-25",
+                  "2026-08-01",
+                  "2026-08-08",
+                  "2026-08-15",
+                  "2026-08-22",
+                  "2026-08-29",
+                  "2026-09-05",
+                  "2026-09-12",
+                  "2026-09-19",
+                  "2026-09-26",
+                  "2026-10-03",
+                  "2026-10-10",
+                  "2026-10-17",
+                  "2026-10-24",
+                  "2026-10-31",
+                  "2026-11-07",
+                  "2026-11-14",
+                  "2026-11-21"
+                ]
+            }
+          },
+          "output_type": {
+            "sample": {
+              "output_type_id_params": {
+                "type": "integer",
+                "min_samples_per_task": 100,
+                "max_samples_per_task": 100,
+                "compound_taskid_set": ["reference_date", "location", "target"]
+              },
+              "value" : {
+                "type": "double",
+                "minimum": 0
+              },
+              "is_required": true
+            }
+          },
+          "target_metadata": [
+            {
+              "target_id": "wk inc confirmed cases",
+              "target_name": "Weekly incident confirmed cases",
+              "target_units": "count",
+              "target_keys": {
+                "target": "wk inc confirmed cases"
+              },
+              "target_type": "continuous",
+              "description": "Number of laboratory-confirmed Bundibugyo virus disease cases with symptom onset in the epi week (Sunday to Saturday) ending on target_end_date, for the given location. Observed values are the counts in target-data/time-series.csv, which are revised as reporting delays resolve; the final revised values are the target.",
+              "is_step_ahead": true,
+              "time_unit": "week"
+            }
+          ]
+        }
+      ],
+      "submissions_due": {
+        "relative_to": "reference_date",
+        "start": -6,
+        "end": -4
       }
     }
   ]
