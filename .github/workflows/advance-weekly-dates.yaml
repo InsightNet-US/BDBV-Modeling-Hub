@@ -19,37 +19,17 @@ concurrency:
 jobs:
   propose-dates:
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v5
         with:
           ref: main
 
-      - uses: r-lib/actions/setup-r@v2
-        with:
-          extra-repositories: https://hubverse-org.r-universe.dev
-          use-public-rspm: true
-
-      - uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          packages: |
-            any::hubAdmin
-            any::jsonlite
-
       - name: Append next dates
         id: dates
-        run: Rscript src/advance-weekly-dates.R
+        run: python3 src/advance-weekly-dates.py
 
-      - name: Validate the proposed tasks.json file
-        shell: Rscript {0}
-        run: |
-          results <- hubAdmin::validate_hub_config(".")
-          print(results)
-          if (!isTRUE(all(unlist(results)))) {
-            hubAdmin::view_config_val_errors(results)
-            stop("Proposed hub configuration is invalid; no PR will be opened.")
-          }
-
+      # Full hub validation runs on this PR via validate-config.yaml.
       - name: PR for human review
         uses: peter-evans/create-pull-request@v8
         with:
@@ -66,3 +46,5 @@ jobs:
             - `target_end_date`: `${{ steps.dates.outputs.target_end_date }}`
 
             Each new date is automatically created as seven days after the last date in each list.
+
+            Full hub configuration validation runs on this PR. Review and merge only after it passes.
