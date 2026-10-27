@@ -53,7 +53,7 @@ jobs:
       - name: PR for human review
         uses: peter-evans/create-pull-request@v8
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.WEEKLY_DATE_ADVANCE_PAT }}
           base: main
           branch: auto/weekly-date-advance
           add-paths: hub-config/tasks.json
