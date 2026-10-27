@@ -1,0 +1,26 @@
+team_name: "Atlantic Coast Center for Infectious Disease Dynamics and Analytics"
+team_abbr: "ACCIDDA"
+model_name: "Chromantis"
+model_abbr: "Chromantis"
+model_version: "0.1"
+model_contributors: [
+  {
+    "name": "Joseph Lemaitre",
+    "affiliation": "University of North Carolina at Chapel Hill",
+    "email": "jo.lemaitresamra@gmail.com"
+  },
+  {
+    "name": "Justin Lessler",
+    "affiliation": "University of North Carolina at Chapel Hill",
+    "email": "jlessler@unc.edu"
+  }
+]
+website_url: "https://github.com/ACCIDDA/chromantis"
+repo_url: "https://github.com/ACCIDDA/chromantis"
+license: "CC-BY-4.0"
+team_funding: "J.L. and J.C.L. disclose support from the Insight Net cooperative agreement CDC-RFA-FT-23-0069 from the CDC's Center for Forecasting and Outbreak Analytics."
+model_details:
+  data_inputs: "Hub target data (weekly confirmed cases by onset week, all releases); weekly cases by district or health zone from the 2014-15 West Africa (ebov/space-time) and 2018-20 Kivu (andersen-lab, WHO situation reports) Ebola outbreaks."
+  methods: "Negative binomial nowcast of recent weeks, then an ensemble of neural networks trained on past Ebola outbreaks."
+  methods_long: "Recent onset weeks are nowcast for each health zone with a negative binomial model of the cases added between consecutive hub releases, fitted on the October releases. Provinces and the country are sums of health zones. The forecast is an ensemble of three neural network configurations with four seeds each, trained on weekly cases from the 2014-15 West Africa outbreak, the 2018-20 Kivu outbreak and BDBV through 19 September, and selected on held-out periods of all three outbreaks. Each network uses the last six weeks of cases and samples joint four-week trajectories. Future weeks are reconciled so that health zones sum to provinces and provinces to the country. Only health zones with at least one reported case are forecast."
+ensemble_of_hub_models: false
