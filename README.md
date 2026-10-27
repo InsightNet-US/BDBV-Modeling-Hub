@@ -4,8 +4,7 @@ This modeling hub collects nowcasts and short-term forecasts of the 2026 Bundibu
 
 This repository follows the guidelines and standards outlined by the [hubverse](https://hubverse.io), which provides a set of data formats and open source tools for modeling hubs.
 
-This Hub is a joint effort of [Insight Net](https://insightnet.us) centers ([ACCIDDA](https://accidda.org) and [epiEngage](https://epiengage.org)), the [University of Kinshasa](https://www.unikin.ac.cd/), and the 
-[Institut National de Santé Publique (INSP)](https://insp.cd/).
+This Hub is a joint effort of [Insight Net](https://insightnet.us) centers ([ACCIDDA](https://accidda.org) and [epiEngage](https://epiengage.org)), the [School of Public Health of the University of Kinshasa](https://espkinshasa.net/), and the [Institut National de Santé Publique (INSP)](https://insp.cd/).
 
 ## Current round: nowcasting and forecasting weekly confirmed cases
 
