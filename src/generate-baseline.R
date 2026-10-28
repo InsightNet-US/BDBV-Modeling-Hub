@@ -1,4 +1,4 @@
-# CDC flatline fitting plus direct trajectory output for the BDBV hub.
+# CDC baseline fitting with constant sample trajectories for the BDBV hub.
 source("src/hub-model-utils.R")
 
 fit_cdc_baseline <- function(training, seed) {
@@ -13,23 +13,17 @@ fit_cdc_baseline <- function(training, seed) {
   }))
 }
 
-simulate_cdc_paths <- function(residuals, point, n_paths = 100L) {
-  # Same residual-CDF interpolation, symmetrization, propagation and boundary
-  # treatment as CDC's quantile routine, retaining rows instead of quantiles.
-  increments <- as.numeric(stats::quantile(
+make_flat_paths <- function(residuals, point, n_paths = 100L) {
+  # Use the full historical residual distribution for spread, symmetrized
+  # around the uncorrected horizon -1 observation. Perturb each sample once;
+  # repeat its nonnegative level across horizons 0 through 3.
+  perturbations <- as.numeric(stats::quantile(
     c(residuals, -residuals), probs = (0:(n_paths - 1L)) / (n_paths - 1L),
     na.rm = TRUE, names = FALSE
   ))
-  paths <- matrix(NA_real_, nrow = n_paths, ncol = 4L)
-  accumulated <- pmax(0, point + increments)
-  paths[, 1L] <- accumulated
-  for (week in 2:4) {
-    increments <- sample(increments, length(increments), replace = FALSE)
-    accumulated <- accumulated + increments
-    paths[, week] <- pmax(0, accumulated - (stats::median(accumulated) - point))
-  }
-  # Relabel whole paths, without sorting each week's values into common ranks.
-  paths[sample.int(n_paths), , drop = FALSE]
+  levels <- pmax(0, point + perturbations)
+  levels <- levels[sample.int(n_paths)]
+  matrix(rep(levels, times = 4L), nrow = n_paths, ncol = 4L)
 }
 
 format_cdc_baseline <- function(fit, training, reference_date, target) {
@@ -43,7 +37,7 @@ format_cdc_baseline <- function(fit, training, reference_date, target) {
     ]
     stopifnot(length(observed) == 1L)
     residual_values <- residuals$.resid[residuals$geo_value == location]
-    paths <- simulate_cdc_paths(residual_values, observed)
+    paths <- make_flat_paths(residual_values, observed)
     samples[[length(samples) + 1L]] <- data.frame(
       reference_date = reference_date, target = target,
       target_end_date = rep(format(ref + 7L * (0:3), "%Y-%m-%d"), each = 100L),
