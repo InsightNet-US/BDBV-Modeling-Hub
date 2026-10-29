@@ -5,7 +5,7 @@ fit_cdc_baseline <- function(training, seed) {
   training$time_value <- as.Date(training$time_value)
   training <- training[order(training$geo_value, training$time_value), ]
   args <- epipredict::cdc_baseline_args_list(
-    aheads = 1:4, nsims = 100L, quantile_levels = .5, n_training = Inf
+    aheads = 1:6, nsims = 100L, quantile_levels = .5, n_training = Inf
   )
   epi <- epiprocess::as_epi_df(training)
   withr::with_rng_version("4.0.0", withr::with_seed(seed, {
@@ -15,20 +15,20 @@ fit_cdc_baseline <- function(training, seed) {
 
 make_flat_paths <- function(residuals, point, n_paths = 100L) {
   # Use the full historical residual distribution for spread, symmetrized
-  # around the uncorrected horizon -1 observation. Perturb each sample once;
-  # repeat its nonnegative level across horizons 0 through 3.
+  # around the uncorrected horizon -3 observation. Perturb each sample once;
+  # repeat its nonnegative level across horizons -2 through 3.
   perturbations <- as.numeric(stats::quantile(
     c(residuals, -residuals), probs = (0:(n_paths - 1L)) / (n_paths - 1L),
     na.rm = TRUE, names = FALSE
   ))
   levels <- pmax(0, point + perturbations)
   levels <- levels[sample.int(n_paths)]
-  matrix(rep(levels, times = 4L), nrow = n_paths, ncol = 4L)
+  matrix(rep(levels, times = 6L), nrow = n_paths, ncol = 6L)
 }
 
 format_cdc_baseline <- function(fit, training, reference_date, target) {
   ref <- as.Date(reference_date)
-  anchor <- ref - 7L
+  anchor <- ref - 21L
   samples <- list()
   residuals <- workflows::extract_fit_parsnip(fit$epi_workflow)$fit$residuals
   for (location in sort(unique(training$geo_value))) {
@@ -40,9 +40,9 @@ format_cdc_baseline <- function(fit, training, reference_date, target) {
     paths <- make_flat_paths(residual_values, observed)
     samples[[length(samples) + 1L]] <- data.frame(
       reference_date = reference_date, target = target,
-      target_end_date = rep(format(ref + 7L * (0:3), "%Y-%m-%d"), each = 100L),
+      target_end_date = rep(format(ref + 7L * (-2:3), "%Y-%m-%d"), each = 100L),
       location = location, output_type = "sample",
-      output_type_id = rep(1:100, times = 4L), value = as.vector(paths)
+      output_type_id = rep(1:100, times = 6L), value = as.vector(paths)
     )
   }
   do.call(rbind, samples)
@@ -57,16 +57,16 @@ generate_hub_baseline <- function(hub_path = ".", reference_date = "latest",
   data <- data[data$target == task$target & data$as_of <= cutoff, ]
   if (!nrow(data)) stop("No target data available by the run/reference date")
   vintage <- max(data$as_of)
-  anchor <- task$reference_date - 7L
-  dates <- format(task$reference_date + 7L * (0:3), "%Y-%m-%d")
-  if (!all(dates %in% task$dates)) stop("Configure all baseline target dates for horizons 0 through 3")
+  anchor <- task$reference_date - 21L
+  dates <- format(task$reference_date + 7L * (-2:3), "%Y-%m-%d")
+  if (!all(dates %in% task$dates)) stop("Configure all baseline target dates for horizons -2 through 3")
   data <- data[data$as_of == vintage & data$location %in% task$locations &
                  data$target_end_date <= as.character(anchor), ]
   eligible <- unique(data$location[data$target_end_date == as.character(anchor)])
   omitted <- setdiff(unique(data$location), eligible)
-  if (length(omitted)) message("Omitting locations missing the preceding week's observation: ", paste(omitted, collapse = ", "))
+  if (length(omitted)) message("Omitting locations missing the horizon -3 observation: ", paste(omitted, collapse = ", "))
   data <- data[data$location %in% eligible, ]
-  if (!nrow(data)) stop("Target data must contain the preceding week's observation")
+  if (!nrow(data)) stop("Target data must contain the horizon -3 observation")
   if (anyDuplicated(data[c("location", "target_end_date")])) stop("Duplicate target observations")
   values <- suppressWarnings(as.numeric(data$observation))
   if (any(!is.finite(values)) || any(values < 0)) stop("Invalid target observations")
