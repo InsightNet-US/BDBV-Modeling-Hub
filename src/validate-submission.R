@@ -61,8 +61,8 @@ prepare_output <- function(file, validation_hub, base_sha, today, hub_timezone) 
     stop(file, ": forecast_date must have exactly one unique value across the entire file",
          call. = FALSE)
   }
-  if (forecast[1] != today) {
-    stop(file, ": forecast_date must match today's date in ", hub_timezone,
+  if (abs(as.integer(forecast[1] - today)) > 1L) {
+    stop(file, ": forecast_date must be within one day of today's date in ", hub_timezone,
          " (", format(today, "%Y-%m-%d"), "); found ", tbl$forecast_date[1],
          call. = FALSE)
   }
