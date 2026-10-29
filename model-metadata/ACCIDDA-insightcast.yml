@@ -1,7 +1,7 @@
 team_name: "Atlantic Coast Center for Infectious Disease Dynamics and Analytics"
 team_abbr: "ACCIDDA"
 model_name: "insight.cast"
-model_abbr: "insight.cast"
+model_abbr: "insightcast"
 model_version: "0.1"
 model_contributors: [
   {
