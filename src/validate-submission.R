@@ -43,7 +43,7 @@ check_existing_forecast_dates <- function(file, forecast_dates, base_sha) {
 }
 
 # output/failures
-prepare_output <- function(file, validation_hub, base_sha) {
+prepare_output <- function(file, validation_hub, base_sha, today, hub_timezone) {
   if (!startsWith(file, "model-output/") || any(strsplit(file, "/", fixed = TRUE)[[1]] == "..")) {
     stop("Invalid model output path: ", file)
   }
@@ -59,6 +59,11 @@ prepare_output <- function(file, validation_hub, base_sha) {
   forecast <- parse_dates(tbl$forecast_date, "forecast_date", file)
   if (length(unique(forecast)) != 1L) {
     stop(file, ": forecast_date must have exactly one unique value across the entire file",
+         call. = FALSE)
+  }
+  if (forecast[1] != today) {
+    stop(file, ": forecast_date must match today's date in ", hub_timezone,
+         " (", format(today, "%Y-%m-%d"), "); found ", tbl$forecast_date[1],
          call. = FALSE)
   }
   if (!"reference_date" %in% names(tbl)) stop(file, ": missing reference_date")
@@ -100,7 +105,13 @@ for (directory in c("hub-config", "model-metadata", "auxiliary-data", "target-da
   }
 }
 dir.create(file.path(validation_hub, "model-output"))
-for (file in outputs) prepare_output(file, validation_hub, base_sha)
+hub_timezone <- jsonlite::fromJSON("hub-config/admin.json")$timezone
+if (length(hub_timezone) != 1L || !hub_timezone %in% OlsonNames()) {
+  stop("hub-config/admin.json must specify a valid timezone to determine today's date.")
+}
+# Capture today once so all files use the same date even if the run crosses midnight.
+today <- as.Date(format(Sys.time(), tz = hub_timezone, format = "%Y-%m-%d"))
+for (file in outputs) prepare_output(file, validation_hub, base_sha, today, hub_timezone)
 
 # standard hubverse validations
 v <- hubValidations::validate_pr(

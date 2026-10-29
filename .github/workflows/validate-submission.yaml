@@ -42,6 +42,7 @@ jobs:
             any::hubValidations
             any::sessioninfo
             any::gh
+            any::jsonlite
 
       - name: Run validations
         env:
