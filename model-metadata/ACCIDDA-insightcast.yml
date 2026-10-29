@@ -1,0 +1,25 @@
+team_name: "Atlantic Coast Center for Infectious Disease Dynamics and Analytics"
+team_abbr: "ACCIDDA"
+model_name: "insight.cast"
+model_abbr: "insight.cast"
+model_version: "0.1"
+model_contributors: [
+  {
+    "name": "Shaun Truelove",
+    "affiliation": "Johns Hopkins University",
+    "email": "shauntruelove@jhu.edu"
+  },
+  {
+    "name": "Cyril Geismar",
+    "affiliation": "Johns Hopkins University",
+    "email": "c.geismar21@imperial.ac.uk"
+  }
+]
+website_url: "https://accidda.github.io/insight.cast/"
+repo_url: "https://github.com/ACCIDDA/insight.cast"
+license: "CC-BY-4.0"
+model_details:
+  data_inputs: "Hub target data (weekly confirmed cases by week of symptom onset, release available at the submission deadline) and the hub's case-level onset-to-report delays by province."
+  methods: "Delay- and revision-based nowcast of recent onset weeks, then a per-location equal-weight pool of the 5 insight.cast models with the lowest WIS at rolling origins."
+  methods_long: "Recent onset weeks are nowcast from the hub's onset-to-report delays: the delay distribution is estimated from fully observed onset weeks (by province where there are at least 300 cases, nationally otherwise), shifted by a release lag fitted to how counts were revised between releases, and used to compute each week's expected share of cases already reported. Because counts keep rising for several weeks beyond what the delays imply, that share is multiplied by a revision factor for the week's age, learned from consecutive recent releases. Unreported cases are drawn from a negative binomial, with bootstrap uncertainty in the delays and the revision factors. For each location (the country and provinces and health zones with recent cases), insight.cast candidate models (ETS and ARIMA variants, neural network autoregression and pretrained time-series foundation models Chronos, TimesFM and Sundial) are fit to the nowcast-corrected weekly series, scored by weighted interval score on 4-week-ahead forecasts at 6 rolling weekly origins ending 3 weeks before the latest data, and the five lowest-scoring models are pooled with equal weights. Before pooling, trajectories of each model's forecast that exceed 10 times the largest nowcast median of the last 4 weeks are dropped and the model's quantiles recomputed. Forecast uncertainty from the nowcast is carried by refitting on its 25th and 75th percentiles and pooling. Submissions cover nowcasts of the five onset weeks before the reference week and forecasts of the reference week and the three following weeks. Each sample trajectory runs through all nine weeks: each week's value is drawn from its nowcast or pooled forecast distribution, linked across weeks by a Gaussian copula with week-to-week correlation 0.9."
+ensemble_of_hub_models: false
