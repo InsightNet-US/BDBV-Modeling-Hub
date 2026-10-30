@@ -102,7 +102,7 @@ To **resubmit** (i.e., update an existing file with more forecasts), append the 
 - Add rows with exactly one new `forecast_date` that does not appear in the existing file. Submitting no new rows, adding rows to an existing forecast date, or introducing multiple new dates fails validation.
 - The new date must be today (+/- one day for timezone difference) relative to the validation date in Africa/Kinshasa. Retained forecast dates are not subject to this recency check.
 
-An existing base-branch file without `forecast_date` fails validation. Files may contain multiple forecast dates after resubmission, each identifying a separate forecast. For example, to revise a forecast dated `2026-10-25` with a new forecast dated `2026-10-27`, retain all `2026-10-25` rows and add the new rows with `forecast_date` set to `2026-10-27`.
+Files may contain multiple forecast dates after resubmission, each identifying a separate forecast. For example, to revise a forecast dated `2026-10-25` with a new forecast dated `2026-10-27`, retain all `2026-10-25` rows and add the new rows with `forecast_date` set to `2026-10-27`.
 
 The filename still uses `reference_date`. Each file is checked independently, so different files may share a forecast date. The validation date is captured once per run; a later rerun can fail if the newly added date falls outside the one-day allowance. The standard round submission window still applies; appending a new forecast does not extend it.
 
