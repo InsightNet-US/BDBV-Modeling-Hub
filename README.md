@@ -16,7 +16,9 @@ Participating teams submit, each week, sample trajectories of the number of conf
 
 **Dates:** each round is identified by a `reference_date`, the Saturday ending the epi week in which estimates are made. Submissions are accepted from Sunday through Tuesday of that week. Each file may cover any epi week from the start of the outbreak through three weeks after the reference date.
 
-**Output:** 100 sample trajectories per location. Full details and an example file are in the [model-output README](model-output/README.md), and the exact task configuration is in [`hub-config/tasks.json`](hub-config/tasks.json).
+**Forecast date:** every row must include a valid, nonblank `forecast_date` in `YYYY-MM-DD` format, on or before its `reference_date`. For a new file, all rows share one forecast date. To resubmit, append new forecast rows while preserving every existing row unchanged. The new rows must share one previously unused forecast date within one day of the validation date in Africa/Kinshasa; retained rows may have older forecast dates. See the [forecast-date requirements](model-output/README.md#forecast_date) for full validation rules.
+
+**Output:** 100 sample trajectories per location for each `forecast_date`. Full details and an example file are in the [model-output README](model-output/README.md), and the exact task configuration is in [`hub-config/tasks.json`](hub-config/tasks.json).
 
 **How to submit:** register a model by adding a metadata file to [`model-metadata/`](model-metadata/), then submit each week's file to [`model-output/`](model-output/) by pull request. Automated validation runs on every pull request. Sync your fork with this repository before each submission, since the target data and the accepted dates in `hub-config/tasks.json` change weekly.
 
