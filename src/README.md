@@ -1,7 +1,7 @@
 # src
 
-Processing code used by the hub to standardize externally published estimates
-into [hubverse](https://hubverse.io) format.
+Code used by the hub to validate submissions and standardize externally published
+estimates into [hubverse](https://hubverse.io) format.
 
 ## `derive_mccabe_quantiles.R`
 
@@ -35,3 +35,12 @@ Rscript src/derive_mccabe_quantiles.R
 
 Re-running the script reproduces the committed CSVs exactly. It depends only on
 base R (`qgamma`, `qnbinom`).
+
+## `validate-submission.R`
+
+Entry point for the [PR submission workflow](../.github/workflows/validate-submission.yaml). In addition to the standard `hubValidations`, this script will check for valid `forecast_date` entries:
+* For every added or modified model-output file, it requires exactly one `forecast_date` column containing a single nonblank, valid `YYYY-MM-DD` date across all rows. 
+* That `forecast_date` date must be within one day of the validation date (Africa/Kinshasa timezone) and on or before each row's `reference_date`.
+* If a file exists at the same path in the PR's base commit, it must have a `forecast_date` column and none of its dates may appear in the PR version. The comparison is skipped only when no file exists at that path. Files are checked independently; the script stops on the first custom validation failure.
+
+Requires R packages `hubValidations`, `gh`, and `jsonlite`, Git access to the PR base commit, and environment variables `GITHUB_REPOSITORY`, `PR_NUMBER`, `PR_BASE_SHA`, and `GITHUB_PAT`. 

@@ -70,6 +70,7 @@ The `team` and `model` in this file must match the `team` and `model` in the dir
 The hub is currently collecting **nowcasts and forecasts of weekly incident confirmed cases by location (country, province or health zone)** (round `BDBV 2026 nowcasting and forecasting` in [`hub-config/tasks.json`](../hub-config/tasks.json)). The file must be a comma-separated value (csv) file with the following columns (in any order):
 
 -   `reference_date`
+-   `forecast_date`
 -   `target`
 -   `target_end_date`
 -   `location`
@@ -88,6 +89,20 @@ Values in the `reference_date` column must be a date in the ISO format
     YYYY-MM-DD
 
 The `reference_date` identifies the round. It is a Saturday, the last day of the epi week in which the estimates are made, and must match the date in the filename. The accepted reference dates are listed under the `BDBV 2026 nowcasting and forecasting` round in `hub-config/tasks.json`; a new one is added automatically each week. Submissions for a given `reference_date` are accepted from six to four days before it (Sunday through Tuesday of that week).
+
+### `forecast_date`
+
+The date the model was run to produce the submitted estimates. Every submitted model-output file must include exactly one column named `forecast_date`, with the same nonblank date in every row. Values must be valid calendar dates in exactly `YYYY-MM-DD` format; `NA`, timestamps, and other date formats are rejected.
+
+The date must:
+
+- Be yesterday, today, or tomorrow relative to the date when validation runs in **Africa/Kinshasa** timezone.
+- Be on or before every row's `reference_date`.
+- Differ from every `forecast_date` in the pre-existing file at the same path on the PR's base branch, if such a file exists. If no file exists there, this comparison is skipped. 
+
+Submitting a file for which there is already a `model-output/` file at the same path will append the new submission to the old file, with the different submissions differentiated by `forecast_date`.
+
+`forecast_date` is validated by the hub's custom PR script rather than configured in `tasks.json` because `forecast_date` values can take any valid `YYYY-MM-DD` and have no set required dates.
 
 ### `target`
 
@@ -143,93 +158,50 @@ Values in the `value` column are non-negative numbers giving the sampled weekly 
 
 ### Example
 
-The first rows of a valid file `model-output/team-model/2026-10-31-team-model.csv` might look like
+For estimates generated on `2026-10-26`, the first rows of `model-output/team-model/2026-10-31-team-model.csv` might look like the following. This example satisfies the forecast-date recency check only when validation runs within one day of `2026-10-26`; the round submission window must also be satisfied.
 
-    reference_date,target,target_end_date,location,output_type,output_type_id,value
-    2026-10-31,wk inc confirmed cases,2026-10-10,CD-IT,sample,1,209
-    2026-10-31,wk inc confirmed cases,2026-10-17,CD-IT,sample,1,215
-    2026-10-31,wk inc confirmed cases,2026-10-24,CD-IT,sample,1,190
-    2026-10-31,wk inc confirmed cases,2026-10-31,CD-IT,sample,1,241
-    2026-10-31,wk inc confirmed cases,2026-11-07,CD-IT,sample,1,253
-    2026-10-31,wk inc confirmed cases,2026-10-10,CD-IT,sample,2,203
+    reference_date,forecast_date,target,target_end_date,location,output_type,output_type_id,value
+    2026-10-31,2026-10-26,wk inc confirmed cases,2026-10-10,CD-IT,sample,1,209
+    2026-10-31,2026-10-26,wk inc confirmed cases,2026-10-17,CD-IT,sample,1,215
+    2026-10-31,2026-10-26,wk inc confirmed cases,2026-10-24,CD-IT,sample,1,190
+    2026-10-31,2026-10-26,wk inc confirmed cases,2026-10-31,CD-IT,sample,1,241
+    2026-10-31,2026-10-26,wk inc confirmed cases,2026-11-07,CD-IT,sample,1,253
+    2026-10-31,2026-10-26,wk inc confirmed cases,2026-10-10,CD-IT,sample,2,203
     ...
 
 ## Forecast validation
 
-To ensure proper data formatting, pull requests for new data in
-`model-output/` will be automatically run. Optionally, you may also run these validations locally.
+Pull requests that add or modify model-output files are validated automatically. Each file must meet the requirements above.
 
 ### Pull request forecast validation
 
-When a pull request is submitted, the data are validated through [Github Actions](https://docs.github.com/en/actions) which runs the tests present in [the hubValidations package](https://github.com/hubverse-org/hubValidations). The  intent for these tests are to validate the requirements above. Please [let us know](https://github.com/InsightNet-US/BDBV-Modeling-Hub/issues) if you are facing issues while running the tests.
+The [submission workflow](../.github/workflows/validate-submission.yaml) calls [`src/validate-submission.R`](../src/validate-submission.R). The script checks `forecast_date` first, then runs the standard [Hubverse validations](https://github.com/hubverse-org/hubValidations), including the round submission window. To let Hubverse validate the configured task columns, the script creates a temporary hub copy with `forecast_date` removed from the submitted files. The original files retain the column, and all other columns are passed through to the standard checks.
+
+Only added or modified model-output files in the PR are checked; unchanged historical files are not revalidated. The existing-file comparison uses the PR's base commit. If any file fails a custom check, the workflow stops; later files and the standard Hubverse checks will not run until the failure is resolved. Please [report validation issues](https://github.com/InsightNet-US/BDBV-Modeling-Hub/issues).
 
 ### Local forecast validation
 
-Optionally, you may validate a forecast file locally before submitting it to the hub in a pull request. Note that this is not required, since the validations will also run on the pull request. To run the validations locally, follow these steps:
+The PR workflow runs all required checks automatically. Calling `hubValidations::validate_submission()` directly on a submitted file does not reproduce the custom checks and will reject `forecast_date` because it is not configured in `tasks.json`.
 
-1. Create a fork of the `BDBV-Modeling-Hub` repository and then clone the fork to your computer.
-2. Create a draft of the model submission file for your model and place it in the `model-output/<your model id>` folder of this clone.
-3. Install the hubValidations package for R by running the following command from within an R session:
-  ``` r
-  remotes::install_github("hubverse-org/hubValidations")
-  ```
-4. Validate your draft forecast submission file by running the following command in an R session:
-  ``` r
-  library(hubValidations)
-  hubValidations::validate_submission(
-      hub_path="<path to your clone of the hub repository>",
-      file_path="<path to your file, relative to the model-output folder>"
-  )
-  ```
-  
-  For example, if your working directory is the root of the hub repository, you can use a command similar to the following:
-  ``` r
-  library(hubValidations)
-  hubValidations::validate_submission(
-      hub_path=".",
-      file_path="team-model/2026-10-31-team-model.csv"
-  )
-  ```
-  The function returns the output of each validation check.
-  
-  If all is well, all checks should either be prefixed with a `✓` indicating success or `ℹ` indicating a check was skipped, e.g.:
-  ```
-  ✓ FluSight-forecast-hub: All hub config files are valid.
-  ✓ 2026-10-31-team-model.csv: File exists at path model-output/team-model/2026-10-31-team-model.csv.
-  ✓ 2026-10-31-team-model.csv: File name "2026-10-31-team-model.csv" is valid.
-  ✓ 2026-10-31-team-model.csv: File directory name matches `model_id` metadata in file name.
-  ✓ 2026-10-31-team-model.csv: `round_id` is valid.
-  ✓ 2026-10-31-team-model.csv: File is accepted hub format.
-  ...
-  ```
-  
-  If there are any failed checks or execution errors, the check's output will be prefixed with a `✖` or `!` and include a message describing the problem.
-  
-  To get an overall assessment of whether the file has passed validation checks, you can pass the output of `validate_submission()` to `check_for_errors()`
-  ```r
-  library(hubValidations)
-  
-  validations <- validate_submission(
-      hub_path = ".",
-      file_path = "team-model/2026-10-31-team-model.csv"
-  )
-  
-  check_for_errors(validations)
-  ```
-  If the file passes all validation checks, the function will return the following output:
-  
-  ```r
-  ✓ All validation checks have been successful.
-  ```
-  If test failures or execution errors are detected, the function throws an error and prints the messages of checks affected. For example, the following output is returned when all other checks have passed but the file is being validated outside the submission time window for the round:
-  
-  ```r
-  ! 2026-10-31-team-model.csv: Submission time must be within accepted submission window for round.  Current time
-    2026-10-18 12:23:08 is outside window 2026-10-25 WAT--2026-10-27 23:59:59 WAT.
-  Error in `check_for_errors()`:
-  ! 
-  The validation checks produced some failures/errors reported above.
-  ```
+To reproduce the full workflow locally for an existing PR, check out that PR's files and run R from the repository root. Install `hubValidations`, `gh`, and `jsonlite`, and configure a GitHub token through the `GITHUB_PAT` environment variable. Set the PR number below, fetch its base commit, and run the same script used by CI:
+
+```r
+Sys.setenv(
+  GITHUB_REPOSITORY = "InsightNet-US/BDBV-Modeling-Hub",
+  PR_NUMBER = "123" # Replace with your PR number.
+)
+pr <- gh::gh(
+  "/repos/{repo}/pulls/{number}",
+  repo = Sys.getenv("GITHUB_REPOSITORY"),
+  number = Sys.getenv("PR_NUMBER")
+)
+Sys.setenv(PR_BASE_SHA = pr$base$sha)
+status <- system2("git", c("fetch", shQuote(pr$base$repo$clone_url), shQuote(pr$base$sha)))
+stopifnot(status == 0L)
+source("src/validate-submission.R")
+```
+
+The script requires PR context and checks the current date and submission window when run locally, just as it does in CI.
 
 ## Previous rounds
 
