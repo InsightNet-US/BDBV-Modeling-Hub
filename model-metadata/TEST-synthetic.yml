@@ -1,0 +1,25 @@
+team_name: "Synthetic Validation Test Team"
+team_abbr: "TEST"
+model_name: "Synthetic Submission Fixture"
+model_abbr: "synthetic"
+model_version: "1.0"
+model_contributors:
+  - name: "Fictional Test Contributor"
+    affiliation: "Synthetic Validation Test Team (fictional)"
+    email: "validation-test@example.com"
+license: "CC0-1.0"
+model_details:
+  data_inputs: "No observed data. All counts are artificial values generated for submission-validation testing."
+  methods: "Deterministic synthetic counts for 100 sample trajectories across four weeks, used only to test submission validation."
+  methods_long: >-
+    This fictional model supplies a synthetic CSV fixture for the BDBV Modeling
+    Hub validation workflow. It does not represent an epidemiological model or
+    an actual forecast, and it is not associated with EpiForecasts. For sample
+    index s from 1 through 100 and zero-based week index w from 0 through 3,
+    the count is 80 + (s modulo 21) + 5*w. Each sample covers the weeks ending
+    2026-10-24, 2026-10-31, 2026-11-07 and 2026-11-14 for location CD and target
+    wk inc confirmed cases. The reference date is 2026-10-31 and the forecast
+    date is 2026-10-27. Counts are nonnegative integers. The fixture is intended
+    for validation on 2026-10-26 or 2026-10-27 in Africa/Kinshasa, subject to
+    the configured submission window and PR base-branch checks.
+ensemble_of_hub_models: false
