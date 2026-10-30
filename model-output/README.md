@@ -92,17 +92,21 @@ The `reference_date` identifies the round. It is a Saturday, the last day of the
 
 ### `forecast_date`
 
-The date the model was run to produce the submitted estimates. Every submitted model-output file must include exactly one column named `forecast_date`, with the same nonblank date in every row. Values must be valid calendar dates in exactly `YYYY-MM-DD` format; `NA`, timestamps, and other date formats are rejected.
+The date the model was run to produce the forecasts in that row. Every submitted model-output file must include the `forecast_date` column. Every value must be a nonblank, valid calendar date in exactly `YYYY-MM-DD` format; `NA`, timestamps, and other date formats are rejected. Each row's `forecast_date` must be on or before its `reference_date`.
 
-The date must:
+For a **new file**, all rows count as new data. They must share exactly one `forecast_date`, within one day of the date when validation runs in Africa/Kinshasa.
 
-- Be yesterday, today, or tomorrow relative to the date when validation runs in **Africa/Kinshasa** timezone.
-- Be on or before every row's `reference_date`.
-- Differ from every `forecast_date` in the pre-existing file at the same path on the PR's base branch, if such a file exists. If no file exists there, this comparison is skipped. 
+To **resubmit** (i.e., update an existing file with more forecasts), append the new forecast rows to your original file before opening or updating the PR. Validation does not append rows automatically. Compared with the file at the same path in the PR's base commit:
 
-Submitting a file for which there is already a `model-output/` file at the same path will append the new submission to the old file, with the different submissions differentiated by `forecast_date`.
+- Preserve every existing row unchanged, including duplicate-row counts. Row and column order may change, but the column set and parsed cell text must stay unchanged. For example, changing an existing value from `1.0` to `1` fails the preservation check.
+- Add rows with exactly one new `forecast_date` that does not appear in the existing file. Submitting no new rows, adding rows to an existing forecast date, or introducing multiple new dates fails validation.
+- The new date must be today (+/- one day for timezone difference) relative to the validation date in Africa/Kinshasa. Retained forecast dates are not subject to this recency check.
 
-`forecast_date` is validated by the hub's custom PR script rather than configured in `tasks.json` because `forecast_date` values can take any valid `YYYY-MM-DD` and have no set required dates.
+An existing base-branch file without `forecast_date` fails validation. Files may contain multiple forecast dates after resubmission, each identifying a separate forecast. For example, to revise a forecast dated `2026-10-25` with a new forecast dated `2026-10-27`, retain all `2026-10-25` rows and add the new rows with `forecast_date` set to `2026-10-27`.
+
+The filename still uses `reference_date`. Each file is checked independently, so different files may share a forecast date. The validation date is captured once per run; a later rerun can fail if the newly added date falls outside the one-day allowance. The standard round submission window still applies; appending a new forecast does not extend it.
+
+`forecast_date` is validated by the hub's custom PR script rather than configured in `tasks.json` because it has no fixed list of accepted or required values.
 
 ### `target`
 
@@ -148,9 +152,9 @@ Values in the `output_type` column must be the string `sample`. Only sample-base
 
 ### `output_type_id`
 
-Values in the `output_type_id` column are integer sample indices. Each file must contain **exactly 100 samples** for every combination of `reference_date`, `location` and `target` that it includes.
+Values in the `output_type_id` column are integer sample indices. Each forecast identified by `forecast_date` must contain **exactly 100 samples** for every combination of `reference_date`, `location` and `target` that it includes.
 
-The sample index identifies a trajectory: a given `output_type_id` for a given `location` must appear once for every `target_end_date` submitted for that location, and those rows together are one joint draw from the model's predictive distribution across weeks. In other words, for each location the file contains 100 complete trajectories, each covering the same set of `target_end_date`s. Sample indices may be reused across locations (for example `1` to `100` within each location) or be unique across the whole file; either is valid.
+Within each `forecast_date`, the sample index identifies a trajectory: a given `output_type_id` for a given `location` must appear once for every `target_end_date` submitted for that location, and those rows together are one joint draw from the model's predictive distribution across weeks. In other words, for each location and `forecast_date` the file contains 100 complete trajectories, each covering the same set of `target_end_date`s. Sample indices may be reused across locations (for example `1` to `100` within each location) or be unique across the whole file; either is valid. Sample indices may also be reused across different forecast dates.
 
 ### `value`
 
@@ -175,7 +179,7 @@ Pull requests that add or modify model-output files are validated automatically.
 
 ### Pull request forecast validation
 
-The [submission workflow](../.github/workflows/validate-submission.yaml) calls [`src/validate-submission.R`](../src/validate-submission.R). The script checks `forecast_date` first, then runs the standard [Hubverse validations](https://github.com/hubverse-org/hubValidations), including the round submission window. To let Hubverse validate the configured task columns, the script creates a temporary hub copy with `forecast_date` removed from the submitted files. The original files retain the column, and all other columns are passed through to the standard checks.
+The [submission workflow](../.github/workflows/validate-submission.yaml) calls [`src/validate-submission.R`](../src/validate-submission.R). The script checks `forecast_date` first, then runs the standard [Hubverse validations](https://github.com/hubverse-org/hubValidations), including the round submission window. The script checks dates across the full submitted file and verifies that historical rows are preserved, then creates a temporary hub copy containing only the newly added forecast rows, with `forecast_date` removed. Hubverse validates that new forecast independently, so retained forecasts do not inflate sample counts or create duplicate tasks. All other columns of the new rows are passed through to the standard checks. The original PR file retains its full history and `forecast_date` column.
 
 Only added or modified model-output files in the PR are checked; unchanged historical files are not revalidated. The existing-file comparison uses the PR's base commit. If any file fails a custom check, the workflow stops; later files and the standard Hubverse checks will not run until the failure is resolved. Please [report validation issues](https://github.com/InsightNet-US/BDBV-Modeling-Hub/issues).
 
