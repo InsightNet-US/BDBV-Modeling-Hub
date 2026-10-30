@@ -1,0 +1,56 @@
+name: BDBVHub baseline forecast
+
+on:
+  workflow_dispatch:
+    inputs:
+      reference_date:
+        description: 'Upcoming Saturday reference date (YYYY-MM-DD)'
+        type: string
+        default: latest
+      overwrite_existing:
+        description: 'Replace an existing forecast for this round'
+        type: boolean
+        default: false
+  schedule:
+    - cron: '10 17 * * 1'
+      timezone: America/New_York
+
+permissions:
+  contents: read
+
+concurrency:
+  group: hub-baseline-generation
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    if: github.repository == 'InsightNet-US/BDBV-Modeling-Hub'
+    runs-on: ubuntu-24.04
+    env:
+      REFERENCE_DATE: ${{ inputs.reference_date || 'latest' }}
+      OVERWRITE: ${{ inputs.overwrite_existing || false }}
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+      - name: Set up hubhelpr
+        uses: cdcgov/hubhelpr/actions/setup-hubhelpr@main
+      - name: Generate baseline forecast
+        id: generate
+        run: |
+          args=("$REFERENCE_DATE")
+          if [ "$OVERWRITE" = true ]; then args+=(--overwrite); fi
+          Rscript src/generate-baseline.R "${args[@]}"
+      - name: Submit forecast by pull request
+        uses: peter-evans/create-pull-request@v8
+        with:
+          token: ${{ secrets.WEEKLY_DATE_ADVANCE_PAT }}
+          base: main
+          branch: codex/baseline-${{ steps.generate.outputs.reference_date }}
+          add-paths: |
+            model-output/BDBVHub-baseline/${{ steps.generate.outputs.reference_date }}-BDBVHub-baseline.csv
+          commit-message: 'Add BDBVHub-baseline forecast for ${{ steps.generate.outputs.reference_date }}'
+          title: 'Add BDBVHub-baseline forecast for ${{ steps.generate.outputs.reference_date }}'
+          body: |
+            Automatically generated BDBVHub-baseline forecast with 100 complete trajectories per location.
