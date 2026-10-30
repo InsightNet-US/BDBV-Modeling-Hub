@@ -1,4 +1,4 @@
-# CDC baseline fitting with constant sample trajectories for the BDBV hub.
+# CDC baseline fitting with additive random-walk trajectories (increased uncertainty across horizons)
 source("src/hub-model-utils.R")
 
 fit_cdc_baseline <- function(training, seed) {
@@ -13,17 +13,20 @@ fit_cdc_baseline <- function(training, seed) {
   }))
 }
 
-make_flat_paths <- function(residuals, point, n_paths = 100L) {
-  # Use the full historical residual distribution for spread, symmetrized
-  # around the uncorrected horizon -3 observation. Perturb each sample once;
-  # repeat its nonnegative level across horizons -2 through 3.
-  perturbations <- as.numeric(stats::quantile(
+make_random_walk_paths <- function(residuals, point, n_paths = 100L) {
+  increments <- as.numeric(stats::quantile(
     c(residuals, -residuals), probs = (0:(n_paths - 1L)) / (n_paths - 1L),
     na.rm = TRUE, names = FALSE
   ))
-  levels <- pmax(0, point + perturbations)
-  levels <- levels[sample.int(n_paths)]
-  matrix(rep(levels, times = 6L), nrow = n_paths, ncol = 6L)
+  raw <- rep(point, n_paths)
+  paths <- matrix(NA_real_, nrow = n_paths, ncol = 6L)
+  for (step in seq_len(ncol(paths))) {
+    increments <- sample(increments, size = n_paths, replace = FALSE)
+    raw <- raw + increments
+    centered <- raw - (stats::median(raw) - point)
+    paths[, step] <- pmax(centered, 0)
+  }
+  paths
 }
 
 format_cdc_baseline <- function(fit, training, reference_date, target) {
@@ -37,7 +40,7 @@ format_cdc_baseline <- function(fit, training, reference_date, target) {
     ]
     stopifnot(length(observed) == 1L)
     residual_values <- residuals$.resid[residuals$geo_value == location]
-    paths <- make_flat_paths(residual_values, observed)
+    paths <- make_random_walk_paths(residual_values, observed)
     samples[[length(samples) + 1L]] <- data.frame(
       reference_date = reference_date, target = target,
       target_end_date = rep(format(ref + 7L * (-2:3), "%Y-%m-%d"), each = 100L),
