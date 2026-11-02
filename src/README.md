@@ -49,25 +49,3 @@ The script passes only the new forecast rows, without `forecast_date`, to Hubver
 The date is captured once for all files in a run. Later reruns may fail the recency check. See the [model-output README](../model-output/README.md#forecast_date) for submission requirements and [local validation instructions](../model-output/README.md#local-forecast-validation).
 
 Requires R packages `hubValidations`, `gh`, and `jsonlite`, Git access to the PR base commit, and environment variables `GITHUB_REPOSITORY`, `PR_NUMBER`, `PR_BASE_SHA`, and `GITHUB_PAT`. 
-
-## `update-mailing-list.R`
-
-Regenerates [`auxiliary-data/mailing-list.txt`](../auxiliary-data/mailing-list.txt) from the
-contributor email addresses in `model-metadata/*.yml`. The file is a single line of
-semicolon-separated addresses that pastes directly into the To, Cc or Bcc field of an
-Outlook message.
-
-Addresses already in the file are kept, so hub staff or data owners can be added by
-hand; addresses found in metadata are added. Nothing is removed automatically, so to
-drop an address delete it from both the file and any metadata file that lists it.
-Entries are de-duplicated case-insensitively and sorted.
-
-The [update-mailing-list workflow](../.github/workflows/update-mailing-list.yaml) runs
-the script on every push to `main` that touches a metadata file and opens a pull request
-with the result if it changed. It can also be run by hand:
-
-```sh
-Rscript src/update-mailing-list.R
-```
-
-Requires the `yaml` package.

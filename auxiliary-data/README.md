@@ -44,7 +44,3 @@ at the country, province, and health zone level is `daily-missing-symptom-by-rep
 
 
 
-
-**Contributor Mailing List**
-
-`mailing-list.txt` is a single line of semicolon-separated email addresses for all registered model contributors, suitable for pasting into the To, Cc or Bcc field of an email. It is regenerated from the contributor emails in `model-metadata/` by `src/update-mailing-list.R` whenever a metadata file changes on `main`.
