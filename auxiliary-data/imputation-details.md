@@ -4,12 +4,17 @@ we impute symptom onset dates according to the following methodology:
 
 1. Using the line list data as of 2026-10-17, the observed reporting delay in days
 is calculated as the number of calendar days elapsed between the date case began to 
-exhibit symptoms and the date the case was reported. This is then transformed into 
-an interval censored observation of the hour of symptom onset when fitting the delay 
-distribution. 
+exhibit symptoms and the date the case was reported. Because both the symptom onset
+date and the report date are recorded to the day, this is treated as a double
+interval censored observation of the reporting delay in hours: the time of symptom
+onset is unknown within its 24 hour day (assumed uniform) and the time of report is
+unknown within its 24 hour day.
 
-2. Fit a generalized gamma distribution to the interval censored hourly reporting
-delay observations using the `flexsurv` package.
+2. Fit a generalized gamma distribution to the double interval censored hourly
+reporting delay observations using `primarycensored::fitdistdoublecens()`, with the
+generalized gamma distribution functions from the `flexsurv` package. A delay of
+$d$ days corresponds to a primary (onset) window of 24 hours and a secondary
+(report) window of $[24d, 24(d+1))$ hours.
 
 3. For each missing symptom onset data, set the random seed equal to the integer
 hash of the `alert_id`.
@@ -40,19 +45,22 @@ impute_symptom_onset <- function(ll) {
   
   delays <- read.csv("auxiliary-data/archived-delay-data/weekly-reporting-delays-by-province-2026-10-17.csv")
   
-  # Fit delay distribution to non-negative delays. Treat as an interval
-  # censored observation with hours as the unit. E.g. 0 days delay corresponds
-  # to 1-23 hours (note zeroes not supported), 1 day delay corresponds to 
-  # 24 to 47 hours, etc.
-  surv <- delays %>%
+  # Fit delay distribution to non-negative delays. Treat as a double interval
+  # censored observation with hours as the unit: symptom onset is uniform
+  # within a 24 hour primary window and the report falls in the 24 hour
+  # secondary window [left, right). E.g. 0 days delay corresponds to a report
+  # 0 to 24 hours after the start of the onset day, 1 day delay to 24 to 48
+  # hours, etc. No right truncation is applied (D = Inf).
+  cens <- delays %>%
     filter(days_sym_to_report >= 0) %>%
-    mutate(lower = ifelse(days_sym_to_report == 0, 1, days_sym_to_report*24),
-           upper = (days_sym_to_report+1)*24-1,
-           event = 1)
+    mutate(left = days_sym_to_report*24,
+           right = (days_sym_to_report+1)*24,
+           pwindow = 24,
+           D = Inf)
   
-  # Fit generalized gamma distribution
-  fitgg <- flexsurvreg(Surv(lower, upper, event, type = "interval") ~ 1, 
-                       data = surv, dist = "gengamma")
+  # Fit generalized gamma distribution (pgengamma/dgengamma from flexsurv)
+  fitgg <- fitdistdoublecens(cens, distr = "gengamma",
+                             start = list(mu = 5, sigma = 1, Q = 0.5))
   
   # Filter to observations missing symptom onset date
   ll_miss <- ll %>%
@@ -64,9 +72,9 @@ impute_symptom_onset <- function(ll) {
   
   # Fix delay distribution parameters
   # Based on fit to 10/17/2026 data 
-  sigma <- exp(fitgg$coefficients["sigma"])
-  mu <- fitgg$coefficients["mu"]
-  Q <- fitgg$coefficients["Q"]
+  sigma <- fitgg$estimate["sigma"]
+  mu <- fitgg$estimate["mu"]
+  Q <- fitgg$estimate["Q"]
   
   for(i in 1:nrow(ll_miss)) {
     
