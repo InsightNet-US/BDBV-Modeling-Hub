@@ -12,7 +12,7 @@ model_contributors: [
 ]
 website_url: "TBD"
 repo_url: "https://github.com/InsightNet-US/BDBV-Modeling-Hub"
-license: "TBD"
+license: "CC-BY-4.0"
 model_details:
   data_inputs: "target-data/time-series.csv: TBD"
   methods: "Additive random walk anchored at horizon -3; 100 sample trajectories over 6 horizons (-2 to 3), using symmetrized historical weekly errors, median recentering and nonnegative outputs."
