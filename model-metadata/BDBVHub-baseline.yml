@@ -1,0 +1,20 @@
+team_name: "BDBVHub-hub-models"
+team_abbr: "BDBVHub"
+model_name: "BDBVHub baseline model"
+model_abbr: "baseline"
+model_version: "1.0"
+model_contributors: [
+  {
+    "name": "BDBV Hub",
+    "affiliation": "InsightNet",
+    "email": "TBD"
+  }
+]
+website_url: "TBD"
+repo_url: "https://github.com/InsightNet-US/BDBV-Modeling-Hub"
+license: "TBD"
+model_details:
+  data_inputs: "target-data/time-series.csv: TBD"
+  methods: "Additive random walk anchored at horizon -3; 100 sample trajectories over 6 horizons (-2 to 3), using symmetrized historical weekly errors, median recentering and nonnegative outputs."
+  methods_long: "For each location, the starting value is the observed count for the week ending 21 days before the Saturday reference_date (horizon -3). Locations without an observation for the anchor week are omitted. The model fits epipredict::cdc_baseline_forecaster() to all available weekly observations through the anchor and extracts the fitted one-step prediction errors. Each error and its negative are combined into a symmetric empirical distribution. One hundred representative weekly increments are obtained at equally spaced quantile levels from 0 to 1, using R's default type-7 interpolation. A custom trajectory generator follows an additive random-walk: at each of six weekly steps, the increments are randomly shuffled without replacement across the 100 trajectories and added to their running raw values. At each step, the simulated median is recentered around the anchor before negative output values are clipped to zero. The raw accumulated values, rather than recentered or clipped values, continue into the next step. Changes are additive on the original case-count scale. No explicit reporting-delay or nowcast correction is applied. Random-number generation uses a reference_date-based seed for reproducibility."
+ensemble_of_hub_models: false
