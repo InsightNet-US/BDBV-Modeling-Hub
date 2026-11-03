@@ -1,0 +1,18 @@
+team_name: "Pedro Pinto"
+team_abbr: "pedro"
+model_name: "Health-zone nowcast and forecast ensemble"
+model_abbr: "zonemix"
+model_contributors: [
+  {
+    "name": "Pedro Pinto",
+    "affiliation": "Independent",
+    "email": "pedro@factortwenty.com"
+  }
+]
+license: "CC-BY-4.0"
+team_funding: "Personal capacity, no funding"
+model_details:
+  data_inputs: "Hub target data (all releases), the hub's case-level onset-to-report delays, and INRB's public road travel times and WorldPop populations by health zone."
+  methods: "Health-zone nowcast calibrated on past hub releases; per-zone ensemble of renewal, spatial and persistence models; provinces are zone sums."
+  methods_long: "Nowcast: for every health zone of the 8 affected provinces, recent onset weeks are scaled up by how complete they are. The level of completeness by week age comes from how each onset week grew between consecutive hub releases (chain ladder, median over three release pairs so far, so it is provisional; adjusted for releases dated after the week's end); the delay file sets differences between provinces and the extra-day adjustment. One shock per trajectory, shared by all weeks and zones, carries the uncertainty in that level, because late cases arrive in batches. Forecast: each zone's trajectories are a third each from (1) a weekly renewal model with R estimated from recent weeks, pooled toward the province and country, and damped toward 1 over the horizon, (2) an endemic-epidemic spatial model where zones import cases from others through road travel time, also damped toward R = 1, and (3) persistence; plus a trend shared by all zones. Provinces and the country are sums of zone trajectories. The forecast part was tested on the 2018-20 North Kivu/Ituri outbreak (mostly its low-incidence decline) (weekly zone data from HDX, no reporting delay), using only data available at each forecast date: log-scale CRPS was 0.86 of persistence for health zones with recent cases, 0.91 for provinces and 0.96 for the total (not significant for the total). Settings were chosen on that outbreak, so live performance is unknown until scored on this hub. AI-assisted; I checked every result."
+ensemble_of_hub_models: false
