@@ -34,3 +34,13 @@ An additional source of daily case counts is the [DRC Ebola Bundibugyo - Epidemi
 - `week_ending`: the last day of the epi week in which the case experienced symptom onset.
 - `days_sym_to_report`: the number of days between the day in which the case experienced symptom onset and the day in which the case was reported. A value of zero indicates that the onset of symptoms and report of the case occurred on the same day.
 - `as_of`: the date the data was released.
+
+**Information on Imputation procedure**
+
+`imputation-detail.md` contains a description of the methodology and the associated code used to
+impute symptom onset dates in the instances in which they are missing for the target data. We also
+provide the number of confirmed cases that are missing symptom onset dates by the date the case was reported
+at the country, province, and health zone level is `daily-missing-symptom-by-report-date.csv`.
+
+
+
