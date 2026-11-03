@@ -45,7 +45,7 @@ jobs:
       - name: Submit forecast by pull request
         uses: peter-evans/create-pull-request@v8
         with:
-          token: ${{ secrets.WEEKLY_DATE_ADVANCE_PAT }}
+          token: ${{ secrets.HUB_BASELINE_PR_PAT }}
           base: main
           branch: codex/baseline-${{ steps.generate.outputs.reference_date }}
           add-paths: |
