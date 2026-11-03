@@ -1,0 +1,25 @@
+team_name: "National Taiwan University College of Public Health"
+team_abbr: "NTUCPH"
+model_name: "AI Expert Panel"
+model_abbr: "LLM"
+model_version: "v1"
+model_contributors: [
+  {
+    "name": "Alexander Ye",
+    "affiliation": "National Taiwan University",
+    "email": "r14853013@ntu.edu.tw",
+    "orcid": "0009-0005-5402-2293"
+  },
+  {
+    "name": "Andrei R. Akhmetzhanov",
+    "affiliation": "National Taiwan University",
+    "email": "akhmetzhanov@ntu.edu.tw",
+    "orcid": "0000-0003-3269-7351"
+  }
+]
+license: "CC-BY-4.0"
+model_details:
+  methods: "LLM 'experts' reason like human forecasters over a briefing of the epidemic curve and recent situation reports, each giving quantiles of weekly cases; answers pooled across experts and models"
+  methods_long: "We conduct a series of interviews, modelled on Munday et al. 2025, where three frontier large language models mimic expert forecasters. On each submission date, every expert receives a briefing from data available by that date: epidemic curves (national and provincial) by both week and day of symptom onset, how the recent weeks filled in across earlier hub releases, onset-to-report delays by province, and a summary of the DRC situation reports. Situation reports are read by a separate language model into a fixed schema capturing quantitative and qualitative information. Each expert is given a mathematical epidemiologist persona and is interviewed independently, three times, by three models from different providers. In one interview, an expert gives five quantiles for each week's final count of confirmed cases, nationally and for each province with at least 20 cases. Quantiles are pooled by median, over an expert's three interviews and then across experts. The pooled quantiles become 100 trajectories per location: a quantile function per week interpolates them log linearly against normal scores, a Gaussian copula links the weeks, and the levels are rank-stratified (Iman and Conover). An LLM expert forecasts the country and provinces together, but no spatial model is fitted. Method developed with AI assistance."
+  data_inputs: "Hub target data (weekly confirmed cases by onset week, current and earlier releases); hub auxiliary data (daily confirmed cases by onset date, weekly reporting delays by province); DRC's INSP situation reports (https://insp.cd/ebola-17eme-epidemie/) published for the 2026 BDBV outbreak"
+ensemble_of_hub_models: false
