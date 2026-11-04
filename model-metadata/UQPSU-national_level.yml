@@ -1,7 +1,7 @@
 team_name: "University of Queensland and Penn State University"
 team_abbr: "UQPSU"
-model_name: "oldSchool"
-model_abbr: "oldSchool"
+model_name: "national_level"
+model_abbr: "national_level"
 model_version: "0.1"
 model_contributors: [
   {
@@ -18,16 +18,6 @@ model_contributors: [
     "name": "Katriona Shea",
     "affiliation": "Penn State University",
     "email": "k-shea@psu.edu"
-  },
-  {
-    "name": "Souli Li",
-    "affiliation": "Penn State University",
-    "email": "shouli.s.li@gmail.com"
-  },
-  {
-    "name": "Michael Runge",
-    "affiliation": "USGS",
-    "email": "mrunge@usgs.gov"
   },
   {
     "name": "Cecile Viboud",
