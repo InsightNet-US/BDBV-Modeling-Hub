@@ -1,0 +1,19 @@
+team_name: seabbs
+team_abbr: seabbs
+model_name: Province renewal model with BVD Rt (PyRenew)
+model_abbr: renewal
+model_contributors:
+- name: Sam Abbott
+  affiliation: London School of Hygiene & Tropical Medicine
+  orcid: 0000-0001-8057-8037
+  email: sam.abbott@lshtm.ac.uk
+license: CC-BY-4.0
+model_details:
+  data_inputs: Hub target data (weekly confirmed cases by onset week, observed plus imputed, for the country, provinces and health zones), the hub's published onset-to-report delays by vintage, province populations and population-weighted province centres. The generation interval is BVDOutbreakSize's. The newest BVDOutbreakSize release published by the forecast's cut-off, for its Rt estimates.
+  methods: Province renewal model in PyRenew with pooled Rt, gravity importation and depletion, with a tempered likelihood on BVDOutbreakSize Rt, fitted to known and imputed onsets.
+  methods_long: 'A renewal process for each province with cases, with a national weekly random walk on log Rt plus partially pooled province deviations, importation between provinces through a gravity kernel, and susceptible depletion. Provinces with no cases get importations that can seed local spread. The model''s national and patch Rt in the week of the newest BVDOutbreakSize release available at the cut-off are tied to that release''s Rt estimates, as a likelihood term tempered by 0.5. Confirmed onsets follow a time-varying ascertainment. The onset-to-report delay is nonparametric, a discrete hazard that is smooth over delay and shifts weekly with onset day, and known onsets are right truncated by it and by the report-to-publication lag. The share of reports with no onset date is modelled by province. The hub''s imputed onsets are modelled as the hub makes them, from cases missing an onset date by report day, back-sampled with the hub''s delay. Weekly known and imputed counts are negative
+    binomial and the delays of known onsets are Dirichlet-multinomial. Over the forecast weeks the log Rt walk reverts towards Rt of 1 with a half-life of 2 weeks. Fitted by NUTS (NumPyro) to each data vintage. Each sample is one joint posterior trajectory. The national value is the sum of province samples plus the national cases in no province. Health zones are not fitted: each province sample is split across its zones with shares drawn once per sample from a Dirichlet built on recent and longer-run published zone counts, keeping each zone''s published count, so zone samples sum to the province sample. See https://samabbott.co.uk/BDBVHubRenewal/methods/model/.'
+website_url: https://samabbott.co.uk/BDBVHubRenewal/
+repo_url: https://github.com/seabbs/BDBVHubRenewal
+team_funding: This study is funded by the National Institute for Health and Care Research (NIHR) Health Protection Research Unit in Health Analytics & Modelling, a partnership between the UK Health Security Agency, Imperial College London and the London School of Hygiene & Tropical Medicine (grant code NIHR207404). The views expressed are those of the author(s) and not necessarily those of the NIHR, UK Health Security Agency or the Department of Health and Social Care.
+ensemble_of_hub_models: false
