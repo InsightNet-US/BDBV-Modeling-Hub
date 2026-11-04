@@ -71,6 +71,17 @@ characters.
 
 ## Optional
 
+### designated_model
+
+An optional top-level Boolean (`true` or `false`) that elects eligibility for ensembling and public visaulization. If ommitted, default is true. 
+
+i.e., the intended selection policy is:
+
+- Field omitted: assume `true` (eligible for ensemble inclusion).
+- `designated_model: true`: eligible for ensemble inclusion.
+- `designated_model: false`: excluded from ensemble inclusion.
+
+
 ### model_version
 An identifier of the version of the model
 
