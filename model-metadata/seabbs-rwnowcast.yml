@@ -1,0 +1,19 @@
+team_name: seabbs
+team_abbr: seabbs
+model_name: RandomWalk on a nowcast
+model_abbr: rwnowcast
+model_contributors:
+- name: Sam Abbott
+  affiliation: London School of Hygiene & Tropical Medicine
+  orcid: 0000-0001-8057-8037
+  email: sam.abbott@lshtm.ac.uk
+license: CC-BY-4.0
+model_details:
+  data_inputs: Hub daily onsets by release (observed plus imputed) for provinces and health zones, and the hub's weekly target data.
+  methods: Baselinenowcast chain ladder on daily release snapshots, negative binomial new reports minus Poisson removals, then a log-scale random walk. Health zones and provinces, national the sum of provinces.
+  methods_long: The baselinenowcast method (Johnson et al. 2025, Wellcome Open Research, doi:10.12688/wellcomeopenres.25027.2; https://github.com/epinowcast/baselinenowcast/), from a JAX port of baselinenowcast 0.2.2, with a random walk on top. Daily onsets in the hub's weekly release snapshots are nowcast with a chain ladder. Unobserved report days are skipped, and every release pair in the 42-day window informs one daily delay, fitted by non-negative least squares on the log scale with releases as batched reports. A place uses its own delay at an age if it rests on at least 10 cases, and otherwise its parent's (zone, then province, then national). Daily nowcasts are summed to hub weeks. The observation model is baselinenowcast's negative binomial on the remaining count minus Poisson removals of the count reported, both fitted per horizon from retrospective nowcasts, so counts can be revised down. Each nowcast draw is carried forward from its latest week as a random walk on the log scale
+    with Poisson noise. A place under 10 cases a week, or with fewer than 3 errors, uses the spreads of its parent, and each place its own removal rate. The national value is the sum of provinces. See https://samabbott.co.uk/BDBVHubRenewal/methods/baselines/.
+website_url: https://samabbott.co.uk/BDBVHubRenewal/
+repo_url: https://github.com/seabbs/BDBVHubRenewal
+team_funding: This study is funded by the National Institute for Health and Care Research (NIHR) Health Protection Research Unit in Health Analytics & Modelling, a partnership between the UK Health Security Agency, Imperial College London and the London School of Hygiene & Tropical Medicine (grant code NIHR207404). The views expressed are those of the author(s) and not necessarily those of the NIHR, UK Health Security Agency or the Department of Health and Social Care.
+ensemble_of_hub_models: false
