@@ -53,4 +53,4 @@ jobs:
           commit-message: 'Add BDBVHub-baseline forecast for ${{ steps.generate.outputs.reference_date }}'
           title: 'Add BDBVHub-baseline forecast for ${{ steps.generate.outputs.reference_date }}'
           body: |
-            Automatically generated BDBVHub-baseline forecast with 100 complete trajectories per location.
+            Automatically generated BDBVHub-baseline forecast with 100 trajectories per location per horizon.

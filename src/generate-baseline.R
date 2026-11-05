@@ -53,6 +53,7 @@ format_cdc_baseline <- function(fit, training, reference_date, target) {
 
 generate_hub_baseline <- function(hub_path = ".", reference_date = "latest",
                                   overwrite_existing = FALSE, today = hub_today()) {
+  forecast_date <- format(Sys.time(), tz = "America/New_York", format = "%Y-%m-%d")
   task <- hub_task(hub_path, reference_date, today)
   path <- hub_output_path(hub_path, task$reference_date, "BDBVHub-baseline", overwrite_existing)
   data <- read.csv(file.path(hub_path, "target-data", "time-series.csv"), colClasses = "character")
@@ -81,6 +82,7 @@ generate_hub_baseline <- function(hub_path = ".", reference_date = "latest",
   samples <- withr::with_rng_version("4.0.0", withr::with_seed(as.integer((seed + 1) %% 2e9), {
     format_cdc_baseline(fit, training, as.character(task$reference_date), task$target)
   }))
+  samples$forecast_date <- forecast_date
   stopifnot(all(is.finite(samples$value)), all(samples$value >= 0))
   message("Target vintage: ", vintage, "; last observed week: ", anchor)
   hub_write_output(samples, path, task$reference_date)
