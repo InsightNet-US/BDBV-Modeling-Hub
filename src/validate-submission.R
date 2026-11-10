@@ -97,10 +97,51 @@ prepare_output <- function(file, validation_hub, base_sha, today, hub_timezone) 
   destination <- file.path(validation_hub, file)
   dir.create(dirname(destination), recursive = TRUE, showWarnings = FALSE)
   write.csv(new_rows, destination, row.names = FALSE)
+  !is.null(previous)
+}
+
+allow_verified_appends <- function(validations, verified_appends) {
+  for (i in seq_along(validations)) {
+    checks <- validations[[i]]
+    status <- checks$valid_file_status
+    if (!is.null(status) &&
+        identical(status$call, "check_valid_file_status") &&
+        (inherits(status, "check_error") || inherits(status, "check_failure")) &&
+        !inherits(status, "check_exec_error") &&
+        isTRUE(status$where %in% verified_appends)) {
+      message("Accepted append-only update: ", status$where)
+      validations[[i]] <- checks[names(checks) != "valid_file_status"]
+    }
+  }
+  validations
+}
+
+# only ordinary submission_time failures may be ignored here
+only_submission_window_failures <- function(validations) {
+  checks <- unlist(lapply(validations, unclass), recursive = FALSE)
+  if (!length(checks)) return(FALSE)
+  window_failure <- vapply(checks, function(check) {
+    inherits(check, "check_failure") &&
+      identical(check$call, "check_submission_time")
+  }, logical(1))
+  passed <- vapply(checks, function(check) {
+    inherits(check, "check_success") || inherits(check, "check_info")
+  }, logical(1))
+  any(window_failure) && all(passed | window_failure)
 }
 
 pr_number <- Sys.getenv("PR_NUMBER")
 if (!nzchar(pr_number)) stop("Run this validation on a pull request (PR_NUMBER is required).")
+# default to false so custom-check failures also invalidate an earlier comment
+summary_path <- Sys.getenv("VALIDATION_SUMMARY_PATH")
+write_validation_summary <- function(window_only) {
+  if (nzchar(summary_path)) {
+    jsonlite::write_json(list(
+      pr_number = as.integer(pr_number), window_only = window_only
+    ), summary_path, auto_unbox = TRUE)
+  }
+}
+write_validation_summary(FALSE)
 repo <- Sys.getenv("GITHUB_REPOSITORY")
 base_sha <- Sys.getenv("PR_BASE_SHA")
 if (!grepl("^[0-9a-fA-F]{40}$", base_sha) ||
@@ -131,7 +172,17 @@ if (length(hub_timezone) != 1L || !hub_timezone %in% OlsonNames()) {
 }
 # capture today once so all files use the same date even if the run crosses midnight (edgecase)
 today <- as.Date(format(Sys.time(), tz = hub_timezone, format = "%Y-%m-%d"))
-for (file in outputs) prepare_output(file, validation_hub, base_sha, today, hub_timezone)
+modified_outputs <- vapply(Filter(function(f) {
+  identical(f$status, "modified") && f$filename %in% outputs
+}, files), function(f) f$filename, character(1))
+verified_appends <- character()
+for (file in outputs) {
+  is_append <- prepare_output(file, validation_hub, base_sha, today, hub_timezone)
+  if (is_append && file %in% modified_outputs) {
+    # hubValidations identifies output files relative to model-output/.
+    verified_appends <- c(verified_appends, substring(file, nchar("model-output/") + 1L))
+  }
+}
 
 # standard hubverse validations
 v <- hubValidations::validate_pr(
@@ -140,4 +191,7 @@ v <- hubValidations::validate_pr(
   pr_number = pr_number,
   skip_submit_window_check = FALSE
 )
+v <- allow_verified_appends(v, verified_appends)
+# write the summary *before* check_for_errors() exits with the original failure
+write_validation_summary(length(outputs) > 0L && only_submission_window_failures(v))
 hubValidations::check_for_errors(v, verbose = TRUE)
