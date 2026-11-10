@@ -1,0 +1,68 @@
+name: Comment on submission validation
+
+on:
+  workflow_run:
+    workflows: ['Hub Submission Validation (R)']
+    types: [completed]
+
+permissions:
+  actions: read
+  pull-requests: write
+
+jobs:
+  comment:
+    if: ${{ github.event.workflow_run.event == 'pull_request' }}
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const run = context.payload.workflow_run;
+            const marker = '<!-- submission-window-validation -->';
+            const artifacts = await github.paginate(github.rest.actions.listWorkflowRunArtifacts, {
+              ...context.repo, run_id: run.id
+            });
+            const artifact = artifacts.find(a => a.name === 'submission-validation-summary' && !a.expired);
+            let summary;
+            if (artifact) {
+              const download = await github.rest.actions.downloadArtifact({
+                ...context.repo, artifact_id: artifact.id, archive_format: 'zip'
+              });
+              const fs = require('fs');
+              const os = require('os');
+              const path = require('path');
+              const archive = path.join(fs.mkdtempSync(path.join(os.tmpdir(), 'validation-')), 'summary.zip');
+              fs.writeFileSync(archive, Buffer.from(download.data));
+              // Read one fixed file as data; do not extract or execute artifact contents.
+              const { execFileSync } = require('child_process');
+              summary = JSON.parse(execFileSync('unzip', ['-p', archive, 'submission-validation.json'], {
+                maxBuffer: 16384, encoding: 'utf8'
+              }));
+            }
+            const number = summary?.pr_number ?? run.pull_requests?.[0]?.number;
+            if (!Number.isSafeInteger(number) || number < 1) return;
+            const { data: pr } = await github.rest.pulls.get({ ...context.repo, pull_number: number });
+            // An older run must never describe a newer revision or a different PR.
+            if (pr.state !== 'open' || pr.head.sha !== run.head_sha ||
+                pr.head.repo?.full_name !== run.head_repository?.full_name) return;
+            const runs = await github.paginate(github.rest.actions.listWorkflowRuns, {
+              ...context.repo, workflow_id: run.workflow_id, head_sha: run.head_sha, event: 'pull_request'
+            });
+            if (runs.some(r => r.id > run.id || (r.id === run.id && r.run_attempt > run.run_attempt))) return;
+            const comments = await github.paginate(github.rest.issues.listComments, {
+              ...context.repo, issue_number: number
+            });
+            const previous = comments.filter(c => c.user.login === 'github-actions[bot]' && c.body.includes(marker));
+            if (summary?.window_only === true && run.conclusion === 'failure') {
+              const body = `${marker}\n✅ model output content is valid. Validation is only failing because submission is outside of configured submission window.\n\nValidated commit: ${run.head_sha}\n[Validation run](${run.html_url})`;
+              if (previous.length) {
+                await github.rest.issues.updateComment({ ...context.repo, comment_id: previous[0].id, body });
+              } else {
+                await github.rest.issues.createComment({ ...context.repo, issue_number: number, body });
+              }
+            } else {
+              // Remove an earlier assurance when a rerun has other errors or passes.
+              for (const comment of previous) {
+                await github.rest.issues.deleteComment({ ...context.repo, comment_id: comment.id });
+              }
+            }
