@@ -1,14 +1,12 @@
 name: Hub Submission Validation (R)
 
 on:
-  workflow_dispatch:
   pull_request:
     branches: main
     paths:
       - 'model-output/**'
       - 'model-metadata/*'
       - 'hub-config/validations.yml'
-      - 'src/validate-submission.R'
       - 'src/validations/**'
       - '.github/workflows/validate-submission.yaml'
       - '.github/workflows/validate-submission-comment.yaml'
