@@ -7,8 +7,11 @@ on:
     paths:
       - 'model-output/**'
       - 'model-metadata/*'
+      - 'hub-config/validations.yml'
       - 'src/validate-submission.R'
+      - 'src/validations/**'
       - '.github/workflows/validate-submission.yaml'
+      - '.github/workflows/validate-submission-comment.yaml'
       - '!**README**'
 
 permissions:
@@ -17,48 +20,37 @@ permissions:
 
 jobs:
   validate-submission:
-    runs-on: ubuntu-22.04
-    env:
-      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-
+    if: github.event.repository.fork != true
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
+          persist-credentials: false
 
-      - uses: r-lib/actions/setup-r@v2
-        with:
-          install-r: false
-          use-public-rspm: true
-          extra-repositories: 'https://hubverse-org.r-universe.dev'
-
-      - name: Update R
-        run: |
-          sudo apt-get update
-
-      - uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          packages: |
-            any::hubValidations
-            any::sessioninfo
-            any::gh
-            any::jsonlite
-
-      - name: Run validations
+      - name: Stage the hub for validation
         env:
-          PR_NUMBER: ${{ github.event.number }}
-          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
-          VALIDATION_SUMMARY_PATH: ${{ runner.temp }}/submission-validation.json # for the commenting workflow
+          STAGED_HUB: ${{ runner.temp }}/submission-validation-hub
         run: |
-          source("src/validate-submission.R")
-        shell: Rscript {0}
+          python3 - <<'PY'
+          import os
+          import shutil
+          from pathlib import Path
+          destination = Path(os.environ["STAGED_HUB"])
+          destination.mkdir()
+          for directory in ("hub-config", "model-output", "model-metadata",
+                            "auxiliary-data", "target-data", "src"):
+              if Path(directory).is_dir():
+                  shutil.copytree(directory, destination / directory)
+          PY
 
-      # separate workflow necessary to allow comments on PRs from forks
-      - name: Upload validation summary
-        if: ${{ always() && github.event_name == 'pull_request' }}
-        uses: actions/upload-artifact@v4
+      - uses: hubverse-org/hubverse-actions/validate-submission@v2
+        env:
+          FORECAST_SOURCE_HUB: ${{ github.workspace }}
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
         with:
-          name: submission-validation-summary
-          path: ${{ runner.temp }}/submission-validation.json
-          if-no-files-found: ignore
-          retention-days: 7
+          hub_path: ${{ runner.temp }}/submission-validation-hub
+          summary: true
+          skip_submit_window_check: false
+          extra_packages: |
+            any::jsonlite
