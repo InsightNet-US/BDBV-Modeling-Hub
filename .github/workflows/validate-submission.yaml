@@ -48,6 +48,17 @@ jobs:
         env:
           PR_NUMBER: ${{ github.event.number }}
           PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          VALIDATION_SUMMARY_PATH: ${{ runner.temp }}/submission-validation.json # for the commenting workflow
         run: |
           source("src/validate-submission.R")
         shell: Rscript {0}
+
+      # separate workflow necessary to allow comments on PRs from forks
+      - name: Upload validation summary
+        if: ${{ always() && github.event_name == 'pull_request' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: submission-validation-summary
+          path: ${{ runner.temp }}/submission-validation.json
+          if-no-files-found: ignore
+          retention-days: 7

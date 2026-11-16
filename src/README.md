@@ -48,4 +48,10 @@ The script passes only the new forecast rows, without `forecast_date`, to Hubver
 
 The date is captured once for all files in a run. Later reruns may fail the recency check. See the [model-output README](../model-output/README.md#forecast_date) for submission requirements and [local validation instructions](../model-output/README.md#local-forecast-validation).
 
+If submission validation fails **only** because the submission falls outside of the configured submission window, a [separate commenting workflow](../.github/workflows/comment-submission-validation.yaml) posts:
+
+> ✅ model output content is valid. Validation is only failing because submission is outside of configured submission window.
+
+The validation check still fails submissions made outside the submission window (red 'X' persists, but comment is posted). Other content-related failures prevent the comment. The bot updates one comment with the validated commit and run link, and removes it when a later validation of the current revision no longer qualifies. 
+
 Requires R packages `hubValidations`, `gh`, and `jsonlite`, Git access to the PR base commit, and environment variables `GITHUB_REPOSITORY`, `PR_NUMBER`, `PR_BASE_SHA`, and `GITHUB_PAT`. 
