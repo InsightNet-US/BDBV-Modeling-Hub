@@ -1,14 +1,11 @@
-# date must be YYYY-MM-DD parseable
-parse_dates <- function(values, column, file) {
-  dates <- as.Date(values, format = "%Y-%m-%d")
+# parse dates without aborting so independent validation issues can accumulate
+inspect_dates <- function(values) {
+  dates <- suppressWarnings(as.Date(values, format = "%Y-%m-%d"))
   valid <- !is.na(values) & grepl("^[0-9]{4}-[0-9]{2}-[0-9]{2}$", values) &
     !is.na(dates) & format(dates, "%Y-%m-%d") == values &
     substr(values, 1, 4) != "0000"
-  if (!all(valid)) {
-    stop(file, ": ", column, " must contain valid, nonblank YYYY-MM-DD dates; CSV line ",
-         which(!valid)[1] + 1L, call. = FALSE)
-  }
-  dates
+  valid[is.na(valid)] <- FALSE
+  list(dates = dates, valid = valid)
 }
 
 # read the accepted file at this path, if one exists in the PR's base commit
@@ -31,6 +28,9 @@ read_previous_output <- function(file, base_sha, source_hub = ".") {
   if (!"forecast_date" %in% names(previous)) {
     stop(file, ": base-branch file is missing the required forecast_date column",
          call. = FALSE)
+  }
+  if (sum(names(previous) == "forecast_date") != 1L) {
+    stop(file, ": base-branch forecast_date column must occur exactly once", call. = FALSE)
   }
   previous
 }
@@ -56,7 +56,7 @@ new_submission_rows <- function(tbl, previous, file) {
   tbl[!old_dates, , drop = FALSE]
 }
 
-# output/failures
+# collect independent custom failures
 prepare_output <- function(file, validation_hub, base_sha, today, hub_timezone, source_hub = ".") {
   if (!startsWith(file, "model-output/") || any(strsplit(file, "/", fixed = TRUE)[[1]] == "..")) {
     stop("Invalid model output path: ", file)
@@ -64,41 +64,76 @@ prepare_output <- function(file, validation_hub, base_sha, today, hub_timezone, 
   if (!endsWith(file, ".csv")) stop("Unsupported model output format: ", file)
   tbl <- read.csv(file.path(source_hub, file), colClasses = "character", check.names = FALSE,
                   na.strings = NULL, fill = FALSE, row.names = NULL)
-  if (!"forecast_date" %in% names(tbl)) {
-    stop(file, ": missing required forecast_date column")
+  issues <- character()
+  blocked <- FALSE
+  add_issue <- function(message, blocking = FALSE) {
+    issues <<- c(issues, paste0(file, ": ", message))
+    blocked <<- blocked || blocking
   }
-  if (sum(names(tbl) == "forecast_date") != 1L) {
-    stop(file, ": forecast_date column must occur exactly once")
+  collect <- function(expr, blocking = FALSE) {
+    tryCatch(expr, error = function(e) {
+      issues <<- c(issues, conditionMessage(e))
+      blocked <<- blocked || blocking
+      NULL
+    })
   }
-  forecast <- parse_dates(tbl$forecast_date, "forecast_date", file)
-  if (!"reference_date" %in% names(tbl)) stop(file, ": missing reference_date")
-  reference <- parse_dates(tbl$reference_date, "reference_date", file)
-  if (any(forecast > reference)) {
-    stop(file, ": forecast_date must be on or before reference_date; CSV line ",
-         which(forecast > reference)[1] + 1L)
+  dates <- list()
+  for (column in c("forecast_date", "reference_date")) {
+    count <- sum(names(tbl) == column)
+    if (count != 1L) {
+      add_issue(if (count == 0L) paste0("missing required ", column, " column")
+                else paste0(column, " column must occur exactly once"),
+                blocking = column == "forecast_date")
+      next
+    }
+    dates[[column]] <- inspect_dates(tbl[[column]])
+    if (!all(dates[[column]]$valid)) {
+      lines <- which(!dates[[column]]$valid) + 1L
+      add_issue(paste0(column, " must contain valid, nonblank YYYY-MM-DD dates; CSV lines ",
+                       paste(head(lines, 20L), collapse = ", "),
+                       if (length(lines) > 20L) paste0(" (", length(lines), " invalid rows total)")))
+    }
   }
-  previous <- read_previous_output(file, base_sha, source_hub)
-  new_rows <- new_submission_rows(tbl, previous, file)
-  new_dates <- unique(new_rows$forecast_date)
-  if (length(new_dates) != 1L) {
-    stop(file, ": new data must contain exactly one new forecast_date",
-         call. = FALSE)
+  if (all(c("forecast_date", "reference_date") %in% names(dates))) {
+    comparable <- dates$forecast_date$valid & dates$reference_date$valid
+    after_reference <- which(comparable & dates$forecast_date$dates > dates$reference_date$dates)
+    if (length(after_reference)) {
+      add_issue(paste0("forecast_date must be on or before reference_date; CSV lines ",
+                       paste(head(after_reference + 1L, 20L), collapse = ", ")))
+    }
   }
-  if (abs(as.integer(as.Date(new_dates, format = "%Y-%m-%d") - today)) > 1L) {
-    stop(file, ": new forecast_date must be within one day of today's date in ", hub_timezone,
-         " (", format(today, "%Y-%m-%d"), "); found ", new_dates,
-         call. = FALSE)
+  previous <- collect(read_previous_output(file, base_sha, source_hub), blocking = TRUE)
+  new_rows <- NULL
+  if (!is.null(dates$forecast_date) && !blocked) {
+    collect(new_submission_rows(tbl, previous, file))
+    new_rows <- if (is.null(previous)) tbl else {
+      tbl[!tbl$forecast_date %in% previous$forecast_date, , drop = FALSE]
+    }
+    new_dates <- unique(new_rows$forecast_date)
+    if (length(new_dates) != 1L) {
+      add_issue("new data must contain exactly one new forecast_date", blocking = TRUE)
+    } else {
+      parsed <- inspect_dates(new_dates)
+      if (isTRUE(parsed$valid) && abs(as.integer(parsed$dates - today)) > 1L) {
+        add_issue(paste0("new forecast_date must be within one day of today's date in ",
+                         hub_timezone, " (", format(today, "%Y-%m-%d"), "); found ", new_dates))
+      }
+    }
   }
-  # isolate and validate the new forecast independently
-  new_rows$forecast_date <- NULL
-  destination <- file.path(validation_hub, file)
-  dir.create(dirname(destination), recursive = TRUE, showWarnings = FALSE)
-  write.csv(new_rows, destination, row.names = FALSE)
-  !is.null(previous)
+  if (!blocked) {
+    new_rows$forecast_date <- NULL
+    destination <- file.path(validation_hub, file)
+    collect({
+      dir.create(dirname(destination), recursive = TRUE, showWarnings = FALSE)
+      write.csv(new_rows, destination, row.names = FALSE)
+    }, blocking = TRUE)
+  }
+  if (blocked) {
+    add_issue("Standard content checks cannot run safely because the new forecast could not be isolated or prepared.")
+  }
+  list(issues = issues, prepared = !blocked)
 }
 
-# Runs as a native validate_model_file custom check, before the submission
-# window and model-data checks read the staged file. Never rewrite the source.
 check_forecast_date <- function(hub_path, file_path, today = NULL) {
   result <- tryCatch({
     source_hub <- Sys.getenv("FORECAST_SOURCE_HUB")
@@ -119,7 +154,7 @@ check_forecast_date <- function(hub_path, file_path, today = NULL) {
       stop("hub-config/admin.json must specify a valid timezone to determine today's date.")
     }
     if (is.null(today)) {
-      # Capture the date once per hub per R process, including a midnight crossing.
+      # capture the date once per hub per R process (including a midnight crossing)
       dates <- getOption("bdbv.forecast_validation_dates", list())
       key <- paste(source_hub, timezone)
       if (is.null(dates[[key]])) {
@@ -130,15 +165,19 @@ check_forecast_date <- function(hub_path, file_path, today = NULL) {
     }
     prepare_output(paste0("model-output/", file_path), hub_path, base_sha,
                    as.Date(today), timezone, source_hub)
-    NULL
   }, error = identity)
+  if (inherits(result, "error")) {
+    result <- list(issues = conditionMessage(result), prepared = FALSE)
+  }
   hubValidations::capture_check_cnd(
-    check = !inherits(result, "error"),
+    check = length(result$issues) == 0L,
     file_path = file_path,
     msg_subject = "Forecast dates and appended rows",
     msg_attribute = "valid.",
-    error = TRUE,
-    details = if (inherits(result, "error")) conditionMessage(result) else NULL
+    # ordinary failures remain failing checks but let native data checks run
+    # unsafe/unreadable inputs retain check_error to stop only this file
+    error = !result$prepared,
+    details = if (length(result$issues)) paste0("- ", result$issues, collapse = "\n") else NULL
   )
 }
 
