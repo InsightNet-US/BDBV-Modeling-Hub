@@ -47,7 +47,7 @@ jobs:
         with:
           token: ${{ secrets.HUB_BASELINE_PR_PAT }}
           base: main
-          branch: codex/baseline-${{ steps.generate.outputs.reference_date }}
+          branch: baseline/${{ steps.generate.outputs.reference_date }}
           add-paths: |
             model-output/BDBVHub-baseline/${{ steps.generate.outputs.reference_date }}-BDBVHub-baseline.csv
           commit-message: 'Add BDBVHub-baseline forecast for ${{ steps.generate.outputs.reference_date }}'

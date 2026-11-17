@@ -36,22 +36,22 @@ Rscript src/derive_mccabe_quantiles.R
 Re-running the script reproduces the committed CSVs exactly. It depends only on
 base R (`qgamma`, `qnbinom`).
 
-## `validate-submission.R`
+## `validations/forecast-date.R`
 
-Entry point for the [PR submission workflow](../.github/workflows/validate-submission.yaml). In addition to standard Hubverse validation, the script checks the appended forecast:
+Custom file-level checks used by the native `hubverse-org/hubverse-actions/validate-submission@v2` action in the [submission workflow](../.github/workflows/validate-submission.yaml). [hub-config/validations.yml](../hub-config/validations.yml) registers `check_forecast_date()` with HubValidations; the workflow does not use a separate validation runner.
 
-- Every row must have a nonblank, valid `YYYY-MM-DD` `forecast_date` on or before its `reference_date`.
-- The PR must preserve all rows of the file at the same path in the base commit, including duplicate counts. Column and row reordering are allowed; parsed cell text and the column set must stay unchanged. Existing files without `forecast_date` fail.
-- Added rows must contain exactly one new forecast date, absent from the base file, within one day of the validation date in Africa/Kinshasa. For a new file, all rows count as added data. Retained dates are exempt from the recency check. Submitting no new rows fails.
+The custom checks require:
 
-The script passes only the new forecast rows, without `forecast_date`, to Hubverse in a temporary hub copy. This prevents retained forecasts with reused sample or task IDs from being validated as a single forecast. The original PR file retains the full appended history. Standard submission-window checks remain enabled. Files are checked independently, and the script stops on the first custom validation failure.
+- Every row to have a nonblank, valid `YYYY-MM-DD` `forecast_date` on or before its `reference_date`.
+- Existing rows and columns to be preserved, including duplicate counts. Row and column reordering are allowed. The comparison uses the file at the same path in the PR's base commit; base files without exactly one `forecast_date` column fail.
+- Exactly one new forecast date in the added rows, absent from the accepted file and within one day of the validation date in the hub's configured timezone (currently Africa/Kinshasa). For new files, all rows count as added data. Retained dates are exempt from the recency check; submitting no new rows fails.
 
-The date is captured once for all files in a run. Later reruns may fail the recency check. See the [model-output README](../model-output/README.md#forecast_date) for submission requirements and [local validation instructions](../model-output/README.md#local-forecast-validation).
+The workflow creates a disposable hub copy. After the native file checks reach the custom hook, it checks the full submitted file against the original checkout and base commit. When one new forecast can be isolated, it replaces only the staged output with those new rows and removes `forecast_date` before native content validation. This prevents retained forecasts from inflating sample counts or creating duplicate tasks. The submitted files remain unchanged.
 
-If submission validation fails **only** because the submission falls outside of the configured submission window, a [separate commenting workflow](../.github/workflows/comment-submission-validation.yaml) posts:
+Independent custom issues are collected in the native `[forecast_date]` result. Date or history failures do not stop native content checks when preparation remains safe. Missing or duplicate forecast-date columns, multiple new forecast dates, unavailable base history, or unreadable data can prevent preparation; in that case the custom result blocks content checks for that file. Other files can continue. Native checks may also stop when their own prerequisites fail. Any custom failure still fails validation overall.
 
-> ✅ model output content is valid. Validation is only failing because submission is outside of configured submission window.
+The custom hook requires `FORECAST_SOURCE_HUB` to identify the original checkout and `PR_BASE_SHA` to identify the locally available PR base commit. It refuses to rewrite the original checkout. The validation date is captured once per hub per R process; later reruns may fail the recency check.
 
-The validation check still fails submissions made outside the submission window (red 'X' persists, but comment is posted). Other content-related failures prevent the comment. The bot updates one comment with the validated commit and run link, and removes it when a later validation of the current revision no longer qualifies. 
+The native action handles R setup, dependencies, standard validation, and report artifacts. The [companion workflow](../.github/workflows/validate-submission-comment.yaml) posts the official report, including on fork PRs. A new commit gets a new comment; rerunning the same commit updates its comment. Custom and standard failures appear together when the corresponding checks can run. Submission-window and native file-modification checks remain enabled, so a late append can report both failures.
 
-Requires R packages `hubValidations`, `gh`, and `jsonlite`, Git access to the PR base commit, and environment variables `GITHUB_REPOSITORY`, `PR_NUMBER`, `PR_BASE_SHA`, and `GITHUB_PAT`. 
+There is no maintained local runner or manual submission-workflow trigger.

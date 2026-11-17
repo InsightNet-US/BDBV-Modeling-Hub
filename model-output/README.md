@@ -106,7 +106,7 @@ Files may contain multiple forecast dates after resubmission, each identifying a
 
 The filename still uses `reference_date`. Each file is checked independently, so different files may share a forecast date. The validation date is captured once per run; a later rerun can fail if the newly added date falls outside the one-day allowance. The standard round submission window still applies; appending a new forecast does not extend it.
 
-`forecast_date` is validated by the hub's custom PR script rather than configured in `tasks.json` because it has no fixed list of accepted or required values.
+`forecast_date` is validated by the hub's [custom HubValidations check](../src/validations/forecast-date.R), registered in [hub-config/validations.yml](../hub-config/validations.yml), rather than configured as a task ID in `tasks.json`. It has no fixed list of accepted or required values.
 
 ### `target`
 
@@ -179,33 +179,7 @@ Pull requests that add or modify model-output files are validated automatically.
 
 ### Pull request forecast validation
 
-The [submission workflow](../.github/workflows/validate-submission.yaml) calls [`src/validate-submission.R`](../src/validate-submission.R). The script checks `forecast_date` first, then runs the standard [Hubverse validations](https://github.com/hubverse-org/hubValidations), including the round submission window. The script checks dates across the full submitted file and verifies that historical rows are preserved, then creates a temporary hub copy containing only the newly added forecast rows, with `forecast_date` removed. Hubverse validates that new forecast independently, so retained forecasts do not inflate sample counts or create duplicate tasks. All other columns of the new rows are passed through to the standard checks. The original PR file retains its full history and `forecast_date` column.
-
-Only added or modified model-output files in the PR are checked; unchanged historical files are not revalidated. The existing-file comparison uses the PR's base commit. If any file fails a custom check, the workflow stops; later files and the standard Hubverse checks will not run until the failure is resolved. Please [report validation issues](https://github.com/InsightNet-US/BDBV-Modeling-Hub/issues).
-
-### Local forecast validation
-
-The PR workflow runs all required checks automatically. Calling `hubValidations::validate_submission()` directly on a submitted file does not reproduce the custom checks and will reject `forecast_date` because it is not configured in `tasks.json`.
-
-To reproduce the full workflow locally for an existing PR, check out that PR's files and run R from the repository root. Install `hubValidations`, `gh`, and `jsonlite`, and configure a GitHub token through the `GITHUB_PAT` environment variable. Set the PR number below, fetch its base commit, and run the same script used by CI:
-
-```r
-Sys.setenv(
-  GITHUB_REPOSITORY = "InsightNet-US/BDBV-Modeling-Hub",
-  PR_NUMBER = "123" # Replace with your PR number.
-)
-pr <- gh::gh(
-  "/repos/{repo}/pulls/{number}",
-  repo = Sys.getenv("GITHUB_REPOSITORY"),
-  number = Sys.getenv("PR_NUMBER")
-)
-Sys.setenv(PR_BASE_SHA = pr$base$sha)
-status <- system2("git", c("fetch", shQuote(pr$base$repo$clone_url), shQuote(pr$base$sha)))
-stopifnot(status == 0L)
-source("src/validate-submission.R")
-```
-
-The script requires PR context and checks the current date and submission window when run locally, just as it does in CI.
+The [submission workflow](../.github/workflows/validate-submission.yaml) uses the native `hubverse-org/hubverse-actions/validate-submission@v2` action, which runs [HubValidations](https://github.com/hubverse-org/hubValidations). The hub's [custom forecast-date check](../src/validations/forecast-date.R) is registered through [hub-config/validations.yml](../hub-config/validations.yml) and runs during file-level validation.
 
 ## Previous rounds
 
@@ -222,5 +196,3 @@ Files in that round have the columns `reference_date`, `target`, `location`, `ou
 -   `output_type` is `quantile`, `mean` or `median`,
 -   `output_type_id` is the quantile level (`0.025`, `0.1`, `0.25`, `0.5`, `0.75`, `0.9`, `0.975`) for quantile rows and `NA` for mean and median rows, and
 -   `value` is the non-negative estimate.
-
-The configuration for this round is retained in `hub-config/tasks.json` so that the archived files continue to validate and load.
