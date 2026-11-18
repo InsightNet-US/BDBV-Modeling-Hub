@@ -42,13 +42,71 @@ jobs:
                   shutil.copytree(directory, destination / directory)
           PY
 
-      - uses: hubverse-org/hubverse-actions/validate-submission@v2
+      - name: Check out the Hubverse report formatter
+        uses: actions/checkout@v7
+        with:
+          repository: hubverse-org/hubverse-actions
+          ref: b7728f6be8c554e4a3088b7008b2c172dc2c840d # v2
+          path: .hubverse-actions
+          sparse-checkout: validate-submission/summary.R
+          sparse-checkout-cone-mode: false
+          persist-credentials: false
+
+      - name: Install legacy timezone names
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq --no-install-recommends tzdata-legacy
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+          extra-repositories: https://hubverse-org.r-universe.dev
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
         env:
+          GITHUB_PAT: ${{ github.token }}
+        with:
+          cache: always
+          packages: |
+            any::hubValidations
+            any::sessioninfo
+            any::gh
+            any::jsonlite
+
+      - name: Run submission validation
+        env:
+          GITHUB_PAT: ${{ github.token }}
+          HUB_PATH: ${{ runner.temp }}/submission-validation-hub
+          PR_NUMBER: ${{ github.event.pull_request.number }}
           FORECAST_SOURCE_HUB: ${{ github.workspace }}
           PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HUBVERSE_SUMMARY_R: .hubverse-actions/validate-submission/summary.R
+          SUMMARY_PATH: ${{ runner.temp }}/validate-submission/summary.md
+        run: |
+          mkdir -p "$(dirname "$SUMMARY_PATH")"
+          Rscript src/validations/validate-pr.R
+
+      - name: Fall back to a summary if validation could not run
+        if: ${{ !cancelled() }}
+        env:
+          SUMMARY_PATH: ${{ runner.temp }}/validate-submission/summary.md
+        run: |
+          if [ -s "$SUMMARY_PATH" ]; then
+            exit 0
+          fi
+          mkdir -p "$(dirname "$SUMMARY_PATH")"
+          cat > "$SUMMARY_PATH" <<'EOF'
+          ## Submission validation
+
+          :x: **Validation did not complete.** See the workflow log for details.
+          EOF
+
+      - name: Upload the summary
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v7
         with:
-          hub_path: ${{ runner.temp }}/submission-validation-hub
-          summary: true
-          skip_submit_window_check: false
-          extra_packages: |
-            any::jsonlite
+          name: submission-validation-results
+          path: ${{ runner.temp }}/validate-submission/summary.md
+          if-no-files-found: error
+          overwrite: true
+          retention-days: 1
