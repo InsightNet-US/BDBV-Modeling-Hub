@@ -1,0 +1,5 @@
+default:
+  validate_model_file:
+    forecast_date:
+      fn: check_forecast_date
+      source: src/validations/forecast-date.R

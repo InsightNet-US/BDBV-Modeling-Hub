@@ -1,0 +1,20 @@
+name: Post Submission Validation Result
+
+# posts the result saved by Hub Submission Validation (R) on the pull request
+
+on:
+  workflow_run:
+    workflows: ["Hub Submission Validation (R)"]
+    types: [completed]
+
+permissions:
+  contents: read
+
+jobs:
+  comment:
+    if: github.event.repository.fork != true
+    uses: hubverse-org/hubverse-actions/.github/workflows/post-validation-comment.yaml@v2
+    permissions:
+      contents: read
+      actions: read
+      pull-requests: write
