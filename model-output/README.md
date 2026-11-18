@@ -67,7 +67,7 @@ The `team` and `model` in this file must match the `team` and `model` in the dir
 
 ## File format
 
-The hub is currently collecting **nowcasts and forecasts of weekly incident confirmed cases by location (country, province or health zone)** (round `BDBV 2026 nowcasting and forecasting` in [`hub-config/tasks.json`](../hub-config/tasks.json)). The file must be a comma-separated value (csv) file with the following columns (in any order):
+The hub collects nowcasts and forecasts of **weekly incident confirmed cases** and estimates of the **weekly effective reproduction number** by location (country, province or health zone). Both targets are defined in the `BDBV 2026 nowcasting and forecasting` round in [`hub-config/tasks.json`](../hub-config/tasks.json). Submit a CSV file with the following columns in any order.
 
 -   `reference_date`
 -   `forecast_date`
@@ -79,8 +79,6 @@ The hub is currently collecting **nowcasts and forecasts of weekly incident conf
 -   `value`
 
 No additional columns are allowed.
-
-Each row of the file is the value of expected final number of reported cases for a particular combination of location and target_end_date for one of 100 sample trajectories sampled from the distribution of epidemic trajectories produced by that model. The observed data these estimates are compared against are in the [`target-data/`](../target-data/) folder, and will themselves be updated weekly while the epidemic continues and the hub is still running. The final values in this file after all revisions are the ultimate model target.
 
 ### `reference_date`
 
@@ -110,7 +108,10 @@ The filename still uses `reference_date`. Each file is checked independently, so
 
 ### `target`
 
-Values in the `target` column must be the string `wk inc confirmed cases`: the number of confirmed cases with **symptom onset** in the epi week ending on `target_end_date`. This value will be the same for all rows in the file, but is required to be present for human readability and validation. See [`target-data/README.md`](../target-data/README.md) for the definition of the observed target data.
+Use one of the following target names in each row.
+
+- `wk inc confirmed cases` is the number of confirmed cases with **symptom onset** in the epi week ending on `target_end_date`. The [observed target data](../target-data/README.md) are updated weekly, and the final revised counts serve as the comparison for these estimates.
+- `wk R_t` is the weekly effective reproduction number for the epi week ending on `reference_date`. There is no observed target data for this target, as it is not an observed value.
 
 ### `target_end_date`
 
@@ -118,7 +119,10 @@ Values in the `target_end_date` column must be a date in the ISO format
 
     YYYY-MM-DD
 
-and must be a Saturday, the last day of the epi week (Sunday to Saturday) that the row refers to. Estimates may be submitted for any epi week from the start of the outbreak (`2026-02-14`) through three weeks after the `reference_date`, so a single file can contain nowcasts for recent, incompletely reported weeks and short-term forecasts of weeks to come. The full list of accepted values is in `hub-config/tasks.json` and is extended by one week each time a new `reference_date` is added. Teams are not required to submit every `target_end_date`.
+and must be a Saturday, the last day of the epi week (Sunday to Saturday) that the row refers to.
+
+- For `wk inc confirmed cases`, estimates may cover any epi week from the start of the outbreak (`2026-02-14`) through three weeks after `reference_date`. Teams may submit a subset of those dates.
+- For `wk R_t`, set `target_end_date` equal to `reference_date` on every row. Submit one predictive distribution at **horizon 0** per location and `forecast_date`. The 23 quantile rows describe that single weekly estimate.
 
 ### `location`
 
@@ -148,19 +152,26 @@ Teams are not required to submit every location; any subset of the country, prov
 
 ### `output_type`
 
-Values in the `output_type` column must be the string `sample`. Only sample-based output is accepted in this round; quantiles, means and medians are not.
+Use `sample` for `wk inc confirmed cases` and `quantile` for `wk R_t`.
 
 ### `output_type_id`
 
-Values in the `output_type_id` column are integer sample indices. Each forecast identified by `forecast_date` must contain **exactly 100 samples** for every combination of `reference_date`, `location` and `target` that it includes.
+For `wk inc confirmed cases`, values in the `output_type_id` column are integer sample indices. Each forecast identified by `forecast_date` must contain **exactly 100 samples** for every combination of `reference_date`, `location` and `target` that it includes.
 
-Within each `forecast_date`, the sample index identifies a trajectory: a given `output_type_id` for a given `location` must appear once for every `target_end_date` submitted for that location, and those rows together are one joint draw from the model's predictive distribution across weeks. In other words, for each location and `forecast_date` the file contains 100 complete trajectories, each covering the same set of `target_end_date`s. Sample indices may be reused across locations (for example `1` to `100` within each location) or be unique across the whole file; either is valid. Sample indices may also be reused across different forecast dates.
+Within each `forecast_date`, the sample index identifies a trajectory. A given `output_type_id` for a given `location` must appear once for every `target_end_date` submitted for that location, and those rows together are one joint draw from the model's predictive distribution across weeks. In other words, for each location and `forecast_date` the file contains 100 complete trajectories, each covering the same set of `target_end_date`s. Sample indices may be reused across locations (for example `1` to `100` within each location) or be unique across the whole file; either is valid. Sample indices may also be reused across different forecast dates.
+
+For `wk R_t`, use these 23 quantile levels as `output_type_id`. Include each level once per submitted location and `forecast_date` at horizon 0. Write levels without trailing zeros, such as `0.1`.
+
+```text
+0.01, 0.025, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5,
+0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 0.975, 0.99
+```
 
 ### `value`
 
-Values in the `value` column are non-negative numbers giving the sampled weekly count of confirmed cases for that trajectory, location and `target_end_date`.
+Values must be non-negative numbers. For `wk inc confirmed cases`, give the sampled weekly case count for that trajectory, location and `target_end_date`. For `wk R_t`, give the estimated reproduction number at the quantile level in `output_type_id`.
 
-### Example
+### Examples
 
 For estimates generated on `2026-10-26`, the first rows of `model-output/team-model/2026-10-31-team-model.csv` might look like the following. This example satisfies the forecast-date recency check only when validation runs within one day of `2026-10-26`; the round submission window must also be satisfied.
 
@@ -171,6 +182,14 @@ For estimates generated on `2026-10-26`, the first rows of `model-output/team-mo
     2026-10-31,2026-10-26,wk inc confirmed cases,2026-10-31,CD-IT,sample,1,241
     2026-10-31,2026-10-26,wk inc confirmed cases,2026-11-07,CD-IT,sample,1,253
     2026-10-31,2026-10-26,wk inc confirmed cases,2026-10-10,CD-IT,sample,2,203
+    ...
+
+The following excerpt shows three of the 23 required quantile rows for a `wk R_t` estimate for Ituri. Both `reference_date` and `target_end_date` are `2026-11-21`.
+
+    reference_date,forecast_date,target,target_end_date,location,output_type,output_type_id,value
+    2026-11-21,2026-11-16,wk R_t,2026-11-21,CD-IT,quantile,0.01,0.62
+    2026-11-21,2026-11-16,wk R_t,2026-11-21,CD-IT,quantile,0.025,0.68
+    2026-11-21,2026-11-16,wk R_t,2026-11-21,CD-IT,quantile,0.05,0.73
     ...
 
 ## Forecast validation
