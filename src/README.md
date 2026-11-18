@@ -38,7 +38,7 @@ base R (`qgamma`, `qnbinom`).
 
 ## `validations/forecast-date.R`
 
-Custom file-level checks used by the native `hubverse-org/hubverse-actions/validate-submission@v2` action in the [submission workflow](../.github/workflows/validate-submission.yaml). [hub-config/validations.yml](../hub-config/validations.yml) registers `check_forecast_date()` with HubValidations; the workflow does not use a separate validation runner.
+Custom file-level checks used by the [submission workflow](../.github/workflows/validate-submission.yaml). [hub-config/validations.yml](../hub-config/validations.yml) registers `check_forecast_date()` with HubValidations.
 
 The custom checks require:
 
@@ -52,6 +52,6 @@ Independent custom issues are collected in the native `[forecast_date]` result. 
 
 The custom hook requires `FORECAST_SOURCE_HUB` to identify the original checkout and `PR_BASE_SHA` to identify the locally available PR base commit. It refuses to rewrite the original checkout. The validation date is captured once per hub per R process; later reruns may fail the recency check.
 
-The native action handles R setup, dependencies, standard validation, and report artifacts. The [companion workflow](../.github/workflows/validate-submission-comment.yaml) posts the official report, including on fork PRs. A new commit gets a new comment; rerunning the same commit updates its comment. Custom and standard failures appear together when the corresponding checks can run. Submission-window and native file-modification checks remain enabled, so a late append can report both failures.
+## `validations/validate-pr.R`
 
-There is no maintained local runner or manual submission-workflow trigger.
+The workflow calls `hubValidations::validate_pr()` through this script. When GitHub reports an existing model-output CSV as modified and its `forecast_date` check passes, the script removes the built-in `valid_file_status` error for that file.
