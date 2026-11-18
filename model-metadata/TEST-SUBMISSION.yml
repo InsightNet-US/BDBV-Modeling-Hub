@@ -1,0 +1,17 @@
+team_name: "Fictional Test Team"
+team_abbr: "TEST"
+model_name: "Synthetic Weekly Case Submission"
+model_abbr: "SUBMISSION"
+model_contributors:
+  - name: "Test Contributor"
+    affiliation: "Fictional Test Team"
+    email: "contributor@example.invalid"
+license: "CC0-1.0"
+model_details:
+  methods: "Deterministic synthetic weekly case counts for testing hub submission validation."
+  methods_long: >-
+    Fixed arithmetic generates 100 trajectories across four weekly target dates
+    for the national location CD. The counts are illustrative and have no
+    statistical interpretation.
+  data_inputs: "Configured hub dates and location codes only."
+designated_model: false
