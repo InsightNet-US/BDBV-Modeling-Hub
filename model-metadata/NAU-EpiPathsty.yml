@@ -1,0 +1,34 @@
+team_name: "NAU"
+team_abbr: "NAU"
+model_name: "EpiPathsty"
+model_abbr: "EpiPathsty"
+model_version: "1.0"
+model_contributors: [
+  {
+    "name": "Spencer Fox",
+    "affiliation": "Northern Arizona University",
+    "email": "spencer.fox@nau.edu",
+    "orcid": "0000-0003-1969-3778"
+  },
+  {
+    "name": "Brynn Case",
+    "affiliation": "Northern Arizona University",
+    "email": "brynn.case@nau.edu",
+    "orcid": "0000-0002-5666-1161"
+  },
+  {
+    "name": "Nate Kornetzke",
+    "affiliation": "Northern Arizona University",
+    "email": "nathaniel.kornetzke@nau.edu",
+    "orcid": "0000-0003-3911-6767"
+  }
+]
+license: "CC-BY-4.0"
+designated_model: true
+model_details:
+  methods: "Bayesian SEIR model of health zones linked by road-travel mobility, fit jointly with a reporting-delay model of all hub releases, to nowcast and forecast cases by onset week."
+  methods_long: "Transmission: a deterministic daily SEIR model in each health zone of the provinces with at least 10 cases (currently Ituri, Nord-Kivu, Haut-Uele, Tshopo and Bas-Uele; all of their zones). Zones are coupled by a gravity mixing kernel built from GRID3 populations and OSRM road travel times between zones; the share of time spent in other zones is estimated. Log R is a weekly random walk per province plus a smooth zone deviation (cubic B-spline with AR(1) coefficients pulled toward the province). Observation: confirmed cases by onset week are negative binomial around modeled onsets times the fraction already reported. Reporting delay: a weekly-hazard model of time from onset to publication (national rates with province deviations and a province trend), capped at 84 days, fit to the reporting triangle of hub releases from 2026-10-09 on with a beta-binomial likelihood. Each release pair has a random effect on reporting speed per province, the latest release's speed is also unknown, and a mixture term allows revisions of already-published counts. Fit in Stan (4 chains x 500 draws); the 100 submitted trajectories are joint posterior predictive draws of eventual counts. Forecasts: each zone's R is damped toward 1 over the forecast weeks (damping chosen by backtests). Provinces and the country are sums of the modeled zones within each trajectory, so all levels agree. Locations outside the modeled provinces are not submitted. Uncertainty includes parameter uncertainty, negative binomial noise, unknown reporting speed and revisions. Settings were chosen by backtests on archived hub releases. The backtests and forecasting code were designed in collaboration with Claude (Anthropic)."
+  data_inputs: "Hub target data (all weekly releases, used as a reporting triangle), GRID3 health-zone boundaries and gridded population (v4.4, via WorldPop), and road travel times between zones from OSRM on OpenStreetMap."
+repo_url: "https://github.com/sjfox/drc-ebola-mechforecast"
+team_funding: "Supported by the Insight Net cooperative agreement CDC-RFA-FT-23-0069 from the CDC's Center for Forecasting and Outbreak Analytics."
+ensemble_of_hub_models: false
