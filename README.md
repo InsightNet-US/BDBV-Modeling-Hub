@@ -6,19 +6,22 @@ This repository follows the guidelines and standards outlined by the [hubverse](
 
 This Hub is a joint effort of [Insight Net](https://insightnet.us) centers ([ACCIDDA](https://accidda.org) and [epiEngage](https://epiengage.org)), the [School of Public Health of the University of Kinshasa](https://espkinshasa.net/), and the [Institut National de Santé Publique (INSP)](https://insp.cd/).
 
-## Current round: nowcasting and forecasting weekly confirmed cases
+## Current round: weekly confirmed cases and effective reproduction number
 
 Participating teams submit, each week, sample trajectories of the number of confirmed cases by week of symptom onset. Because cases are reported with a delay, recent weeks are incomplete when the data are released, so submissions cover both nowcasts of already-elapsed weeks and forecasts of weeks to come. See the [BDBV Modeling Hub Dashboard](https://insightnet-us.github.io/BDBV-Modeling-Hub-Dashboard/) for visualizations of current round results.
 
-**Target:** `wk inc confirmed cases`, the number of confirmed cases with symptom onset in a given epi week (Sunday to Saturday). The observed data are in [`target-data/`](target-data/), with supporting data on reporting delays and daily health zone counts in [`auxiliary-data/`](auxiliary-data/).
+**Targets**
+
+- `wk inc confirmed cases` is the number of confirmed cases with symptom onset in a given epi week (Sunday to Saturday). Observations and supporting data are in [`target-data/`](target-data/) and [`auxiliary-data/`](auxiliary-data/).
+- `wk R_t` is an estimate of the weekly effective reproduction number for the epi week ending on `reference_date` (horizon 0). There is no target data for this estimate, as it is not an observed value.
 
 **Locations:** the 26 provinces and 519 health zones of the Democratic Republic of the Congo and the full country, identified by the location codes listed in [`auxiliary-data/locations.csv`](auxiliary-data/locations.csv).
 
-**Dates:** each round is identified by a `reference_date`, the Saturday ending the epi week in which estimates are made. Submissions are accepted from Sunday through Tuesday of that week. Each file may cover any epi week from the start of the outbreak through three weeks after the reference date.
+**Dates:** each round is identified by a `reference_date`, the Saturday ending the epi week in which estimates are made. Submissions are accepted from Sunday through Tuesday of that week. Confirmed-case estimates may cover any epi week from the start of the outbreak through three weeks after the reference date. For `wk R_t`, the only target end date is the reference date.
 
 **Forecast date:** every row must include a valid, nonblank `forecast_date` in `YYYY-MM-DD` format, on or before its `reference_date`. For a new file, all rows share one forecast date. To resubmit, append new forecast rows while preserving every existing row unchanged. The new rows must share one previously unused forecast date within one day of the validation date in Africa/Kinshasa; retained rows may have older forecast dates. See the [forecast-date requirements](model-output/README.md#forecast_date) for full validation rules.
 
-**Output:** 100 sample trajectories per location for each `forecast_date`. Full details and an example file are in the [model-output README](model-output/README.md), and the exact task configuration is in [`hub-config/tasks.json`](hub-config/tasks.json).
+**Output:** For each `forecast_date` and submitted location, provide 100 sample trajectories for confirmed cases. If submitting `wk R_t`, submite one set of 23 quantiles per location. Full details and examples are in the [model-output README](model-output/README.md), and the exact task configuration is in [`hub-config/tasks.json`](hub-config/tasks.json).
 
 **How to submit:** register a model by adding a metadata file to [`model-metadata/`](model-metadata/), then submit each week's file to [`model-output/`](model-output/) by pull request. Automated validation runs on every pull request. Sync your fork with this repository before each submission, since the target data and the accepted dates in `hub-config/tasks.json` change weekly.
 

@@ -38,13 +38,11 @@ jobs:
           branch: auto/weekly-date-advance
           add-paths: hub-config/tasks.json
           commit-message: 'Add next weekly reference and target end dates'
-          title: 'Add new weekly `reference_date` (`${{ steps.dates.outputs.reference_date }}`) and `target_end_date` (`${{ steps.dates.outputs.target_end_date }}`)'
+          title: 'Advance weekly dates for `${{ steps.dates.outputs.reference_date }}`'
           body: |
-            Add the next set of dates to `wk inc confirmed cases` task:
+            Add `${{ steps.dates.outputs.reference_date }}` as the next `reference_date` for both weekly targets.
 
-            - `reference_date`: `${{ steps.dates.outputs.reference_date }}`
-            - `target_end_date`: `${{ steps.dates.outputs.target_end_date }}`
-
-            Each new date is automatically created as seven days after the last date in each list.
+            - `wk inc confirmed cases` target end date: `${{ steps.dates.outputs.target_end_date }}`
+            - `wk R_t` target end date: `${{ steps.dates.outputs.rt_target_end_date }}` (horizon 0)
 
             Full hub configuration validation runs on this PR. Review and merge only after it passes.

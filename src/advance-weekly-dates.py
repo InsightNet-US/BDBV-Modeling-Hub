@@ -1,6 +1,5 @@
 """
-Append one week to target_end_date and reference_date 
-optional lists in the "BDBV 2026 nowcasting and forecasting" round.
+Advance the weekly confirmed-case and effective reproduction number dates.
 """
 
 import argparse
@@ -10,12 +9,9 @@ import os
 from pathlib import Path
 import re
 
-# Assumptions this script makes: 
-# tasks.json input is UTF-8 JSON with no duplicate object keys
-# rounds[1] (the second round) is named "BDBV 2026 nowcasting and forecasting", uses reference_date as its round ID, and has round_id_from_variable=true
-# that round has exactly one model task, whose required or optional targets include "wk inc confirmed cases"
-# both date fields inquestion have nonempty optional lists containing valid YYYY-MM-DD strings, strictly ascending and without duplicates
-# date-field objects use literal keys and no nested objects before optional. Multiline arrays place date strings on indented lines
+CONFIRMED_CASES = "wk inc confirmed cases"
+REPRODUCTION_NUMBER = "wk R_t"
+
 
 def unique_object(pairs):
     result = {}
@@ -82,22 +78,49 @@ def advance_weekly_dates(text):
             or round_config["round_id_from_variable"] is not True
         ):
             raise ValueError("The second round must use reference_date as its round ID")
-        if len(round_config["model_tasks"]) != 1:
-            raise ValueError("Expected exactly one model task in the second round")
-        task_ids = round_config["model_tasks"][0]["task_ids"]
-        targets = (task_ids["target"].get("required") or []) + (
-            task_ids["target"].get("optional") or []
-        )
-        if "wk inc confirmed cases" not in targets:
-            raise ValueError("The second round is not the weekly confirmed-case task")
+        tasks = {}
+        for model_task in round_config["model_tasks"]:
+            task_ids = model_task["task_ids"]
+            targets = (task_ids["target"].get("required") or []) + (
+                task_ids["target"].get("optional") or []
+            )
+            if len(targets) != 1 or targets[0] not in (CONFIRMED_CASES, REPRODUCTION_NUMBER):
+                raise ValueError(f"Unexpected weekly task targets: {targets}")
+            target = targets[0]
+            if target in tasks:
+                raise ValueError(f"Duplicate weekly task for {target}")
+            tasks[target] = task_ids
+
+        if CONFIRMED_CASES not in tasks:
+            raise ValueError(f"Missing weekly task for {CONFIRMED_CASES}")
+        cases = tasks[CONFIRMED_CASES]
+        reference_date = next_week(cases["reference_date"]["optional"], "reference_date")
+        target_end_date = next_week(cases["target_end_date"]["optional"], "target_end_date")
         additions = {
-            name: next_week(task_ids[name]["optional"], name)
-            for name in ("reference_date", "target_end_date")
+            "reference_date": reference_date,
+            "target_end_date": target_end_date,
         }
+        updates = [
+            (cases, "reference_date", reference_date),
+            (cases, "target_end_date", target_end_date),
+        ]
+
+        if REPRODUCTION_NUMBER in tasks:
+            rt = tasks[REPRODUCTION_NUMBER]
+            if rt["reference_date"] != cases["reference_date"]:
+                raise ValueError("reference_date settings must match across weekly tasks")
+            rt_target_end_date = next_week(rt["target_end_date"]["optional"], "wk R_t target_end_date")
+            if rt_target_end_date != reference_date:
+                raise ValueError("The next wk R_t target_end_date must match reference_date")
+            additions["rt_target_end_date"] = reference_date
+            updates.extend([
+                (rt, "reference_date", reference_date),
+                (rt, "target_end_date", reference_date),
+            ])
     except (KeyError, IndexError, TypeError) as error:
         raise ValueError("Unexpected configuration structure for the second round") from error
 
-    for name, addition in additions.items():
+    for task_ids, name, addition in updates:
         task_ids[name]["optional"].append(addition)
         text = append_optional_date(text, name, addition, config)
     return text, additions
