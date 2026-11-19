@@ -13,6 +13,7 @@ jobs:
   upload:
     if: github.event.repository.fork != true
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v7
 
