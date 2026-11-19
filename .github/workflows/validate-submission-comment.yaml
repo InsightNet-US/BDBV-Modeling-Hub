@@ -12,9 +12,44 @@ permissions:
 
 jobs:
   comment:
-    if: github.event.repository.fork != true
-    uses: hubverse-org/hubverse-actions/.github/workflows/post-validation-comment.yaml@v2
+    if: >-
+      github.event.repository.fork != true &&
+      github.event.workflow_run.event == 'pull_request' &&
+      contains(fromJSON('["success", "failure"]'), github.event.workflow_run.conclusion)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
     permissions:
       contents: read
       actions: read
       pull-requests: write
+    concurrency:
+      group: submission-validation-${{ github.event.workflow_run.head_sha }}
+      cancel-in-progress: false
+    steps:
+      - name: Download the result
+        id: download
+        continue-on-error: true
+        uses: actions/download-artifact@v8
+        with:
+          name: submission-validation-results
+          path: result
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ github.token }}
+
+      - if: steps.download.outcome == 'failure'
+        run: echo "::notice::No 'submission-validation-results' artifact on the triggering run — nothing to post."
+
+      # Resolve the target PR from the triggering run because fork PRs can
+      # control the artifact contents.
+      - name: Resolve the pull request from the trigger
+        id: pr
+        if: steps.download.outcome == 'success'
+        uses: hubverse-org/hubverse-actions/resolve-pr@v2
+
+      - if: steps.download.outcome == 'success' && steps.pr.outputs.number != ''
+        uses: hubverse-org/hubverse-actions/pr-comment@v2
+        with:
+          pr: ${{ steps.pr.outputs.number }}
+          header: submission-validation
+          revision: ${{ github.event.workflow_run.head_sha }}
+          body_path: result/summary.md

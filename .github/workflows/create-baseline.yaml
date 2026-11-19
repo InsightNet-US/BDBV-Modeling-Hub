@@ -26,6 +26,7 @@ jobs:
   generate:
     if: github.repository == 'InsightNet-US/BDBV-Modeling-Hub'
     runs-on: ubuntu-24.04
+    timeout-minutes: 20
     env:
       REFERENCE_DATE: ${{ inputs.reference_date || 'latest' }}
       OVERWRITE: ${{ inputs.overwrite_existing || false }}
